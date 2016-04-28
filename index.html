@@ -39,7 +39,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#products" class="waves-effect waves-light">Sign Up <span class="sr-only">(current)</span></a>
           </li>
-          <li><a href="#products" class="waves-effect waves-light">Log In <span class="sr-only">(current)</span></a>
+          <li><a href="#products" class="waves-effect waves-light" data-toggle="modal" data-target="#modalLogin">Log In <span class="sr-only">(current)</span></a>
           </li>
           <!-- <li class="dropdown">
             <a href="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" role="button" aria-expanded="false">List (click to expand) <span class="caret"></span></a>
@@ -66,6 +66,53 @@
       </div>
     </div>
   </nav>
+
+  <!-- Modal -->
+  <div class="modal fade" id="modalLogin" role="dialog">
+      <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+              <div class="modal-header text-center">
+                  <h4><i class="fa fa-user"></i> Login</h4>
+              </div>
+              <div class="modal-body" style="padding:40px 50px;">
+                  <div class="row">
+                      <form class="col-md-12">
+                          <div class="row">
+                              <div class="input-field">
+                                  <i class="material-icons prefix">email</i>
+                                  <input id="icon_email" type="tel" class="validate">
+                                  <label for="icon_email">Your email</label>
+                              </div>
+
+                              <div class="input-field">
+                                  <i class="material-icons prefix">lock</i>
+                                  <input id="password" type="password" class="validate">
+                                  <label for="password">Password</label>
+                              </div>
+                              <div class="text-center">
+                                  <button type="button" class="btn btn-primary waves-effect waves-light">Login</button>
+
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+              <!--Footer-->
+              <div class="modal-footer">
+                  <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal">X</button>
+                  <div class="options">
+                  <p>Not a member? <a href="#">Sign Up</a></p>
+                  <p>Forgot <a href="#">Password?</a></p>
+                  </div>
+              </div>
+              <!--/.Footer-->
+          </div>
+          <!-- /.Modal content-->
+      </div>
+  </div>
+  <!-- Modal -->
 
 
     <!-- SCRIPTS -->

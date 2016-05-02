@@ -10,6 +10,7 @@ app = Flask(__name__)
 db = MySQLdb.connect(host="localhost", user="root", passwd="", db="tcoverflow")
 cur = db.cursor()
 
+#Get Data
 @app.route('/getAllQuestion', methods=['GET'])
 def getAllQuestion():
     cur.execute("SELECT * FROM question")
@@ -33,16 +34,6 @@ def getUserById(id):
 @app.route('/getUserByUsername/<id>', methods=['GET'])
 def getUserByUsername(id):
     cur.execute("SELECT * FROM user WHERE username = %s", [id])
-    return jsonify(data=cur.fetchall())
-
-@app.route('/updateStatusUserToFree/<id>', methods=['GET'])
-def updateStatusUserToFree(id):
-    cur.execute("SELECT user SET status=0 WHERE id_user = %s OR username = %s", ([id],[id])
-    return jsonify(data=cur.fetchall())
-
-@app.route('/updateStatusUserToPremium/<id>', methods=['GET'])
-def updateStatusUserToPremium(id):
-    cur.execute("SELECT user SET status=1 WHERE id_user = %s OR username = %s", ([id],[id])
     return jsonify(data=cur.fetchall())
 
 @app.route('/getJawabanByIdQuestion/<id>', methods=['GET'])
@@ -69,6 +60,42 @@ def getPictureByIdPicture(id):
 def getPictureByIdQuestion(id):
     cur.execute("SELECT * FROM picture WHERE id_question = %s", [id])
     return jsonify(data=cur.fetchall())
+
+#Update Data
+@app.route('/updateStatusUserToFree/<id>', methods=['GET'])
+def updateStatusUserToFree(id):
+    cur.execute("SELECT user SET status=0 WHERE id_user = %s OR username = %s", ([id],[id]))
+    return jsonify(data=cur.fetchall())
+
+@app.route('/updateStatusUserToPremium/<id>', methods=['GET'])
+def updateStatusUserToPremium(id):
+    cur.execute("SELECT user SET status=1 WHERE id_user = %s OR username = %s", ([id],[id]))
+    return jsonify(data=cur.fetchall())
+
+#Delete Data
+@app.route('/deleteUser/<id>', methods=['GET'])
+def deleteUser(id):
+    cur.execute("DELETE FROM user WHERE id_user = %s OR username = %s", ([id],[id]))
+
+@app.route('/deleteQuestion/<id>', methods=['GET'])
+def deleteQuestion(id):
+    cur.execute("DELETE FROM question WHERE id_question = %s", [id])
+
+@app.route('/deleteJawaban/<id>', methods=['GET'])
+def deleteJawaban(id):
+    cur.execute("DELETE FROM jawaban WHERE id_jawaban = %s", [id])
+
+@app.route('/deletePicture/<id>', methods=['GET'])
+def deletePicture(id):
+    cur.execute("DELETE FROM picture WHERE id_picture = %s", [id])
+
+@app.route('/deleteTags/<id>', methods=['GET'])
+def deleteTags(id):
+    cur.execute("DELETE FROM tags WHERE id_tags = %s", [id])
+
+@app.route('/deleteTagsToQuestion/<id>', methods=['GET'])
+def deleteTagsToQuestion(id):
+    cur.execute("DELETE FROM tagstoquestion WHERE id_tagstoquestion = %s", [id])
 
 #app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 app.secret_key = 'awankinton123'

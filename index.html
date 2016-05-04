@@ -19,10 +19,11 @@
     <!-- Material Design Bootstrap -->
     <link href="css/mdb.css" rel="stylesheet">
     <!-- Template style -->
-  <link href="css/style.css" rel="stylesheet">
-<style type="text/css">
- 
-</style>
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/custom.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -41,9 +42,9 @@
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="sign_up.php" class="waves-effect waves-light">Sign Up <span class="sr-only">(current)</span></a>
+          <li><a href="sign_up.html" class="waves-effect waves-light">Sign Up <span class="sr-only">(current)</span></a>
           </li>
-          <li><a href="#products" class="waves-effect waves-light" data-toggle="modal" data-target="#modalLogin">Log In <span class="sr-only">(current)</span></a>
+          <li><a href="" class="waves-effect waves-light" data-toggle="modal" data-target="#modalLogin">Log In <span class="sr-only">(current)</span></a>
           </li>
           <!-- <li class="dropdown">
             <a href="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" role="button" aria-expanded="false">List (click to expand) <span class="caret"></span></a>
@@ -98,9 +99,34 @@
                         </div>
                     </div>
                     <div class="rows">
-                        <div>
-                            <a href="question.html" class="btn btn-default btn-warning waves-effect waves-light ">SUBMIT QUESTION</a>
-                        </div>
+                        <label>TAGS : </label>
+                        <input type="checkbox" name="C_tags" value="1" id="C_tag" />
+                        <label for="C_tag">C</label>
+                        <input type="checkbox" name="C++_tags" value="1" id="C++_tag" />
+                        <label for="C++_tag">C++</label>
+                        <input type="checkbox" name="C#_tags" value="1" id="C#_tag" />
+                        <label for="C#_tag">C#</label>
+                        <input type="checkbox" name="HTML_tags" value="1" id="HTML_tag" />
+                        <label for="C_HTML">HTML</label>
+                        <input type="checkbox" name="PHP_tags" value="1" id="PHP_tag" />
+                        <label for="PHP_tag">PHP</label>
+                        <input type="checkbox" name="JS_tags" value="1" id="JS_tag" />
+                        <label for="JS_tag">JAVASCRIPT</label>
+                        <input type="checkbox" name="Py_tags" value="1" id="Py_tag" />
+                        <label for="Py_tag">PYTHON</label>
+                        <input type="checkbox" name="VB_tags" value="1" id="VB_tag" />
+                        <label for="VB_tag">VISUAL BASIC</label>
+                        <input type="checkbox" name="Bash_tags" value="1" id="Bash_tag" />
+                        <label for="Bash_tag">BASH</label>
+                        <input type="checkbox" name="Java_tags" value="1" id="Java_tag" />
+                        <label for="Java_tag">JAVA</label>
+                        <input type="checkbox" name="Android_tags" value="1" id="Android_tag" />
+                        <label for="Android_tag">ANDROID</label>
+                        <input type="checkbox" name="Unity_tags" value="1" id="Unity_tag" />
+                        <label for="Unity_tag">UNITY</label>
+                    </div>
+                    <div>
+                        <a href="question.html" class="btn btn-default btn-warning waves-effect waves-light ">SUBMIT QUESTION</a>
                     </div>
                 </form>
             </div>
@@ -152,7 +178,7 @@
 
     <div class="row">
         <h1 class="page-header">
-            <small>TCOverflow</small>
+            <small>TC Overflow</small>
         </h1>
 
         <!-- Blog Entries Column -->
@@ -160,57 +186,129 @@
 
             <!-- First Blog Post -->
             <!--<div class="col-md-12">-->
+            <h4>Questions</h4>
             <div class="card hoverable">
               <div class="col-md-12 panel">
-                 <div class="col-md-1 ">
-                     <h6 class="text-right">Votes </h6>
-                     <h6 class="text-right">Answers </h6>
-                     <h6 class="text-right">Views </h6>
-                 </div>
-                 <div class="col-md-1">
-                     <h6><span class="label text-left label-default">0</span></h6>
-                     <h6><span class="label text-left label-default">0</span></h6>
-                     <h6><span class="label text-left label-default">0</span></h6>
-                 </div>
-                 <div class="col-md-10 container-fluid">
-                     <p class="lead">
-                         <a href="index.php">Error not declared routes list, but the routes exists. </a>
-                     </p>
-                     <p class="text-right"> Posted on August 28, 2013 at 10:00 PM</p>
-                     <!--<a href="http://mdbootstrap.com/product/magic-portfolio-for-video-maker/"> <strong>Read more </strong></a>-->
-
-                 </div>
-             </div>
+                <!-- <div class="col-md-12"> -->
+                  <div class="col-md-9 container-fluid">
+                      <p class="lead">
+                          <a href="index.html">Judul Pertanyaan (Pertanyaan Inti)</a>
+                          <br>
+                          <h6 class="text-left">Tags: 
+                            <span class="label center label-info">C</span>
+                            <span class="label center label-info">C++</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                          </h6>
+                          <br>
+                          <p class="text-left">Posted on May 4, 2013 at 14:00 WIB</p>
+                      </p>
+                      
+                  </div>
+                  <div class="col-md-2 ">
+                      <h6 class="text-left">Votes </h6>
+                      <h6 class="text-left">Answers </h6>
+                      <h6 class="text-left">Views </h6>
+                  </div>
+                  <div class="col-md-1">
+                      <h6><span class="label right label-default">100</span></h6>
+                      <h6><span class="label right label-success">10</span></h6>
+                      <h6><span class="label right label-danger">250</span></h6>
+                  </div>
+                <!-- </div> -->
+              </div>
             </div>
-             
-            <hr>
+            
             <div class="card hoverable">
               <div class="col-md-12 panel">
-                <div class="col-md-1 ">
-                    <h6 class="text-right">Votes </h6>
-                    <h6 class="text-right">Answers </h6>
-                    <h6 class="text-right">Views </h6>
-                </div>
-                <div class="col-md-1">
-                    <h6><span class="label text-left label-default">2k</span></h6>
-                    <h6><span class="label text-left label-success">6</span></h6>
-                    <h6><span class="label text-left label-danger">3k</span></h6>
-                </div>
-                <div class="col-md-10 container-fluid">
-                    <p class="lead">
-                        <a href="index.php">Error 500 web service. Is this a bug or just server problems? </a>
-                    </p>
-                    <p class="text-right"> Posted on August 28, 2013 at 10:00 PM</p>
-                    <!--<a href="http://mdbootstrap.com/product/magic-portfolio-for-video-maker/"> <strong>Read more </strong></a>-->
-
-                </div>
+                <!-- <div class="col-md-12"> -->
+                  <div class="col-md-9 container-fluid">
+                      <p class="lead">
+                          <a href="index.html">Judul Pertanyaan (Pertanyaan Inti)</a>
+                          <br>
+                          <h6 class="text-left">Tags: 
+                            <span class="label center label-info">C</span>
+                            <span class="label center label-info">C++</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                          </h6>
+                          <br>
+                          <p class="text-left">Posted on May 4, 2013 at 14:00 WIB</p>
+                      </p>
+                      
+                  </div>
+                  <div class="col-md-2 ">
+                      <h6 class="text-left">Votes </h6>
+                      <h6 class="text-left">Answers </h6>
+                      <h6 class="text-left">Views </h6>
+                  </div>
+                  <div class="col-md-1">
+                      <h6><span class="label right label-default">100</span></h6>
+                      <h6><span class="label right label-success">10</span></h6>
+                      <h6><span class="label right label-danger">250</span></h6>
+                  </div>
+                <!-- </div> -->
+              </div>
             </div>
 
-            </div>
+            <div class="card hoverable">
+              <div class="col-md-12 panel">
+                <!-- <div class="col-md-12"> -->
+                  <div class="col-md-9 container-fluid">
+                      <p class="lead">
+                          <a href="index.html">Judul Pertanyaan (Pertanyaan Inti)</a>
+                          <br>
+                          <h6 class="text-left">Tags: 
+                            <span class="label center label-info">C</span>
+                            <span class="label center label-info">C++</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                          </h6>
+                          <br>
+                          <p class="text-left">Posted on May 4, 2013 at 14:00 WIB</p>
+                      </p>
+                      
+                  </div>
+                  <div class="col-md-2 ">
+                      <h6 class="text-left">Votes </h6>
+                      <h6 class="text-left">Answers </h6>
+                      <h6 class="text-left">Views </h6>
+                  </div>
+                  <div class="col-md-1">
+                      <h6><span class="label right label-default">100</span></h6>
+                      <h6><span class="label right label-success">10</span></h6>
+                      <h6><span class="label right label-danger">250</span></h6>
+                  </div>
+                <!-- </div> -->
+              </div>
+            </div>      
             
 
             <hr>
-
             <!-- Pager -->
             <ul class="pager">
                 <li class="previous">
@@ -228,8 +326,8 @@
             <div class="sidebar">
                 <!-- Blog Search Well -->
 
-                <!-- Subscription widget -->
-                <div class="card-panel">
+                <!-- Subscription widget
+                <!-- <div class="card-panel">
                     <div class="row">
                         <form class="col-md-12">
                             <h5>Subscribe to our newsletter</h5>
@@ -250,19 +348,24 @@
                             <button type="button" class="btn btn-info waves-effect waves-light">Subscribe</button>
                         </div>
                     </div>
-                </div>
-                <!--/.Subscription widget -->
+                </div> -->
+                <!-- /.Subscription widget  -->
 
-                <br>
                 <!-- Category widget -->
                 <h4>Categories</h4>
                 <div class="collection">
-                    <a href="#!" class="collection-item">Category 1</a>
-                    <a href="#!" class="collection-item active">Category 1</a>
-                    <a href="#!" class="collection-item">Category 1</a>
-                    <a href="#!" class="collection-item">Category 1</a>
-                    <a href="#!" class="collection-item">Category 1</a>
-                    <a href="#!" class="collection-item">Category 1</a>
+                    <a href="#!" class="collection-item active">C Programming</a>
+                    <a href="#!" class="collection-item">C++ Programming</a>
+                    <a href="#!" class="collection-item">C# Programming</a>
+                    <a href="#!" class="collection-item">HTML Programming</a>
+                    <a href="#!" class="collection-item">PHP Programming</a>
+                    <a href="#!" class="collection-item">JavaScript Programming</a>
+                    <a href="#!" class="collection-item">Python Programming</a>
+                    <a href="#!" class="collection-item">VisualBasic Programming</a>
+                    <a href="#!" class="collection-item">Bash Programming</a>
+                    <a href="#!" class="collection-item">Java Programming</a>
+                    <a href="#!" class="collection-item">Android Programming</a>
+                    <a href="#!" class="collection-item">Unity Programming</a>                                                         
                 </div>
             </div>
         </div>

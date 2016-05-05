@@ -5,7 +5,7 @@ import MySQLdb
 
 app = Flask(__name__)
 
-db = MySQLdb.connect(host="localhost", user="root", passwd="", db="test")
+db = MySQLdb.connect(host="localhost", user="root", passwd="", db="tcoverflow")
 cur = db.cursor()
 
 @app.route('/')

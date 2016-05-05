@@ -1,8 +1,9 @@
-from flask import Flask, session, redirect, url_for, escape, request, render_template, jsonify
+from flask import Flask, send_from_directory, session, redirect, url_for, escape, request, render_template, jsonify
 from hashlib import md5
 from base64 import b64encode
 import MySQLdb
 from werkzeug import secure_filename
+import os
 
 app = Flask(__name__)
 
@@ -49,6 +50,42 @@ def login():
                     error = "Salah password!"
         else:
             error = "Anda belum terdaftar!"
+    return render_template('sign_up.html', error=error)
+
+@app.route('/signup/daftar', methods=['GET', 'POST'])
+def daftar():
+    print signup
+    error = None
+    if 'username' in session:
+        return redirect(url_for('index'))
+    if request.method == 'POST':
+        username_form  = request.form['username']
+        email_form = request.form['email']
+        password_form  = request.form['password']
+        password2_form = request.form['password2']
+        status_form = request.form['status']
+        file = request.files['file']
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            uploaded_file(filename)
+        files = str(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        
+        cur.execute("SELECT COUNT(1) FROM user WHERE username = %s;", [username_form]) # CHECKS IF USERNAME EXSIST
+        if cur.fetchone()[0]:
+            error = "Username sudah digunakan!"
+        elif password_form != password2_form:
+            error = "Password yang Anda masukkan tidak sama"
+        else:
+            cur.execute("SELECT COUNT(1) FROM user WHERE email = %s;", [email_form]) # CHECKS IF email EXSIST
+            if cur.fetchone()[0]:
+                error = "Email sudah digunakan!"
+            else:
+                cur.execute("INSERT INTO user(username, email, password, status, foto_user) VALUES(%s ,%s, %s, %s, %s)",
+                            ([username_form], [email_form],[password_form], [status_form], [files]))
+                db.commit()
+                error = "Berhasil Daftar!"
+            
     return render_template('sign_up.html', error=error)
 
 @app.route('/signup', methods=['GET', 'POST'])

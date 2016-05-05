@@ -12,7 +12,13 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+   
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
 
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+            
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -23,11 +29,21 @@
 
     <!-- Custom CSS -->
     <link href="css/custom.css" rel="stylesheet">
+    <style type="text/css">
+    .carousel-caption{
+      margin-bottom: 0em;
+      bottom: 1em;
+      padding-bottom: 0px;
+    }
+    .tags-alignmment{
+      text-align: left;
+    }
 
+    </style>
 </head>
 
 <body>
-    <!-- Navigation -->
+  <!-- Navigation -->
   <nav class="navbar z-depth-2 info-color">
     <div class="container ">
       <div class="navbar-header">
@@ -99,35 +115,64 @@
                         </div>
                     </div>
                     <div class="rows">
-                        <label>TAGS : </label>
-                        <input type="checkbox" name="C_tags" value="1" id="C_tag" />
-                        <label for="C_tag">C</label>
-                        <input type="checkbox" name="C++_tags" value="1" id="C++_tag" />
-                        <label for="C++_tag">C++</label>
-                        <input type="checkbox" name="C#_tags" value="1" id="C#_tag" />
-                        <label for="C#_tag">C#</label>
-                        <input type="checkbox" name="HTML_tags" value="1" id="HTML_tag" />
-                        <label for="C_HTML">HTML</label>
-                        <input type="checkbox" name="PHP_tags" value="1" id="PHP_tag" />
-                        <label for="PHP_tag">PHP</label>
-                        <input type="checkbox" name="JS_tags" value="1" id="JS_tag" />
-                        <label for="JS_tag">JAVASCRIPT</label>
-                        <input type="checkbox" name="Py_tags" value="1" id="Py_tag" />
-                        <label for="Py_tag">PYTHON</label>
-                        <input type="checkbox" name="VB_tags" value="1" id="VB_tag" />
-                        <label for="VB_tag">VISUAL BASIC</label>
-                        <input type="checkbox" name="Bash_tags" value="1" id="Bash_tag" />
-                        <label for="Bash_tag">BASH</label>
-                        <input type="checkbox" name="Java_tags" value="1" id="Java_tag" />
-                        <label for="Java_tag">JAVA</label>
-                        <input type="checkbox" name="Android_tags" value="1" id="Android_tag" />
-                        <label for="Android_tag">ANDROID</label>
-                        <input type="checkbox" name="Unity_tags" value="1" id="Unity_tag" />
-                        <label for="Unity_tag">UNITY</label>
+                        <label>QUESTION TAGS : </label>
                     </div>
-                    <div>
-                        <a href="question.html" class="btn btn-default btn-warning waves-effect waves-light ">SUBMIT QUESTION</a>
-                    </div>
+
+                    <div class="rows">
+                      <div class="col-md-12 tags-alignmment">
+                        <div class="col-md-2">
+                          <input type="checkbox" name="C_tags" class="filled-in" value="1" id="C_tag" />
+                          <label for="C_tag">C</label>
+                        </div>
+                        <div class="col-md-2">
+                          <input type="checkbox" name="C++_tags" class="filled-in" value="1" id="C++_tag" />
+                          <label for="C++_tag">C++</label>
+                        </div>
+                        <div class="col-md-2">
+                          <input type="checkbox" name="C#_tags" class="filled-in" value="1" id="C#_tag" />
+                          <label for="C#_tag">C#</label>
+                        </div>
+                        <div class="col-md-2">
+                          <input type="checkbox" name="HTML_tags" class="filled-in" value="1" id="HTML_tag" />
+                          <label for="C_HTML">HTML</label>
+                        </div>
+                        <div class="col-md-2">
+                          <input type="checkbox" name="PHP_tags" class="filled-in" value="1" id="PHP_tag" />
+                          <label for="PHP_tag">PHP</label>
+                        </div>
+                        <div class="col-md-2">
+                          <input type="checkbox" name="JS_tags" class="filled-in" value="1" id="JS_tag" />
+                          <label for="JS_tag">JAVASCRIPT</label>
+                        </div>
+                        <div class="col-md-2">
+                          <input type="checkbox" name="Py_tags" class="filled-in" value="1" id="Py_tag" />
+                          <label for="Py_tag">PYTHON</label>
+                        </div>
+                        <div class="col-md-2">  
+                          <input type="checkbox" name="VB_tags" class="filled-in" value="1" id="VB_tag" />
+                          <label for="VB_tag">VISUAL BASIC</label>
+                        </div>
+                        <div class="col-md-2">  
+                          <input type="checkbox" name="Bash_tags" class="filled-in" value="1" id="Bash_tag" />
+                          <label for="Bash_tag">BASH</label>
+                        </div>
+                        <div class="col-md-2">  
+                          <input type="checkbox" name="Java_tags" class="filled-in" value="1" id="Java_tag" />
+                          <label for="Java_tag">JAVA</label>
+                        </div>
+                        <div class="col-md-2">  
+                          <input type="checkbox" name="Android_tags" class="filled-in" value="1" id="Android_tag" />
+                          <label for="Android_tag">ANDROID</label>
+                        </div>
+                        <div class="col-md-2">  
+                          <input type="checkbox" name="Unity_tags" class="filled-in" value="1" id="Unity_tag" />
+                          <label for="Unity_tag">UNITY</label>
+                        </div>
+                      </div>
+                  </div>
+                  <div>
+                    <a href="question.html" class="btn btn-default btn-warning waves-effect waves-light ">SUBMIT QUESTION</a>
+                  </div>
                 </form>
             </div>
           <!--   <h2 class="h2-responsive">This is the caption for slide 1</h2>
@@ -186,7 +231,7 @@
 
             <!-- First Blog Post -->
             <!--<div class="col-md-12">-->
-            <h4>Questions</h4>
+            <h4>Top Questions</h4>
             <div class="card hoverable">
               <div class="col-md-12 panel">
                 <!-- <div class="col-md-12"> -->

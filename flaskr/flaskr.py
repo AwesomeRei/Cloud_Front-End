@@ -2,11 +2,21 @@ from flask import Flask, session, redirect, url_for, escape, request, render_tem
 from hashlib import md5
 from base64 import b64encode
 import MySQLdb
+from werkzeug import secure_filename
 
 app = Flask(__name__)
 
+# This is the path to the upload directory
+app.config['UPLOAD_FOLDER'] = 'static/foto/'
+# These are the extension that we are accepting to be uploaded
+app.config['ALLOWED_EXTENSIONS'] = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+
 db = MySQLdb.connect(host="localhost", user="root", passwd="", db="tcoverflow")
 cur = db.cursor()
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1] in app.config['ALLOWED_EXTENSIONS']
 
 @app.route('/')
 def index():
@@ -28,9 +38,9 @@ def login():
     if request.method == 'POST':
         username_form  = request.form['username']
         password_form  = request.form['password']
-        cur.execute("SELECT COUNT(1) FROM users WHERE username = %s;", [username_form]) # CHECKS IF USERNAME EXSIST
+        cur.execute("SELECT COUNT(1) FROM user WHERE username = %s;", [username_form]) # CHECKS IF USERNAME EXSIST
         if cur.fetchone()[0]:
-            cur.execute("SELECT password FROM users WHERE username = %s;", [username_form]) # FETCH THE HASHED PASSWORD
+            cur.execute("SELECT password FROM user WHERE username = %s;", [username_form]) # FETCH THE HASHED PASSWORD
             for row in cur.fetchall():
                 if password_form == row[0]:
                     session['username'] = request.form['username']
@@ -49,16 +59,35 @@ def signup():
         return redirect(url_for('index'))
     if request.method == 'POST':
         username_form  = request.form['username']
+        email_form = request.form['email']
         password_form  = request.form['password']
-        cur.execute("SELECT COUNT(1) FROM users WHERE username = %s;", [username_form]) # CHECKS IF USERNAME EXSIST
+        password2_form = request.form['password2']
+        status_form = request.form['status']
+        file = request.files['file']
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            uploaded_file(filename)
+        file = app.config['UPLOAD_FOLDER'] + file
+        
+        cur.execute("SELECT COUNT(1) FROM user WHERE username = %s;", [username_form]) # CHECKS IF USERNAME EXSIST
         if cur.fetchone()[0]:
             error = "Username sudah digunakan!"
+        elif password_form != password2_form:
+            error = "Password yang Anda masukkan tidak sama"
         else:
-            cur.execute("INSERT INTO users(username, password) VALUES(%s ,%s)", ([username_form],[password_form]))
-            db.commit()
-            error = "Berhasil Daftar!"
+            cur.execute("SELECT COUNT(1) FROM user WHERE email = %s;", [email_form]) # CHECKS IF email EXSIST
+            if cur.fetchone()[0]:
+                error = "Email sudah digunakan!"
+            else:
+                cur.execute("INSERT INTO user(username, email, password, status, foto_user) VALUES(%s ,%s)", ([username_form], [email_form],[password_form], [status_form], [file]))
+                db.commit()
+                error = "Berhasil Daftar!"
             
     return render_template('sign_up.html', error=error)
+
+def uploaded_file(filename):
+    send_from_directory(app.config['UPLOAD_FOLDER'],filename)
 
 @app.route('/user', methods=['GET', 'POST'])
 def user():

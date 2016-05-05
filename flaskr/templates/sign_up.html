@@ -129,31 +129,31 @@
             <div class="row">
                 <div class="col-md-12">
                     <!--Form-->
-                    <form>
+                    <form action="/signup" method="POST">
 						{% if error %}
 							<p class=error><strong>Status:</strong> {{ error }}
 						{% endif %}
                         <div class="input-field">
                           <i class="material-icons prefix">account_circle</i>
-                          <input id="icon_prefix" type="text" class="validate">
+                          <input id="icon_prefix" name="username" type="text" class="validate">
                           <label for="icon_prefix">Username</label>
                         </div>
 
                         <div class="input-field">
                             <i class="material-icons prefix">email</i>
-                            <input id="icon_email" type="tel" class="validate">
+                            <input id="icon_email" name="email" type="tel" class="validate">
                             <label for="icon_email">Your email</label>
                         </div>
 
                         <div class="input-field">
                             <i class="material-icons prefix">lock</i>
-                            <input id="password" type="password" class="validate">
+                            <input id="password" name="password" type="password" class="validate">
                             <label for="password">Password</label>
                         </div>
 						
                         <div class="input-field">
                             <i class="material-icons prefix">lock</i>
-                            <input id="password-rep" type="password" class="validate">
+                            <input id="password-rep" name="password2" type="password" class="validate">
                             <label for="password-rep">Repeat password</label>
                         </div>
 						
@@ -164,11 +164,11 @@
                           </button>  
                         </div>
 						
-                        <h4 class="text-center">Packet Offfered:</h4>
+                        <h4 class="text-center">Packet Offered:</h4>
                         <div class="col-md-6">
                             <div class="card elegant-color darken-1">
                                 <div class="card-content white-text">
-                                    <input name="group1" type="radio" id="Free">
+                                    <input name="status" type="radio" id="Free" value="0">
                                     <label for="Free"><span class="card-title">Free Plan</span></label>
                                     <p>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula.</p>
                                 </div>
@@ -181,8 +181,8 @@
                         <div class="col-md-6">
                             <div class="card elegant-color darken-1">
                                 <div class="card-content white-text">
-                                    <input name="group1" type="radio" id="Premium">
-                                    <label for="Premium"><span class="card-title" value="Premium">Premium Plan</span></label>
+                                    <input name="status" type="radio" id="Premium" value="0">
+                                    <label for="Premium"><span class="card-title">Premium Plan</span></label>
                                     <p>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula.</p>
                                 </div>
                                 <div class="card-action">
@@ -192,7 +192,7 @@
                         </div>
 
                         <div class="text-center">
-                            <button type="button" class="btn btn-primary btn-lg waves-effect waves-light">Sign up</button>
+                            <button type="Submit" value="sign_up" class="btn btn-primary btn-lg waves-effect waves-light">Sign up</button>
                         </div>
 
                     </form>

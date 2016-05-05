@@ -18,22 +18,11 @@ body {
 }
 
 .item:nth-child(1) {
-    background-image: url(../img/background.jpg);
+    background-image: url(../img/book_background_2.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.item:nth-child(2) {
-    background-image: url(../img/background2.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.item:nth-child(3) {
-    background-image: url(../img/background4.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
 .page-content {
     margin-top: 40px;

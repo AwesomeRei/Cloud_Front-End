@@ -10,11 +10,14 @@ cur = db.cursor()
 
 @app.route('/')
 def index():
-    error = None
     print index
     if 'username' in session:
         return redirect(url_for('user'))
-    return render_template('index.html', error=error)
+    cur.execute("SELECT * FROM question ORDER BY id_question DESC LIMIT 10")
+    passingData = []
+    passingData.append(cur.fetchall())
+    passingData.append('data')
+    return render_template('index.html', data=passingData)
 
 @app.route('/signup/login', methods=['GET', 'POST'])
 def login():

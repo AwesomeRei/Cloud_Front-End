@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TCOverflow</title>
+    <title>TC Overflow</title>
 
     <!-- Material Design Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -22,6 +22,27 @@
 
     <!-- Template style -->
     <style>
+        .margin-answer {
+            margin: 0% 1% 1% 1%;        
+        }
+        .user-photo-answer {
+            max-height: 5%;
+            max-width: 5%;
+        }
+        .vote-position {
+            margin-top: 5%;
+        }
+
+        .vote {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        .question-image {
+            max-width: 80%;
+            max-height: 80%;
+        }
+
         .sidebar {
             margin-top: 40px;
         }
@@ -36,8 +57,6 @@
             padding: 30px;
             margin-top: 30px;
         }
-
-
         .fb-bg {
             background-color: #3B5998;
         }
@@ -111,100 +130,115 @@
 
     <div class="row">
         <h1 class="page-header">
-            <small>TCOverflow</small>
+            <small>TC Overflow</small>
         </h1>
-
-        <!-- Blog Entries Column -->
         <div class="col-md-12">
+            <h4>Question Details</h4>
+        <hr>
+            <!-- Qeuestion Post -->
+            <div class="card">    
+            <div class="col-md-12 panel">
+                <!-- <div class="col-md-12"> -->
+                <div class="col-md-9 container-fluid">
+                    <p class="lead">
+                        <h6>Judul Pertanyaan (Pertanyaan Inti)</h6>
+                        <h5>Isi pertanyaan lalallalallalala apakah berapakah mungkinkah?</h5>
+                        
+                        <!-- jika ada gambar maka ditampilkan, jika tidak ada maka bagian ini di skip -->
+                        <img class="question-image" src="img/dummy/question-image-1.jpg">
+                        
+                        <br>
+                        <h6 class="text-left">Tags: 
+                            <span class="label center label-info">HTML</span>
+                            <span class="label center label-info">PHP</span>
+                        </h6>
+                        <br>
+                    </p>
+                  </div>
+                  <div class="col-md-2 ">
+                    <br>
+                      <h6 class="text-left">Votes </h6>
+                      <h6 class="text-left">Answers </h6>
+                      <h6 class="text-left">Views </h6>
+                  </div>
+                  <div class="col-md-1">
+                    <br>
+                      <h6><span class="label right label-default">100</span></h6>
+                      <h6><span class="label right label-success">10</span></h6>
+                      <h6><span class="label right label-danger">250</span></h6>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                    <p class="text-right">Posted on May 4, 2016 at 14:00 WIB</p>
+                </div>
+            </div>
+        
+            <br>
+            <h4>Answers</h4>
+            <hr>
 
-            <!-- First Blog Post -->
             <div class="card hoverable">
-            
-            <!--<div class="col-md-12">-->
-             <div class="col-md-12 panel">
-                 <div class="col-md-1 ">
-                     <h6 class="text-right">Votes </h6>
-                     <h6 class="text-right">Answers </h6>
-                     <h6 class="text-right">Views </h6>
-                 </div>
-                 <div class="col-md-1">
-                     <h6><span class="label text-left label-default">0</span></h6>
-                     <h6><span class="label text-left label-default">0</span></h6>
-                     <h6><span class="label text-left label-default">0</span></h6>
-                 </div>
-                 <div class="col-md-10 container-fluid">
-                     <p class="lead">
-                         <a href="index.php">Error not declared routes list, but the routes exists. </a>
-                     </p>
-                     <p class="text-right"> Posted on August 28, 2013 at 10:00 PM</p>
-                     <!--<a href="http://mdbootstrap.com/product/magic-portfolio-for-video-maker/"> <strong>Read more </strong></a>-->
+                <div class="col-md-12">
+                    <div class="col-md-1 text-center vote-position">
+                        <a><i class="material-icons">arrow_upward</i></a>
+                        <h3 class="vote">0</h3>
+                        <a><i class="material-icons">arrow_downward</i></a>
+                    </div>
+                    <div class="sidebar col-md-11">
+                        <div class="card-panel">
+                            <div class="row">
+                                <div class="panel margin-answer">
+                                    <img class="user-photo-answer" src=img/dummy/rei.jpg />
+                                    <h7>Andre Reinaldi</h7>
+                                    <h6>posted on May 4, 2016 at 18:00 WIB</h6>
+                                    <hr>
+                                    <div class="panel-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr><br><br>
 
-                 </div>
-             </div>
-             </div>
+            <h4>Your Answer</h4>
             <hr>
-            <hr>
+            <div class="row">
+                <form class="col-md-8">
+                <div class="row">
+                    <div class="input-field col-md-4">
+                      <input disabled value="Username yang terlogin" id="disabled" type="text" class="validate">
+                      <label for="disabled">Username</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col-md-12">
+                      <textarea id="textarea" class="materialize-textarea"></textarea>
+                      <label for="textarea">Answer</label>
+                    </div>
+                </div>
+                <div class="col-md-12 text-right">
+                    <a href="#" class="btn btn-default btn-submit waves-effect waves-light right">SUBMIT ANSWER</a>
+                </div>
+                </form>
+            </div>
+
 
             <!-- Pager -->
-            <ul class="pager">
+            <!-- <ul class="pager">
                 <li class="previous">
                     <a href="#">&larr; Older</a>
                 </li>
                 <li class="next">
                     <a href="#">Newer &rarr;</a>
                 </li>
-            </ul>
+            </ul> -->
 
         </div>
 
         <!-- Blog Sidebar Widgets Column -->
-        <div class="col-md-12">
-            <div class="sidebar">
-                <!-- Blog Search Well -->
-
-                <!-- Subscription widget -->
-                <div class="card-panel">
-                    <div class="row">
-                        <form class="col-md-12">
-                            <h5>Subscribe to our newsletter</h5>
-                            <h6>Once a week we will send you a summary of the most useful news</h6>
-                            <br>
-                            <div class="input-field">
-                                <i class="material-icons prefix">account_circle</i>
-                                <input id="icon_prefix" type="text" class="validate">
-                                <label for="icon_prefix">Your Name</label>
-                            </div>
-                            <div class="input-field">
-                                <i class="material-icons prefix">mail</i>
-                                <input id="icon_telephone" type="tel" class="validate">
-                                <label for="icon_telephone">Your Email</label>
-                            </div>
-                        </form>
-                        <div class="text-center">
-                            <button type="button" class="btn btn-info waves-effect waves-light">Subscribe</button>
-                        </div>
-                    </div>
-                </div>
-                <!--/.Subscription widget -->
-
-                <br>
-                <!-- Category widget -->
-                <h4>Categories</h4>
-                <div class="collection">
-                    <a href="#!" class="collection-item">Category 1</a>
-                    <a href="#!" class="collection-item active">Category 1</a>
-                    <a href="#!" class="collection-item">Category 1</a>
-                    <a href="#!" class="collection-item">Category 1</a>
-                    <a href="#!" class="collection-item">Category 1</a>
-                    <a href="#!" class="collection-item">Category 1</a>
-                </div>
-
-
-
-
-
-            </div>
-        </div>
     </div>
     <!-- /.row -->
 

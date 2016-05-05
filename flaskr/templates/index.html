@@ -42,7 +42,7 @@
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="sign_up.html" class="waves-effect waves-light">Sign Up <span class="sr-only">(current)</span></a>
+          <li><a href="{{ url_for('signup') }}" class="waves-effect waves-light">Sign Up <span class="sr-only">(current)</span></a>
           </li>
           <li><a href="" class="waves-effect waves-light" data-toggle="modal" data-target="#modalLogin">Log In <span class="sr-only">(current)</span></a>
           </li>
@@ -349,13 +349,13 @@
  <!-- SCRIPTS -->
 
     <!-- JQuery -->
-    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}js/bootstrap.min.js"></script>
 
     <!-- Material Design Bootstrap -->
-    <script type="text/javascript" src="js/mdb.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}js/mdb.js"></script>
 
 
 </body>

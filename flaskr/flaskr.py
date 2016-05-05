@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 from flask import Flask, session, redirect, url_for, escape, request, render_template, jsonify
 from hashlib import md5
 from base64 import b64encode

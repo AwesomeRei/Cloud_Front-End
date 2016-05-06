@@ -109,7 +109,7 @@ def anon_post():
         id_user = 0
         cur.execute("INSERT INTO question(id_user, judul, pertanyaan) VALUES(%s ,%s, %s)", ([id_user], [judul_form], [pertanyaan_form]))
         db.commit()
-        """
+        
         cur.execute("SELECT id_question FROM question ORDER BY id_question DESC LIMIT 1")
         id_question = cur.fetchone()[0]
         print 1
@@ -125,10 +125,10 @@ def anon_post():
         java  = request.form['Java_tags']
         android  = request.form['Android_tags']
         unity  = request.form['Unity_tags']
-        cur.execute("INSERT INTO tags(C_tags, C++_tags, C#_tags, HTML_tags, PHP_tags, JS_tags, Py_tags, VB_tags, Bash_tags, Java_tags, Android_tags, Unity_tags, id_question) \
+        cur.execute("INSERT INTO tags(C_tags, CPP_tags, CSharp_tags, HTML_tags, PHP_tags, JS_tags, Py_tags, VB_tags, Bash_tags, Java_tags, Android_tags, Unity_tags, id_question) \
                     VALUES(%s ,%s, %s, %s ,%s, %s, %s ,%s, %s, %s ,%s, %s, %s)",
                     ([c], [cpp], [csharp], [html], [php], [js], [py], [vb], [bash], [java], [android], [unity], [id_question]))
-        db.commit()"""
+        db.commit()
            
     return redirect(url_for('index'))
 

@@ -21,6 +21,7 @@ def allowed_file(filename):
 
 @app.route('/')
 def index():
+    error = None
     print index
     if 'username' in session:
         return redirect(url_for('user'))
@@ -94,34 +95,42 @@ def signup():
     error = None
     if 'username' in session:
         return redirect(url_for('index'))
-    if request.method == 'POST':
-        username_form  = request.form['username']
-        email_form = request.form['email']
-        password_form  = request.form['password']
-        password2_form = request.form['password2']
-        status_form = request.form['status']
-        file = request.files['file']
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            uploaded_file(filename)
-        file = app.config['UPLOAD_FOLDER'] + file
-        
-        cur.execute("SELECT COUNT(1) FROM user WHERE username = %s;", [username_form]) # CHECKS IF USERNAME EXSIST
-        if cur.fetchone()[0]:
-            error = "Username sudah digunakan!"
-        elif password_form != password2_form:
-            error = "Password yang Anda masukkan tidak sama"
-        else:
-            cur.execute("SELECT COUNT(1) FROM user WHERE email = %s;", [email_form]) # CHECKS IF email EXSIST
-            if cur.fetchone()[0]:
-                error = "Email sudah digunakan!"
-            else:
-                cur.execute("INSERT INTO user(username, email, password, status, foto_user) VALUES(%s ,%s)", ([username_form], [email_form],[password_form], [status_form], [file]))
-                db.commit()
-                error = "Berhasil Daftar!"
             
     return render_template('sign_up.html', error=error)
+
+@app.route('/anon_post', methods=['GET', 'POST'])
+def anon_post():
+    print signup
+    if 'username' in session:
+        return redirect(url_for('index'))
+    if request.method == 'POST':
+        judul_form  = request.form['judul']
+        pertanyaan_form = request.form['pertanyaan']
+        id_user = 0
+        cur.execute("INSERT INTO question(id_user, judul, pertanyaan) VALUES(%s ,%s, %s)", ([id_user], [judul_form], [pertanyaan_form]))
+        db.commit()
+        """
+        cur.execute("SELECT id_question FROM question ORDER BY id_question DESC LIMIT 1")
+        id_question = cur.fetchone()[0]
+        print 1
+        c  = request.form['C_tags']
+        cpp  = request.form['C++_tags']
+        csharp  = request.form['C#_tags']
+        html  = request.form['HTML_tags']
+        php  = request.form['PHP_tags']
+        js  = request.form['JS_tags']
+        py  = request.form['Py_tags']
+        vb  = request.form['VB_tags']
+        bash  = request.form['Bash_tags']
+        java  = request.form['Java_tags']
+        android  = request.form['Android_tags']
+        unity  = request.form['Unity_tags']
+        cur.execute("INSERT INTO tags(C_tags, C++_tags, C#_tags, HTML_tags, PHP_tags, JS_tags, Py_tags, VB_tags, Bash_tags, Java_tags, Android_tags, Unity_tags, id_question) \
+                    VALUES(%s ,%s, %s, %s ,%s, %s, %s ,%s, %s, %s ,%s, %s, %s)",
+                    ([c], [cpp], [csharp], [html], [php], [js], [py], [vb], [bash], [java], [android], [unity], [id_question]))
+        db.commit()"""
+           
+    return redirect(url_for('index'))
 
 def uploaded_file(filename):
     send_from_directory(app.config['UPLOAD_FOLDER'],filename)

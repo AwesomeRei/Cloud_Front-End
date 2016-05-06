@@ -91,43 +91,80 @@
         <div class="carousel-caption">
           <div data-animation="animated fadeInRightBig">
             <div class = "row">
-                <form class="col-md-12" action="/anonim_post" method="POST">
+                <form class="col-md-12" action="/anon_post" method="POST">
+                    <h5>FEEL FREE TO ASK</h5>
+					{% if error %}
+						<p class=error><strong>Status:</strong> {{ error }}
+					{% endif %}
                     <div class="rows">
-                        <div class="input-field col-md-12">
-                            <textarea id="ask" class="materialize-textarea"></textarea>
-                            <label for="ask" >ASK QUESTION</label>
+                        <div class="input-field col-md-3">
+                            <input name="judul" id="title" type="text">
+                            <label for="title">TITLE</label>
+                        </div>
+                        <div class="input-field col-md-9">
+                            <input name="pertanyaan" id="ask" type="text"></input>
+                            <label for="ask">QUESTION</label>
                         </div>
                     </div>
                     <div class="rows">
-                        <label>TAGS : </label>
-                        <input type="checkbox" name="C_tags" value="1" id="C_tag" />
-                        <label for="C_tag">C</label>
-                        <input type="checkbox" name="C++_tags" value="1" id="C++_tag" />
-                        <label for="C++_tag">C++</label>
-                        <input type="checkbox" name="C#_tags" value="1" id="C#_tag" />
-                        <label for="C#_tag">C#</label>
-                        <input type="checkbox" name="HTML_tags" value="1" id="HTML_tag" />
-                        <label for="C_HTML">HTML</label>
-                        <input type="checkbox" name="PHP_tags" value="1" id="PHP_tag" />
-                        <label for="PHP_tag">PHP</label>
-                        <input type="checkbox" name="JS_tags" value="1" id="JS_tag" />
-                        <label for="JS_tag">JAVASCRIPT</label>
-                        <input type="checkbox" name="Py_tags" value="1" id="Py_tag" />
-                        <label for="Py_tag">PYTHON</label>
-                        <input type="checkbox" name="VB_tags" value="1" id="VB_tag" />
-                        <label for="VB_tag">VISUAL BASIC</label>
-                        <input type="checkbox" name="Bash_tags" value="1" id="Bash_tag" />
-                        <label for="Bash_tag">BASH</label>
-                        <input type="checkbox" name="Java_tags" value="1" id="Java_tag" />
-                        <label for="Java_tag">JAVA</label>
-                        <input type="checkbox" name="Android_tags" value="1" id="Android_tag" />
-                        <label for="Android_tag">ANDROID</label>
-                        <input type="checkbox" name="Unity_tags" value="1" id="Unity_tag" />
-                        <label for="Unity_tag">UNITY</label>
+                        <label>QUESTION TAGS : </label>
                     </div>
-                    <div>
-                        <button type="Submit" value="anon_post" class="btn btn-primary waves-effect waves-light">Submit Question</button>
-                    </div>
+
+                    <div class="rows">
+                      <div class="col-md-12 tags-alignmment">
+                        <div class="col-md-2">
+                          <input type="checkbox" name="C_tags" class="filled-in" value="1" id="C_tag" />
+                          <label for="C_tag">C</label>
+                        </div>
+                        <div class="col-md-2">
+                          <input type="checkbox" name="C++_tags" class="filled-in" value="1" id="C++_tag" />
+                          <label for="C++_tag">C++</label>
+                        </div>
+                        <div class="col-md-2">
+                          <input type="checkbox" name="C#_tags" class="filled-in" value="1" id="C#_tag" />
+                          <label for="C#_tag">C#</label>
+                        </div>
+                        <div class="col-md-2">
+                          <input type="checkbox" name="HTML_tags" class="filled-in" value="1" id="HTML_tag" />
+                          <label for="C_HTML">HTML</label>
+                        </div>
+                        <div class="col-md-2">
+                          <input type="checkbox" name="PHP_tags" class="filled-in" value="1" id="PHP_tag" />
+                          <label for="PHP_tag">PHP</label>
+                        </div>
+                        <div class="col-md-2">
+                          <input type="checkbox" name="JS_tags" class="filled-in" value="1" id="JS_tag" />
+                          <label for="JS_tag">JAVASCRIPT</label>
+                        </div>
+                        <div class="col-md-2">
+                          <input type="checkbox" name="Py_tags" class="filled-in" value="1" id="Py_tag" />
+                          <label for="Py_tag">PYTHON</label>
+                        </div>
+                        <div class="col-md-2">  
+                          <input type="checkbox" name="VB_tags" class="filled-in" value="1" id="VB_tag" />
+                          <label for="VB_tag">VB</label>
+                        </div>
+                        <div class="col-md-2">  
+                          <input type="checkbox" name="Bash_tags" class="filled-in" value="1" id="Bash_tag" />
+                          <label for="Bash_tag">BASH</label>
+                        </div>
+                        <div class="col-md-2">  
+                          <input type="checkbox" name="Java_tags" class="filled-in" value="1" id="Java_tag" />
+                          <label for="Java_tag">JAVA</label>
+                        </div>
+                        <div class="col-md-2">  
+                          <input type="checkbox" name="Android_tags" class="filled-in" value="1" id="Android_tag" />
+                          <label for="Android_tag">ANDROID</label>
+                        </div>
+                        <div class="col-md-2">  
+                          <input type="checkbox" name="Unity_tags" class="filled-in" value="1" id="Unity_tag" />
+                          <label for="Unity_tag">UNITY</label>
+                        </div>
+                      </div>
+                  </div>
+                  <div>
+                    <button type="Submit" value="Anon_post" class="btn btn-primary waves-effect waves-light">SUBMIT QUESTION</button>
+                  </div>
                 </form>
             </div>
           <!--   <h2 class="h2-responsive">This is the caption for slide 1</h2>

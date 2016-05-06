@@ -2,58 +2,48 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TC Overflow</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TC Overflow</title>
 
-  <!-- Material Design Icons -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Material Design Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-  <!-- Compiled and minified CSS -->
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css"> -->
-  <!--  -->
-  <!-- Compiled and minified JavaScript -->
-  <!-- // <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script> -->
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.css" rel="stylesheet">
+    <!-- Template style -->
+    <link href="css/style.css" rel="stylesheet">
 
-  <!-- Material Design Bootstrap -->
-  <link href="css/mdb.css" rel="stylesheet">
-  <!-- Template style -->
-  <link href="css/style.css" rel="stylesheet">
-  <!-- Link Font -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-  rel="stylesheet">
-  <!-- Custom CSS -->
-  <link href="css/custom.css" rel="stylesheet">
-  <style type="text/css">
-  .carousel-caption{
-    margin-bottom: 0em;
-    bottom: 1em;
-    padding-bottom: 0px;
-  }
-  .tags-alignmment{
-    text-align: left;
-  }
-  .file-field .btn, .file-field .btn-large {
-    float: none;
-    height: 36px;
-    line-height: 0rem;
-    vertical-align: middle;
-  }
-  .custom{
-    margin-bottom: 10px;
-  }
-  .modal-dialog{
-    width: 768px;
-  }
+    <!-- Custom CSS -->
+    <link href="css/custom.css" rel="stylesheet">
 
-  </style>
+    <style type="text/css">
+        .profile-badge {
+          max-width: 100%;
+          max-height: 100%;
+        }
+
+        .icon-progress {
+          font-size: 4em;
+        }
+        
+        .tags-alignmment{
+          text-align: left;
+        }
+        
+        .modal-dialog{
+          width: 830px;
+        }
+
+    </style>
+
 </head>
 
 <body>
@@ -67,31 +57,25 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand waves-effect waves-light" href="#">TC Overflow</a>
+        <a class="navbar-brand waves-effect waves-light" href="dashboard_free.html">TC Overflow</a>
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="sign_up.html" class="waves-effect waves-light">Sign Up <span class="sr-only">(current)</span></a>
-          </li>
-          <li><a href="" class="waves-effect waves-light" data-toggle="modal" data-target="#modalLogin">Log In <span class="sr-only">(current)</span></a>
-          </li>
-          <!-- <li class="dropdown">
-            <a href="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" role="button" aria-expanded="false">List (click to expand) <span class="caret"></span></a>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" role="button" aria-expanded="false">My Profile <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="http://mdbootstrap.com/product/magic-portfolio-for-video-maker/">Video Maker</a>
+              <li><a href="dashboard_premium.html">Dashboard</a>
               </li>
-              <li><a href="http://mdbootstrap.com/material-design-for-bootstrap/">Material Design for Bootstrap</a>
+              <li><a data-toggle="modal" data-target="#modalQuestionPremium" href="">Make a Question</a>
               </li>
-              <li><a href="http://mdbootstrap.com/product/magic-portfolio-for-creative-agency">Creative Agency</a>
-              </li>
-              <li><a href="http://mdbootstrap.com/product/magic-portfolio-photographer">Photographer Portfolio</a>
+              <li><a href="settings.html">Settings</a>
               </li>
               <li class="divider"></li>
-              <li><a href="#footer">Footer</a>
+              <li><a href="index.html">Log out</a>
               </li>
             </ul>
-          </li> -->
+          </li>
         </ul><!-- 
         <form class="navbar-form navbar-right waves-effect waves-light" role="search">
           <div class="form-group">
@@ -102,160 +86,91 @@
     </div>
   </nav>
 
-  <div class="container">
+<div class="container">
+    <h1 class="page-header">
+        <small>Dashboard </small> <a class="btn btn-warning disabled text-right">Premium User</a>
+    </h1>
     <div class="row">
-      <h1 class="page-header">
-        <small>TC Overflow</small>
-      </h1>
-
-      <!-- Blog Entries Column -->
-      <div class="col-md-8">
-
-        <!-- First Blog Post -->
-        <!--<div class="col-md-12">-->
-        <h4>Questions You've asked before</h4>
-        <div class="card hoverable">
-          <div class="col-md-12 panel">
-            <!-- <div class="col-md-12"> -->
-            <div class="col-md-9 container-fluid">
-              <p class="lead">
-                <a href="index.html">Judul Pertanyaan (Pertanyaan Inti)</a>
-                <br>
-                <h6 class="text-left">Tags: 
-                  <span class="label center label-info">C</span>
-                  <span class="label center label-info">C++</span>
-                  <span class="label center label-info">PHP</span>
-                  <span class="label center label-info">HTML</span>
-                  <span class="label center label-info">PHP</span>
-                  <span class="label center label-info">HTML</span>
-                  <span class="label center label-info">PHP</span>
-                  <span class="label center label-info">HTML</span>
-                  <span class="label center label-info">PHP</span>
-                  <span class="label center label-info">HTML</span>
-                  <span class="label center label-info">PHP</span>
-                  <span class="label center label-info">HTML</span>
-                </h6>
-                <br>
-                <p class="text-left">Posted on May 4, 2013 at 14:00 WIB</p>
-              </p>
-
-            </div>
-            <div class="col-md-2 ">
-              <h6 class="text-left">Votes </h6>
-              <h6 class="text-left">Answers </h6>
-              <h6 class="text-left">Views </h6>
-            </div>
-            <div class="col-md-1">
-              <h6><span class="label right label-default">100</span></h6>
-              <h6><span class="label right label-success">10</span></h6>
-              <h6><span class="label right label-danger">250</span></h6>
-            </div>
-            <!-- </div> -->
-          </div>
-        </div>
-
-        <div class="card hoverable">
-          <div class="col-md-12 panel">
-            <!-- <div class="col-md-12"> -->
-            <div class="col-md-9 container-fluid">
-              <p class="lead">
-                <a href="index.html">Judul Pertanyaan (Pertanyaan Inti)</a>
-                <br>
-                <h6 class="text-left">Tags: 
-                  <span class="label center label-info">C</span>
-                  <span class="label center label-info">C++</span>
-                  <span class="label center label-info">PHP</span>
-                  <span class="label center label-info">HTML</span>
-                  <span class="label center label-info">PHP</span>
-                  <span class="label center label-info">HTML</span>
-                  <span class="label center label-info">PHP</span>
-                  <span class="label center label-info">HTML</span>
-                  <span class="label center label-info">PHP</span>
-                  <span class="label center label-info">HTML</span>
-                  <span class="label center label-info">PHP</span>
-                  <span class="label center label-info">HTML</span>
-                </h6>
-                <br>
-                <p class="text-left">Posted on May 4, 2013 at 14:00 WIB</p>
-              </p>
-
-            </div>
-            <div class="col-md-2 ">
-              <h6 class="text-left">Votes </h6>
-              <h6 class="text-left">Answers </h6>
-              <h6 class="text-left">Views </h6>
-            </div>
-            <div class="col-md-1">
-              <h6><span class="label right label-default">100</span></h6>
-              <h6><span class="label right label-success">10</span></h6>
-              <h6><span class="label right label-danger">250</span></h6>
-            </div>
-            <!-- </div> -->
-          </div>
-        </div>
-
-        <div class="card hoverable">
-          <div class="col-md-12 panel">
-            <!-- <div class="col-md-12"> -->
-            <div class="col-md-9 container-fluid">
-              <p class="lead">
-                <a href="index.html">Judul Pertanyaan (Pertanyaan Inti)</a>
-                <br>
-                <h6 class="text-left">Tags: 
-                  <span class="label center label-info">C</span>
-                  <span class="label center label-info">C++</span>
-                  <span class="label center label-info">PHP</span>
-                  <span class="label center label-info">HTML</span>
-                  <span class="label center label-info">PHP</span>
-                  <span class="label center label-info">HTML</span>
-                  <span class="label center label-info">PHP</span>
-                  <span class="label center label-info">HTML</span>
-                  <span class="label center label-info">PHP</span>
-                  <span class="label center label-info">HTML</span>
-                  <span class="label center label-info">PHP</span>
-                  <span class="label center label-info">HTML</span>
-                </h6>
-                <br>
-                <p class="text-left">Posted on May 4, 2013 at 14:00 WIB</p>
-              </p>
-
-            </div>
-            <div class="col-md-2 ">
-              <h6 class="text-left">Votes </h6>
-              <h6 class="text-left">Answers </h6>
-              <h6 class="text-left">Views </h6>
-            </div>
-            <div class="col-md-1">
-              <h6><span class="label right label-default">100</span></h6>
-              <h6><span class="label right label-success">10</span></h6>
-              <h6><span class="label right label-danger">250</span></h6>
-            </div>
-            <!-- </div> -->
-          </div>
-        </div>      
-
-
-        <hr>
-        <!-- Pager -->
-        <ul class="pager">
-          <li class="previous">
-            <a href="#">&larr; Older</a>
-          </li>
-          <li class="next">
-            <a href="#">Newer &rarr;</a>
-          </li>
-        </ul>
-
-      </div>
-
-
       <!-- Blog Sidebar Widgets Column -->
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="sidebar">
-          <!-- Blog Search Well -->
-          <!-- Category widget -->
-          <h4>Categories</h4>
-          <div class="collection">
+          <!-- Subscription widget -->
+          <div class="card-panel">
+            <div class="row">
+              <div class="col-md-12">
+                <h5 class="text-center">Your Profile Badge</h5>
+                <hr>
+
+                <div class="col-md-6">
+                  <img class="profile-badge center" src="img/dummy/question-image-1.jpg">
+                </div>
+                <div class="col-md-6">
+                  <h6>Status</h6>
+                  <h5><span class="label label-warning">Premium</span></h5>
+                </div>
+              </div>
+              
+              <div class="col-md-12">            
+                <hr>
+              </div>
+              
+              <div class="col-md-12 text-center">
+                <h6>Username:</h6>
+                <p><small>Jaeger</small></p>
+                <h6>Email:</h6>
+                <p><small>Jaeger@gmail.com</small></p>
+              </div>
+              <div class="text-center">
+                <button type="button" class="btn white-text elegant-color-dark disabled">Already Premium User</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+          <!--/.Subscription widget -->
+      <br>
+
+      <div class="col-md-9">
+      <h4>Growth Progress</h4>
+      <hr>
+      <!-- Page Features -->
+      <div class="row text-center">
+
+        <!-- /.col-md-4 -->
+        <div class="col-md-4">
+          <div class="card success-color hoverable">
+            <div class="card-content col-md-12 center white-text">
+              <p><i class="material-icons icon-progress">question_answer</i></p>
+              <h4 class"card-title">100 Answers</h4>
+            </div>  
+          </div>
+        </div>
+        <!-- /.col-md-4 -->
+        <div class="col-md-4">
+          <div class="card warning-color hoverable">
+            <div class="card-content col-md-12 center white-text">
+              <p><i class="material-icons icon-progress">list</i></p>
+              <h4 class"card-title">20 Question</h4>
+            </div>  
+          </div>
+        </div>
+        <div class="col-md-12">
+          <button data-toggle="modal" data-target="#modalQuestionPremium" class="btn waves-effect waves-light btn-lg btn-block elegant-color white-text">Make a Question</button>
+        </div>
+        <div class="col-md-12">
+          <button class="btn btn-link waves-effect waves-light btn-lg btn-block">Try to Answer Something</button>
+        </div>
+      </div>
+      </div>
+      </div>
+  <!-- /.row -->
+
+  <div class="row">
+      <!-- Blog Sidebar Widgets Column -->
+      <div class="col-md-3">
+        <!-- Category widget -->
+        <h4>Categories</h4>
+        <div class="collection">
             <a href="#!" class="collection-item active">C Programming</a>
             <a href="#!" class="collection-item">C++ Programming</a>
             <a href="#!" class="collection-item">C# Programming</a>
@@ -268,13 +183,157 @@
             <a href="#!" class="collection-item">Java Programming</a>
             <a href="#!" class="collection-item">Android Programming</a>
             <a href="#!" class="collection-item">Unity Programming</a>                                                         
-          </div>
         </div>
       </div>
-    </div>
-    <hr>
+          <!--/.Subscription widget -->
+      <br>
+
+      <div class="col-md-9">
+      <!-- First Blog Post -->
+          <!--<div class="col-md-12">-->
+          <h5>Questions You've asked before</h5>
+          <hr>
+          <div class="card hoverable">
+            <div class="col-md-12 panel">
+              <!-- <div class="col-md-12"> -->
+                <div class="col-md-9 container-fluid">
+                    <p class="lead">
+                        <a href="index.html">Judul Pertanyaan (Pertanyaan Inti)</a>
+                        <br>
+                        <h6 class="text-left">Tags: 
+                          <span class="label center label-info">C</span>
+                          <span class="label center label-info">C++</span>
+                          <span class="label center label-info">PHP</span>
+                          <span class="label center label-info">HTML</span>
+                        </h6>
+                        <br>
+                        <p class="text-left">Posted on May 4, 2013 at 14:00 WIB</p>
+                    </p>
+                    
+                </div>
+                <div class="col-md-2 ">
+                    <h6 class="text-left">Votes </h6>
+                    <h6 class="text-left">Answers </h6>
+                    <h6 class="text-left">Views </h6>
+                </div>
+                <div class="col-md-1">
+                    <h6><span class="label right label-default">100</span></h6>
+                    <h6><span class="label right label-success">10</span></h6>
+                    <h6><span class="label right label-danger">250</span></h6>
+                </div>
+              <!-- </div> -->
+            </div>
+          </div>
+          <div class="card hoverable">
+            <div class="col-md-12 panel">
+              <!-- <div class="col-md-12"> -->
+                <div class="col-md-9 container-fluid">
+                    <p class="lead">
+                        <a href="index.html">Judul Pertanyaan (Pertanyaan Inti)</a>
+                        <br>
+                        <h6 class="text-left">Tags: 
+                          <span class="label center label-info">C</span>
+                          <span class="label center label-info">C++</span>
+                          <span class="label center label-info">PHP</span>
+                          <span class="label center label-info">HTML</span>
+                        </h6>
+                        <br>
+                        <p class="text-left">Posted on May 4, 2013 at 14:00 WIB</p>
+                    </p>
+                    
+                </div>
+                <div class="col-md-2 ">
+                    <h6 class="text-left">Votes </h6>
+                    <h6 class="text-left">Answers </h6>
+                    <h6 class="text-left">Views </h6>
+                </div>
+                <div class="col-md-1">
+                    <h6><span class="label right label-default">100</span></h6>
+                    <h6><span class="label right label-success">10</span></h6>
+                    <h6><span class="label right label-danger">250</span></h6>
+                </div>
+              <!-- </div> -->
+            </div>
+          </div>
+          <div class="card hoverable">
+            <div class="col-md-12 panel">
+              <!-- <div class="col-md-12"> -->
+                <div class="col-md-9 container-fluid">
+                    <p class="lead">
+                        <a href="index.html">Judul Pertanyaan (Pertanyaan Inti)</a>
+                        <br>
+                        <h6 class="text-left">Tags: 
+                          <span class="label center label-info">C</span>
+                          <span class="label center label-info">C++</span>
+                          <span class="label center label-info">PHP</span>
+                          <span class="label center label-info">HTML</span>
+                        </h6>
+                        <br>
+                        <p class="text-left">Posted on May 4, 2013 at 14:00 WIB</p>
+                    </p>
+                    
+                </div>
+                <div class="col-md-2 ">
+                    <h6 class="text-left">Votes </h6>
+                    <h6 class="text-left">Answers </h6>
+                    <h6 class="text-left">Views </h6>
+                </div>
+                <div class="col-md-1">
+                    <h6><span class="label right label-default">100</span></h6>
+                    <h6><span class="label right label-success">10</span></h6>
+                    <h6><span class="label right label-danger">250</span></h6>
+                </div>
+              <!-- </div> -->
+            </div>
+          </div>
+          <div class="card hoverable">
+            <div class="col-md-12 panel">
+              <!-- <div class="col-md-12"> -->
+                <div class="col-md-9 container-fluid">
+                    <p class="lead">
+                        <a href="index.html">Judul Pertanyaan (Pertanyaan Inti)</a>
+                        <br>
+                        <h6 class="text-left">Tags: 
+                          <span class="label center label-info">C</span>
+                          <span class="label center label-info">C++</span>
+                          <span class="label center label-info">PHP</span>
+                          <span class="label center label-info">HTML</span>
+                        </h6>
+                        <br>
+                        <p class="text-left">Posted on May 4, 2013 at 14:00 WIB</p>
+                    </p>
+                    
+                </div>
+                <div class="col-md-2 ">
+                    <h6 class="text-left">Votes </h6>
+                    <h6 class="text-left">Answers </h6>
+                    <h6 class="text-left">Views </h6>
+                </div>
+                <div class="col-md-1">
+                    <h6><span class="label right label-default">100</span></h6>
+                    <h6><span class="label right label-success">10</span></h6>
+                    <h6><span class="label right label-danger">250</span></h6>
+                </div>
+              <!-- </div> -->
+            </div>
+          </div>
+          <ul class="pagination pag-circle text-center">
+            <li><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+          </ul> 
+      </div>
+  <!-- /.row -->
   </div>
-  <div class="modal fade" id="modalLogin" role="dialog">
+  <hr>
+</div>
+
+<!-- Modals -->
+ <div class="modal fade" id="modalQuestionPremium" role="dialog">
     <div class="modal-dialog">
 
       <!-- Modal content-->
@@ -286,7 +345,7 @@
           <div class="row">
             <form class="col-md-12">
               <div class="rows">
-                <div class="input-field">
+                <div class="input-field col-md-12">
                   <input id="title" type="text" class="validate">
                   <label for="title">Question Title</label>
                 </div>
@@ -297,11 +356,11 @@
                   <label for="ask" >Desciption</label>
                 </div>
               </div>
-              <div class="rows">
-                <label>QUESTION TAGS : </label>
-              </div>
 
               <div class="rows">
+              <div class="col-md-12">
+                <label>QUESTION TAGS:</label>
+              </div>
                 <div class="col-md-12 tags-alignmment">
                   <div class="col-md-2">
                     <input type="checkbox" name="C_tags" class="filled-in" value="1" id="C_tag" />
@@ -358,13 +417,13 @@
                   <div class="col-md-6 ">
 
                     <div class="file-field">
-                      <button href="#" class="btn btn-default waves-effect waves-light"><SPAN>Attach File<i class="material-icons">attach_file</i></SPAN>
+                      <button href="#" class="btn btn-default waves-effect waves-light pull-left"><SPAN>Attach File<i class="material-icons">attach_file</i></SPAN>
                         <input type="file"/>
                       </button>
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <a href="question.html" class="btn btn-default btn-warning waves-effect waves-light ">SUBMIT QUESTION</a>
+                    <a href="question.html" class="btn btn-default btn-warning waves-effect waves-light pull-right">SUBMIT QUESTION</a>
                   </div>
                 </div>
               </div>
@@ -373,7 +432,7 @@
         </div>
         <!--Footer-->
         <div class="modal-footer">
-          <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal">X</button>
+          <button type="submit" class="btn btn-danger pull-left" data-dismiss="modal">X</button>
 
         </div>
         <!--/.Footer-->
@@ -381,16 +440,66 @@
       <!-- /.Modal content-->
     </div>
   </div>
+<!-- Modals -->
 
-  <!-- SCRIPTS -->
+<!-- Footer -->
+<footer class="page-footer info-color darken-1" if="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-md-offset-1">
+                <p class="white-text center-on-small-only">GET STARTED</p>
+                <p class="white-text center-on-small-only">Register for free and start to create amazing things.</p>
+                <a href="http://mdbootstrap.com/getting-started/" class="btn btn-danger waves-effect waves-light">Get started!</a>
 
-  <!-- JQuery -->
-  <script type="text/javascript" src="js/jquery.min.js"></script>
+            </div>
+            <hr class="hidden-lg hidden-md">
 
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+            <div class="col-md-2">
+                <p class="white-text center-on-small-only">USEFUL LINKS</p>
+                <ul>
+                    <li><a href="#" data-toggle="modal" data-target="#myModal" class="grey-text text-lighten-3" href="#!">Contact us</a>
+                    </li>
+                    <li><a class="grey-text text-lighten-3" href="http://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">About MDB</a>
+                    </li>
+                    <li><a class="grey-text text-lighten-3" href="http://mdbootstrap.com/forums/forum/support/" target="_blank">Support</a>
+                    </li>
+                    <li><a class="grey-text text-lighten-3" href="http://mdbootstrap.com/forums/forum/bugs/" target="_blank">Bug report</a>
+                    </li>
 
-  <!-- Material Design Bootstrap -->
-  <script type="text/javascript" src="js/mdb.js"></script>
+
+                </ul>
+            </div>
+            <hr class="hidden-lg hidden-md">
+
+            <div class="col-md-3 text-center">
+                <p class="white-text text-center"> SOCIAL MEDIA</p>
+                <a target="_blank" href="https://www.facebook.com/mdbootstrap" class="btn-floating btn-large fb-bg waves-effect waves-light"><i class="fa fa-facebook"> </i></a>
+                <a target="_blank" href="https://twitter.com/MDBootstrap" class="btn-floating btn-large tw-bg waves-effect waves-light"><i class="fa fa-twitter"> </i></a>
+                <a target="_blank" href="https://plus.google.com/u/0/b/107863090883699620484/107863090883699620484/posts" class="btn-floating btn-large gplus-bg waves-effect waves-light"><i class="fa fa-google-plus"> </i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            <div class="col-md-10 col-md-offset-1"> © 2015 Copyright <a href="http://www.MDBootstrap.com">MDBootstrap.com </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+ <!-- SCRIPTS -->
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <!-- Material Design Bootstrap -->
+    <script type="text/javascript" src="js/mdb.js"></script>
+
+
 </body>
+
 </html>

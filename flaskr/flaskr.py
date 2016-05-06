@@ -163,7 +163,7 @@ def question(id):
     if request.method == 'GET' :
         cur.execute("select question.*, user.username from question, user where id_question= %s and user.id_user = question.id_user", [id])
         pertanyaan = cur.fetchone()
-        cur.execute("select jawaban.*, user.username from jawaban, user where id_soal= %s and user.id_user = jawaban.id_user order by rating_jawaban desc",[id] )
+        cur.execute("select jawaban.*, user.username from jawaban, user where id_question= %s and user.id_user = jawaban.id_user order by rating_jawaban desc",[id] )
         jawaban = cur.fetchall()
         data = []
         data.append(pertanyaan)

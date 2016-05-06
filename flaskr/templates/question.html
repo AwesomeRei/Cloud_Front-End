@@ -97,8 +97,39 @@
                         
                         <br>
                         <h6 class="text-left">Tags: 
-                            <span class="label center label-info">HTML</span>
-                            <span class="label center label-info">PHP</span>
+                            {% if data[0][6] == 1 %}
+								<span class="label center label-info">C</span>
+							{% endif %}
+							{% if data[0][7] == 1 %}
+								<span class="label center label-info">C++</span>
+							{% endif %}
+							{% if data[0][8] == 1 %}
+								<span class="label center label-info">HTML</span>
+							{% endif %}
+                            {% if data[0][9] == 1 %}
+								<span class="label center label-info">PHP</span>
+							{% endif %}
+                            {% if data[0][10] == 1 %}
+								<span class="label center label-info">Javascript</span>
+							{% endif %}
+                            {% if data[0][11] == 1 %}
+								<span class="label center label-info">Python</span>
+							{% endif %}
+                            {% if data[0][12] == 1 %}
+								<span class="label center label-info">Visual Basic</span>
+							{% endif %}
+                            {% if data[0][13] == 1 %}
+								<span class="label center label-info">Bash</span>
+							{% endif %}
+                            {% if data[0][14] == 1 %}
+								<span class="label center label-info">Java</span>
+							{% endif %}
+                            {% if data[0][5] == 1 %}
+								<span class="label center label-info">Android</span>
+							{% endif %}
+                            {% if data[0][16] == 1 %}
+								<span class="label center label-info">Unity</span>
+							{% endif %}
                         </h6>
                         <br>
                     </p>
@@ -130,15 +161,15 @@
                 <div class="col-md-12">
                     <div class="col-md-1 text-center vote-position">
                         <a><i class="material-icons">arrow_upward</i></a>
-                        <h3 class="vote">{{ jawaban[2] }} </h3>
+                        <h3 class="vote">{{ jawaban[2] }}</h3>
                         <a><i class="material-icons">arrow_downward</i></a>
                     </div>
                     <div class="sidebar col-md-11">
                         <div class="card-panel">
                             <div class="row">
                                 <div class="panel margin-answer">
-                                    <img class="user-photo-answer" src=img/dummy/rei.jpg />
-                                    <h7>{{ jawaban[6] }} </h7>
+                                    <img class="user-photo-answer" src="{{ url_for('static', filename=jawaban[11]) }}" />
+                                    <h7>{{ jawaban[7] }} </h7>
                                     <h6>posted on {{ jawaban[5].strftime("%A, %d. %B %Y %I:%M%p") }} </h6>
                                     <hr>
                                     <div class="panel-body">

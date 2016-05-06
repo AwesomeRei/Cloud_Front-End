@@ -9,6 +9,7 @@ app = Flask(__name__)
 
 # This is the path to the upload directory
 app.config['UPLOAD_FOLDER'] = 'static/foto/'
+app.config['PATH'] = 'foto/'
 # These are the extension that we are accepting to be uploaded
 app.config['ALLOWED_EXTENSIONS'] = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
@@ -71,7 +72,7 @@ def daftar():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             uploaded_file(filename)
-        files = str(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        files = str(os.path.join(app.config['PATH'], filename))
         
         cur.execute("SELECT COUNT(1) FROM user WHERE username = %s;", [username_form]) # CHECKS IF USERNAME EXSIST
         if cur.fetchone()[0]:
@@ -161,9 +162,13 @@ def logout():
 @app.route('/question/<id>', methods=['GET','POST'])
 def question(id):
     if request.method == 'GET' :
-        cur.execute("select question.*, user.username from question, user where id_question= %s and user.id_user = question.id_user", [id])
+        cur.execute("SELECT q.*, t.* \
+                    FROM question q, tags t \
+                    WHERE q.id_question=t.id_question AND q.id_question = %s", [id])
         pertanyaan = cur.fetchone()
-        cur.execute("select jawaban.*, user.username from jawaban, user where id_question= %s and user.id_user = jawaban.id_user order by rating_jawaban desc",[id] )
+        cur.execute("SELECT j.*, u.* \
+                    FROM jawaban j, USER u \
+                    WHERE  j.id_user=u.id_user AND j.id_question = %s order by j.rating_jawaban desc",[id] )
         jawaban = cur.fetchall()
         data = []
         data.append(pertanyaan)

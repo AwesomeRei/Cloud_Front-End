@@ -12,7 +12,7 @@ app.config['UPLOAD_FOLDER'] = 'static/foto/'
 # These are the extension that we are accepting to be uploaded
 app.config['ALLOWED_EXTENSIONS'] = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
-db = MySQLdb.connect(host="localhost", user="root", passwd="", db="tcoverflow")
+db = MySQLdb.connect(host="localhost", user="root", passwd="password", db="tcoverflow")
 cur = db.cursor()
 
 def allowed_file(filename):
@@ -156,6 +156,21 @@ def user_byid(id):
 def logout():
     session.pop('username', None)
     return redirect(url_for('index'))
+
+# question
+@app.route('/question/<id>', methods=['GET','POST'])
+def question(id):
+    if request.method == 'GET' :
+        cur.execute("SELECT question.*, user.username FROM question, user WHERE id_question = %s and user.id_user = question.id_user" , [id])
+        pertanyaan = cur.fetchone()
+        cur.execute("select jawaban.*, user.username from jawaban, user where id_soal= %s and user.id_user = jawaban.id_user order by rating_jawaban desc",[id])
+        jawaban = cur.fetchall()
+        data = []
+        data.append(pertanyaan)
+        data.append(jawaban)
+        if(data):
+            return render_template('question.html', data=data)
+
 
 #app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 app.secret_key = 'awankinton123'

@@ -25,7 +25,8 @@ def index():
     print index
     if 'username' in session:
         return redirect(url_for('user'))
-    cur.execute("SELECT * FROM question ORDER BY id_question DESC LIMIT 10")
+    cur.execute("SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
+                FROM question q, tags t where q.id_question=t.id_question ORDER BY q.id_question DESC LIMIT 10")
     passingData = []
     passingData.append(cur.fetchall())
     passingData.append('data')

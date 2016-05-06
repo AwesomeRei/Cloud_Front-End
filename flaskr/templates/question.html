@@ -96,7 +96,7 @@
                   </div>
                 </div>
                 <div class="col-md-12">
-                    <p class="text-right">Posted on May 4, 2016 at 14:00 WIB</p>
+                    <p class="text-right">Posted on {{ data[0][4].strftime("%A, %d. %B %Y %I:%M%p") }}</p>
                 </div>
             </div>
         
@@ -118,7 +118,7 @@
                                 <div class="panel margin-answer">
                                     <img class="user-photo-answer" src=img/dummy/rei.jpg />
                                     <h7>{{ jawaban[6] }} </h7>
-                                    <h6>posted on {{ jawaban[5] }}  WIB</h6>
+                                    <h6>posted on {{ jawaban[5].strftime("%A, %d. %B %Y %I:%M%p") }} </h6>
                                     <hr>
                                     <div class="panel-body">
                                         <p>

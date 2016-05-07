@@ -11,7 +11,7 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/foto/'
 app.config['PATH'] = 'foto/'
 # These are the extension that we are accepting to be uploaded
-app.config['ALLOWED_EXTENSIONS'] = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+app.config['ALLOWED_EXTENSIONS'] = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'PNG', 'JPG', 'JPEG', 'GIF'])
 
 db = MySQLdb.connect(host="localhost", user="root", passwd="", db="tcoverflow")
 cur = db.cursor()
@@ -23,9 +23,12 @@ def allowed_file(filename):
 @app.route('/')
 def index():
     error = None
-    print index
     if 'username' in session:
-        return redirect(url_for('user'))
+        cur.execute("SELECT status FROM user WHERE username = %s;", [session['username']])
+        if cur.fetchall()[0] == 1:
+            return redirect(url_for('user_premium'))
+        else:
+            return redirect(url_for('user_free'))
     cur.execute("SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
                 FROM question q, tags t where q.id_question=t.id_question ORDER BY q.id_question DESC LIMIT 10")
     passingData = []
@@ -44,18 +47,18 @@ def login():
         password_form  = request.form['password']
         cur.execute("SELECT COUNT(1) FROM user WHERE username = %s;", [username_form]) # CHECKS IF USERNAME EXSIST
         if cur.fetchone()[0]:
-            cur.execute("SELECT password FROM user WHERE username = %s;", [username_form]) # FETCH THE HASHED PASSWORD
+            cur.execute("SELECT password, status FROM user WHERE username = %s;", [username_form]) # FETCH THE HASHED PASSWORD
             for row in cur.fetchall():
                 if password_form == row[0]:
                     session['username'] = request.form['username']
-                    return redirect(url_for('user'))
+                    return redirect(url_for('index'))
                 else:
                     error = "Salah password!"
         else:
             error = "Anda belum terdaftar!"
     return render_template('sign_up.html', error=error)
 
-@app.route('/signup/daftar', methods=['GET', 'POST'])
+@app.route('/daftar', methods=['GET', 'POST'])
 def daftar():
     print signup
     error = None
@@ -71,8 +74,8 @@ def daftar():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            uploaded_file(filename)
-        files = str(os.path.join(app.config['PATH'], filename))
+            #uploaded_file(filename)
+        files = str(os.path.join(app.config['PATH'], secure_filename(file.filename)))
         
         cur.execute("SELECT COUNT(1) FROM user WHERE username = %s;", [username_form]) # CHECKS IF USERNAME EXSIST
         if cur.fetchone()[0]:
@@ -137,6 +140,25 @@ def anon_post():
 def uploaded_file(filename):
     send_from_directory(app.config['UPLOAD_FOLDER'],filename)
 
+
+@app.route('/user_free', methods=['GET', 'POST'])
+def user_free():
+    if 'username' in session:
+        cur.execute("SELECT id_user FROM user WHERE username = %s", [session['username']])
+        id_user = cur.fetchone()
+        cur.execute("SELECT id_user, username, email, status, foto_user, \
+                    (SELECT COUNT(id_jawaban) FROM jawaban WHERE id_user = %s), \
+                    (SELECT COUNT(id_question) FROM question WHERE id_user = %s) \
+                    FROM user \
+                    WHERE id_user = %s", ([id_user], [id_user], [id_user]))
+        profil = cur.fetchone()
+        data = []
+        data.append(profil)
+        data.append(profil)
+        return render_template('dashboard_free.html', data=data)
+    return redirect(url_for('index'))
+    
+"""
 @app.route('/user', methods=['GET', 'POST'])
 def user():
     if 'username' in session:
@@ -153,6 +175,7 @@ def user_byid(id):
         passingData.append('data')
         return render_template('profil.html', data=passingData)
     return redirect(url_for('index'))
+"""
 
 @app.route('/logout')
 def logout():

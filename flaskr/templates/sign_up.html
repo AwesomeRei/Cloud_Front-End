@@ -78,7 +78,7 @@
               </div>
               <div class="modal-body" style="padding:40px 50px;">
                   <div class="row">
-                      <form class="col-md-12" action="/signup/login" method="POST">
+                      <form class="col-md-12" action="{{ url_for('login') }}" method="POST">
                           <div class="row">
                               <div class="input-field">
                                   <i class="material-icons prefix">username</i>
@@ -129,7 +129,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <!--Form-->
-                    <form action="/signup/daftar" method="POST" enctype="multipart/form-data">
+                    <form action="/daftar" method="POST" enctype="multipart/form-data">
 						{% if error %}
 							<p class=error><strong>Status:</strong> {{ error }}
 						{% endif %}
@@ -181,7 +181,7 @@
                         <div class="col-md-6">
                             <div class="card elegant-color darken-1">
                                 <div class="card-content white-text">
-                                    <input name="status" type="radio" id="Premium" value="0">
+                                    <input name="status" type="radio" id="Premium" value="1">
                                     <label for="Premium"><span class="card-title">Premium Plan</span></label>
                                     <p>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula.</p>
                                 </div>

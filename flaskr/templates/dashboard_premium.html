@@ -65,9 +65,9 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" role="button" aria-expanded="false">My Profile <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="{{ url_for('user_free') }}">Dashboard</a>
+              <li><a href="{{ url_for('user_premium') }}">Dashboard</a>
               </li>
-              <li><a data-toggle="modal" data-target="#modalQuestion" href="">Make a Question</a>
+              <li><a data-toggle="modal" data-target="#modalQuestionPremium" href="">Make a Question</a>
               </li>
               <li><a href="settings.html">Settings</a>
               </li>
@@ -88,7 +88,7 @@
 
 <div class="container">
     <h1 class="page-header">
-        <small>Dashboard </small> <a class="btn btn-primary disabled text-right">Free User</a>
+        <small>Dashboard </small> <a class="btn btn-warning disabled text-right">Premium User</a>
     </h1>
 	{% if data[0] %}
 		<p class=error><strong>Status:</strong> {{ data[0] }}
@@ -109,7 +109,7 @@
                 </div>
                 <div class="col-md-6">
                   <h6>Status</h6>
-                  <h5><span class="label label-primary">Free</span></h5>
+                  <h5><span class="label label-warning">Premium</span></h5>
                 </div>
               </div>
               
@@ -124,7 +124,7 @@
                 <p><small>{{ data[1][2] }}</small></p>
               </div>
               <div class="text-center">
-                <button type="button" class="btn btn-warning waves-effect waves-light">Get Premium User</button>
+                <button type="button" class="btn white-text elegant-color-dark disabled">Already Premium User</button>
               </div>
             </div>
           </div>
@@ -158,7 +158,7 @@
           </div>
         </div>
         <div class="col-md-12">
-          <button data-toggle="modal" data-target="#modalQuestion" class="btn waves-effect waves-light btn-lg btn-block elegant-color white-text">Make a Question</button>
+          <button data-toggle="modal" data-target="#modalQuestionPremium" class="btn waves-effect waves-light btn-lg btn-block elegant-color white-text">Make a Question</button>
         </div>
         <div class="col-md-12">
           <a href="question_list.html"><button class="btn btn-link waves-effect waves-light btn-lg btn-block">Try to Answer Something</button></a>
@@ -336,35 +336,36 @@
 </div>
 
 <!-- Modals -->
-<div class="modal fade" id="modalQuestion" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4><i class="fa fa-question-circle"></i> Make a Question</h4>
-      </div>
-      <div class="modal-body" style="padding:10px 20px;">
-        <div class="row">
-          <form class="col-md-12" action="/ask_free" method="POST">
-            <div class="rows">
-              <div class="input-field col-md-12">
-                <input id="title" name="judul" type="text" class="validate">
-                <label for="title">TITLE</label>
-              </div>
-            </div>
-            <div class="rows">
-              <div class="input-field col-md-12">
-                <textarea id="ask" name="pertanyaan" class="materialize-textarea"></textarea>
-                <label for="ask" >QUESTION</label>
-              </div>
-            </div>
+ <div class="modal fade" id="modalQuestionPremium" role="dialog">
+    <div class="modal-dialog">
 
-            <div class="rows">
-            <div class="col-md-12">
-              <label class="text-center">QUESTION TAGS: </label>
-            </div>
-              <div class="col-md-12 tags-alignmment">
-						<div class="col-md-2">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4><i class="fa fa-user"></i> Ask Question</h4>
+        </div>
+        <div class="modal-body" style="padding:10px 20px;">
+          <div class="row">
+            <form class="col-md-12" action="/ask_premium" method="POST" enctype="multipart/form-data">
+              <div class="rows">
+                <div class="input-field col-md-12">
+                  <input id="title" name="judul" type="text" class="validate">
+                  <label for="title">TITLE</label>
+                </div>
+              </div>
+              <div class="rows">
+                <div class="input-field col-md-12">
+                  <textarea id="ask" name="pertanyaan" class="materialize-textarea"></textarea>
+                  <label for="ask" >QUESTION</label>
+                </div>
+              </div>
+
+              <div class="rows">
+              <div class="col-md-12">
+                <label>QUESTION TAGS:</label>
+              </div>
+                <div class="col-md-12 tags-alignmment">
+                  <div class="col-md-2">
                           <input type="checkbox" name="C_tags" class="filled-in" value="1" id="C_tag" />
                           <input type="hidden" name="C_tags" value="0" />
 						  <label for="C_tag">C</label>
@@ -424,25 +425,36 @@
                           <input type="hidden" name="Unity_tags" value="0" />
 						  <label for="Unity_tag">UNITY</label>
                         </div>
-              </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <button type="Submit" value="Ask_free" class="btn btn-primary waves-effect waves-light">SUBMIT QUESTION</button>
                 </div>
               </div>
-          </form>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="col-md-6 ">
+
+                    <div class="file-field">
+                      <button type="button" class="btn btn-default waves-effect waves-light pull-left"><SPAN>Attach Foto<i class="material-icons">attach_file</i></SPAN>
+                        <input type="file" name="file" />
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <button type="Submit" value="Ask_premium" class="btn btn-primary waves-effect waves-light">SUBMIT QUESTION</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
+        <!--Footer-->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger pull-left" data-dismiss="modal">X</button>
+
+        </div>
+        <!--/.Footer-->
       </div>
-      <!--Footer-->
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-danger pull-left" data-dismiss="modal">X</button>
-      </div>
-      <!--/.Footer-->
+      <!-- /.Modal content-->
     </div>
-    <!-- /.Modal content-->
   </div>
-</div>
 <!-- Modals -->
 
 <!-- Footer -->

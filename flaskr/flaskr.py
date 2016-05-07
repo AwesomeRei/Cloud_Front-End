@@ -24,11 +24,12 @@ def allowed_file(filename):
 def index():
     error = None
     if 'username' in session:
-        cur.execute("SELECT status FROM user WHERE username = %s;", [session['username']])
-        if cur.fetchall()[0] == 1:
+        cur.execute("SELECT status FROM user WHERE username = %s", [session['username']])
+        if cur.fetchone()[0] == 1:
             return redirect(url_for('user_premium'))
         else:
             return redirect(url_for('user_free'))
+        
     cur.execute("SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
                 FROM question q, tags t where q.id_question=t.id_question ORDER BY q.id_question DESC LIMIT 10")
     passingData = []
@@ -38,7 +39,6 @@ def index():
 
 @app.route('/signup/login', methods=['GET', 'POST'])
 def login():
-    print login
     error = None
     if 'username' in session:
         return redirect(url_for('index'))
@@ -47,7 +47,7 @@ def login():
         password_form  = request.form['password']
         cur.execute("SELECT COUNT(1) FROM user WHERE username = %s;", [username_form]) # CHECKS IF USERNAME EXSIST
         if cur.fetchone()[0]:
-            cur.execute("SELECT password, status FROM user WHERE username = %s;", [username_form]) # FETCH THE HASHED PASSWORD
+            cur.execute("SELECT password, id_user FROM user WHERE username = %s;", [username_form]) # FETCH THE HASHED PASSWORD
             for row in cur.fetchall():
                 if password_form == row[0]:
                     session['username'] = request.form['username']
@@ -105,7 +105,6 @@ def signup():
 
 @app.route('/anon_post', methods=['GET', 'POST'])
 def anon_post():
-    print signup
     if 'username' in session:
         return redirect(url_for('index'))
     if request.method == 'POST':
@@ -117,7 +116,6 @@ def anon_post():
         
         cur.execute("SELECT id_question FROM question ORDER BY id_question DESC LIMIT 1")
         id_question = cur.fetchone()[0]
-        print 1
         c  = request.form['C_tags']
         cpp  = request.form['C++_tags']
         csharp  = request.form['C#_tags']
@@ -137,12 +135,126 @@ def anon_post():
            
     return redirect(url_for('index'))
 
+@app.route('/anon_answer/<id>', methods=['GET', 'POST'])
+def anon_answer(id):
+    if 'username' in session:
+        return redirect(url_for('index'))
+    if request.method == 'POST':
+        isi_jawaban = request.form['isi_jawaban']
+        cur.execute("INSERT INTO jawaban(id_question, isi_jawaban, id_user) VALUES(%s, %s, 0)", ([id], [isi_jawaban]))
+        db.commit()
+        return redirect(url_for('question', id=id))
+
+@app.route('/ask_free', methods=['GET', 'POST'])
+def ask_free():
+    error = None
+    if request.method == 'POST':
+        cur.execute("SELECT id_user FROM user WHERE username = %s", [session['username']])
+        id_user = cur.fetchone()
+        cur.execute("SELECT TIMESTAMPDIFF(DAY, \
+                    (SELECT tgl_question FROM question WHERE id_user = %s ORDER BY tgl_question DESC LIMIT 1), \
+                    CURRENT_TIMESTAMP())", [id_user])
+        if (cur.fetchone()[0] < 1):
+            error = "Free User hanya dapat bertanya sekali sehari!"
+        else:
+            judul_form  = request.form['judul']
+            pertanyaan_form = request.form['pertanyaan']
+            cur.execute("INSERT INTO question(id_user, judul, pertanyaan) VALUES(%s ,%s, %s)", ([id_user], [judul_form], [pertanyaan_form]))
+            db.commit()
+        
+            cur.execute("SELECT id_question FROM question ORDER BY id_question DESC LIMIT 1")
+            id_question = cur.fetchone()[0]
+            c  = request.form['C_tags']
+            cpp  = request.form['C++_tags']
+            csharp  = request.form['C#_tags']
+            html  = request.form['HTML_tags']
+            php  = request.form['PHP_tags']
+            js  = request.form['JS_tags']
+            py  = request.form['Py_tags']
+            vb  = request.form['VB_tags']
+            bash  = request.form['Bash_tags']
+            java  = request.form['Java_tags']
+            android  = request.form['Android_tags']
+            unity  = request.form['Unity_tags']
+            cur.execute("INSERT INTO tags(C_tags, CPP_tags, CSharp_tags, HTML_tags, PHP_tags, JS_tags, Py_tags, VB_tags, Bash_tags, Java_tags, Android_tags, Unity_tags, id_question) \
+                        VALUES(%s ,%s, %s, %s ,%s, %s, %s ,%s, %s, %s ,%s, %s, %s)",
+                        ([c], [cpp], [csharp], [html], [php], [js], [py], [vb], [bash], [java], [android], [unity], [id_question]))
+            db.commit()
+            error = "Pertanyaan Anda berhasil dimasukkan!"
+            
+        cur.execute("SELECT id_user, username, email, status, foto_user, \
+                    (SELECT COUNT(id_jawaban) FROM jawaban WHERE id_user = %s), \
+                    (SELECT COUNT(id_question) FROM question WHERE id_user = %s) \
+                    FROM user \
+                    WHERE id_user = %s", ([id_user], [id_user], [id_user]))
+        profil = cur.fetchone()
+        data = []
+        data.append(error)
+        data.append(profil)
+        return render_template('dashboard_free.html', data=data)
+           
+    return redirect(url_for('index'))
+
+@app.route('/ask_premium', methods=['GET', 'POST'])
+def ask_premium():
+    error = None
+    if request.method == 'POST':
+        cur.execute("SELECT id_user FROM user WHERE username = %s", [session['username']])
+        id_user = cur.fetchone()
+
+        file = request.files['file']
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            #uploaded_file(filename)
+        files = str(os.path.join(app.config['PATH'], secure_filename(file.filename)))
+
+        judul_form  = request.form['judul']
+        pertanyaan_form = request.form['pertanyaan']
+        cur.execute("INSERT INTO question(id_user, judul, pertanyaan, gambar) VALUES(%s ,%s, %s, %s)", ([id_user], [judul_form], [pertanyaan_form],[files]))
+        db.commit()
+        
+        cur.execute("SELECT id_question FROM question ORDER BY id_question DESC LIMIT 1")
+        id_question = cur.fetchone()[0]
+        c  = request.form['C_tags']
+        cpp  = request.form['C++_tags']
+        csharp  = request.form['C#_tags']
+        html  = request.form['HTML_tags']
+        php  = request.form['PHP_tags']
+        js  = request.form['JS_tags']
+        py  = request.form['Py_tags']
+        vb  = request.form['VB_tags']
+        bash  = request.form['Bash_tags']
+        java  = request.form['Java_tags']
+        android  = request.form['Android_tags']
+        unity  = request.form['Unity_tags']
+        
+        cur.execute("INSERT INTO tags(C_tags, CPP_tags, CSharp_tags, HTML_tags, PHP_tags, JS_tags, Py_tags, VB_tags, Bash_tags, Java_tags, Android_tags, Unity_tags, id_question) \
+                    VALUES(%s ,%s, %s, %s ,%s, %s, %s ,%s, %s, %s ,%s, %s, %s)",
+                    ([c], [cpp], [csharp], [html], [php], [js], [py], [vb], [bash], [java], [android], [unity], [id_question]))
+        db.commit()
+        error = "Pertanyaan Anda berhasil dimasukkan!"
+            
+        cur.execute("SELECT id_user, username, email, status, foto_user, \
+                    (SELECT COUNT(id_jawaban) FROM jawaban WHERE id_user = %s), \
+                    (SELECT COUNT(id_question) FROM question WHERE id_user = %s) \
+                    FROM user \
+                    WHERE id_user = %s", ([id_user], [id_user], [id_user]))
+        profil = cur.fetchone()
+        data = []
+        data.append(error)
+        data.append(profil)
+        return render_template('dashboard_premium.html', data=data)
+           
+    return redirect(url_for('index'))
+
 def uploaded_file(filename):
     send_from_directory(app.config['UPLOAD_FOLDER'],filename)
 
 
 @app.route('/user_free', methods=['GET', 'POST'])
 def user_free():
+    error = None
     if 'username' in session:
         cur.execute("SELECT id_user FROM user WHERE username = %s", [session['username']])
         id_user = cur.fetchone()
@@ -153,9 +265,27 @@ def user_free():
                     WHERE id_user = %s", ([id_user], [id_user], [id_user]))
         profil = cur.fetchone()
         data = []
-        data.append(profil)
+        data.append(error)
         data.append(profil)
         return render_template('dashboard_free.html', data=data)
+    return redirect(url_for('index'))
+
+@app.route('/user_premium', methods=['GET', 'POST'])
+def user_premium():
+    error = None
+    if 'username' in session:
+        cur.execute("SELECT id_user FROM user WHERE username = %s", [session['username']])
+        id_user = cur.fetchone()
+        cur.execute("SELECT id_user, username, email, status, foto_user, \
+                    (SELECT COUNT(id_jawaban) FROM jawaban WHERE id_user = %s), \
+                    (SELECT COUNT(id_question) FROM question WHERE id_user = %s) \
+                    FROM user \
+                    WHERE id_user = %s", ([id_user], [id_user], [id_user]))
+        profil = cur.fetchone()
+        data = []
+        data.append(error)
+        data.append(profil)
+        return render_template('dashboard_premium.html', data=data)
     return redirect(url_for('index'))
     
 """

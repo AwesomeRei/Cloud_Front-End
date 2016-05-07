@@ -92,42 +92,44 @@
                     <p class="lead">
                         <h6> {{ data[0][3] }}</h6>
                         <h5> {{ data[0][2] }}</h5>
-
-                        <img class="question-image" src="img/dummy/question-image-1.jpg">
-                        
+						
+						{% if data[0][5] %}
+							<img class="question-image" src="{{ url_for('static', filename=data[0][5]) }}">
+                        {% endif %}
+						
                         <br>
                         <h6 class="text-left">Tags: 
-                            {% if data[0][6] == 1 %}
+                            {% if data[0][7] == 1 %}
 								<span class="label center label-info">C</span>
 							{% endif %}
-							{% if data[0][7] == 1 %}
+							{% if data[0][8] == 1 %}
 								<span class="label center label-info">C++</span>
 							{% endif %}
-							{% if data[0][8] == 1 %}
+							{% if data[0][9] == 1 %}
 								<span class="label center label-info">HTML</span>
 							{% endif %}
-                            {% if data[0][9] == 1 %}
+                            {% if data[0][10] == 1 %}
 								<span class="label center label-info">PHP</span>
 							{% endif %}
-                            {% if data[0][10] == 1 %}
+                            {% if data[0][11] == 1 %}
 								<span class="label center label-info">Javascript</span>
 							{% endif %}
-                            {% if data[0][11] == 1 %}
+                            {% if data[0][12] == 1 %}
 								<span class="label center label-info">Python</span>
 							{% endif %}
-                            {% if data[0][12] == 1 %}
+                            {% if data[0][13] == 1 %}
 								<span class="label center label-info">Visual Basic</span>
 							{% endif %}
-                            {% if data[0][13] == 1 %}
+                            {% if data[0][14] == 1 %}
 								<span class="label center label-info">Bash</span>
 							{% endif %}
-                            {% if data[0][14] == 1 %}
+                            {% if data[0][15] == 1 %}
 								<span class="label center label-info">Java</span>
 							{% endif %}
-                            {% if data[0][5] == 1 %}
+                            {% if data[0][16] == 1 %}
 								<span class="label center label-info">Android</span>
 							{% endif %}
-                            {% if data[0][16] == 1 %}
+                            {% if data[0][17] == 1 %}
 								<span class="label center label-info">Unity</span>
 							{% endif %}
                         </h6>
@@ -169,7 +171,7 @@
                             <div class="row">
                                 <div class="panel margin-answer">
                                     <img class="user-photo-answer" src="{{ url_for('static', filename=jawaban[11]) }}" />
-                                    <h7>{{ jawaban[7] }} </h7>
+                                    <h7>{{ jawaban[7] }}</h7>
                                     <h6>posted on {{ jawaban[5].strftime("%A, %d. %B %Y %I:%M%p") }} </h6>
                                     <hr>
                                     <div class="panel-body">
@@ -189,7 +191,7 @@
             <h4>Your Answer</h4>
             <hr>
             <div class="row">
-                <form class="col-md-8">
+                <form class="col-md-8" action="/anon_answer/{{ data[0][0] }}" method="POST">
                 <div class="row">
                     <div class="input-field col-md-4">
                       <input disabled value="Username yang terlogin" id="disabled" type="text" class="validate">
@@ -198,12 +200,12 @@
                 </div>
                 <div class="row">
                     <div class="input-field col-md-12">
-                      <textarea id="textarea" class="materialize-textarea"></textarea>
+                      <textarea id="textarea" name="isi_jawaban" class="materialize-textarea"></textarea>
                       <label for="textarea">Answer</label>
                     </div>
                 </div>
                 <div class="col-md-12 text-right">
-                    <a href="#" class="btn btn-default btn-submit waves-effect waves-light right">SUBMIT ANSWER</a>
+                    <button type="Submit" value="Anon_answer" class="btn btn-primary waves-effect waves-light">SUBMIT QUESTION</button>
                 </div>
                 </form>
             </div>

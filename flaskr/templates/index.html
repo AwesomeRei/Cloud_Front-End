@@ -12,22 +12,38 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+   
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
 
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+            
     <!-- Bootstrap core CSS -->
-    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Material Design Bootstrap -->
-    <link href="{{ url_for('static', filename='css/mdb.css') }}" rel="stylesheet">
+    <link href="css/mdb.css" rel="stylesheet">
     <!-- Template style -->
-    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <style type="text/css">
+    .carousel-caption{
+      margin-bottom: 0em;
+      bottom: 1em;
+      padding-bottom: 0px;
+    }
+    .tags-alignmment{
+      text-align: left;
+    }
 
+    </style>
 </head>
 
 <body>
-    <!-- Navigation -->
+  <!-- Navigation -->
   <nav class="navbar z-depth-2 info-color">
     <div class="container ">
       <div class="navbar-header">
@@ -41,8 +57,13 @@
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group waves-effect waves-light">
+                <input type="text" class="form-control" placeholder="Question Search">
+            </div>
+        </form>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="{{ url_for('signup') }}" class="waves-effect waves-light">Sign Up <span class="sr-only">(current)</span></a>
+          <li><a href="sign_up.html" class="waves-effect waves-light">Sign Up <span class="sr-only">(current)</span></a>
           </li>
           <li><a href="" class="waves-effect waves-light" data-toggle="modal" data-target="#modalLogin">Log In <span class="sr-only">(current)</span></a>
           </li>
@@ -92,42 +113,76 @@
           <div data-animation="animated fadeInRightBig">
             <div class = "row">
                 <form class="col-md-12">
+                    <h5>FEEL FREE TO ASK</h5>
                     <div class="rows">
-                        <div class="input-field col-md-12">
-                            <textarea id="ask" value="Type your Question Here" class="materialize-textarea"></textarea>
-                            <label for="ask" >ASK QUESTION</label>
+                        <div class="input-field col-md-3">
+                            <input id="title" type="text">
+                            <label for="title">TITLE</label>
+                        </div>
+                        <div class="input-field col-md-9">
+                            <input id="ask" type="text"></input>
+                            <label for="ask">QUESTION</label>
                         </div>
                     </div>
                     <div class="rows">
-                        <label>TAGS : </label>
-                        <input type="checkbox" name="C_tags" value="1" id="C_tag" />
-                        <label for="C_tag">C</label>
-                        <input type="checkbox" name="C++_tags" value="1" id="C++_tag" />
-                        <label for="C++_tag">C++</label>
-                        <input type="checkbox" name="C#_tags" value="1" id="C#_tag" />
-                        <label for="C#_tag">C#</label>
-                        <input type="checkbox" name="HTML_tags" value="1" id="HTML_tag" />
-                        <label for="C_HTML">HTML</label>
-                        <input type="checkbox" name="PHP_tags" value="1" id="PHP_tag" />
-                        <label for="PHP_tag">PHP</label>
-                        <input type="checkbox" name="JS_tags" value="1" id="JS_tag" />
-                        <label for="JS_tag">JAVASCRIPT</label>
-                        <input type="checkbox" name="Py_tags" value="1" id="Py_tag" />
-                        <label for="Py_tag">PYTHON</label>
-                        <input type="checkbox" name="VB_tags" value="1" id="VB_tag" />
-                        <label for="VB_tag">VISUAL BASIC</label>
-                        <input type="checkbox" name="Bash_tags" value="1" id="Bash_tag" />
-                        <label for="Bash_tag">BASH</label>
-                        <input type="checkbox" name="Java_tags" value="1" id="Java_tag" />
-                        <label for="Java_tag">JAVA</label>
-                        <input type="checkbox" name="Android_tags" value="1" id="Android_tag" />
-                        <label for="Android_tag">ANDROID</label>
-                        <input type="checkbox" name="Unity_tags" value="1" id="Unity_tag" />
-                        <label for="Unity_tag">UNITY</label>
+                        <label>QUESTION TAGS : </label>
                     </div>
-                    <div>
-                        <a href="question.html" class="btn btn-default btn-warning waves-effect waves-light ">SUBMIT QUESTION</a>
-                    </div>
+
+                    <div class="rows">
+                      <div class="col-md-12 tags-alignmment">
+                        <div class="col-md-2">
+                          <input type="checkbox" name="C_tags" class="filled-in" value="1" id="C_tag" />
+                          <label for="C_tag">C</label>
+                        </div>
+                        <div class="col-md-2">
+                          <input type="checkbox" name="C++_tags" class="filled-in" value="1" id="C++_tag" />
+                          <label for="C++_tag">C++</label>
+                        </div>
+                        <div class="col-md-2">
+                          <input type="checkbox" name="C#_tags" class="filled-in" value="1" id="C#_tag" />
+                          <label for="C#_tag">C#</label>
+                        </div>
+                        <div class="col-md-2">
+                          <input type="checkbox" name="HTML_tags" class="filled-in" value="1" id="HTML_tag" />
+                          <label for="C_HTML">HTML</label>
+                        </div>
+                        <div class="col-md-2">
+                          <input type="checkbox" name="PHP_tags" class="filled-in" value="1" id="PHP_tag" />
+                          <label for="PHP_tag">PHP</label>
+                        </div>
+                        <div class="col-md-2">
+                          <input type="checkbox" name="JS_tags" class="filled-in" value="1" id="JS_tag" />
+                          <label for="JS_tag">JAVASCRIPT</label>
+                        </div>
+                        <div class="col-md-2">
+                          <input type="checkbox" name="Py_tags" class="filled-in" value="1" id="Py_tag" />
+                          <label for="Py_tag">PYTHON</label>
+                        </div>
+                        <div class="col-md-2">  
+                          <input type="checkbox" name="VB_tags" class="filled-in" value="1" id="VB_tag" />
+                          <label for="VB_tag">VB</label>
+                        </div>
+                        <div class="col-md-2">  
+                          <input type="checkbox" name="Bash_tags" class="filled-in" value="1" id="Bash_tag" />
+                          <label for="Bash_tag">BASH</label>
+                        </div>
+                        <div class="col-md-2">  
+                          <input type="checkbox" name="Java_tags" class="filled-in" value="1" id="Java_tag" />
+                          <label for="Java_tag">JAVA</label>
+                        </div>
+                        <div class="col-md-2">  
+                          <input type="checkbox" name="Android_tags" class="filled-in" value="1" id="Android_tag" />
+                          <label for="Android_tag">ANDROID</label>
+                        </div>
+                        <div class="col-md-2">  
+                          <input type="checkbox" name="Unity_tags" class="filled-in" value="1" id="Unity_tag" />
+                          <label for="Unity_tag">UNITY</label>
+                        </div>
+                      </div>
+                  </div>
+                  <div>
+                    <a href="question.html" class="btn btn-default btn-warning waves-effect waves-light ">SUBMIT QUESTION</a>
+                  </div>
                 </form>
             </div>
           <!--   <h2 class="h2-responsive">This is the caption for slide 1</h2>
@@ -186,14 +241,13 @@
 
             <!-- First Blog Post -->
             <!--<div class="col-md-12">-->
-			{% for q in data[0] %}
-            <h4>Questions</h4>
+            <h4>Top Questions</h4>
             <div class="card hoverable">
               <div class="col-md-12 panel">
                 <!-- <div class="col-md-12"> -->
                   <div class="col-md-9 container-fluid">
                       <p class="lead">
-                          <a href="index.html">{{ q[3] }}</a>
+                          <a href="question.html">Judul Pertanyaan (Pertanyaan Inti)</a>
                           <br>
                           <h6 class="text-left">Tags: 
                             <span class="label center label-info">C</span>
@@ -210,8 +264,9 @@
                             <span class="label center label-info">HTML</span>
                           </h6>
                           <br>
-                          <p class="text-left">Posted on {{ q[4] }}</p>
+                          <p class="text-left">Posted on May 4, 2016 at 14:00 WIB</p>
                       </p>
+                      
                   </div>
                   <div class="col-md-2 ">
                       <h6 class="text-left">Votes </h6>
@@ -226,9 +281,86 @@
                 <!-- </div> -->
               </div>
             </div>
-			{% endfor %}
             
-                  
+            <div class="card hoverable">
+              <div class="col-md-12 panel">
+                <!-- <div class="col-md-12"> -->
+                  <div class="col-md-9 container-fluid">
+                      <p class="lead">
+                          <a href="index.html">Judul Pertanyaan (Pertanyaan Inti)</a>
+                          <br>
+                          <h6 class="text-left">Tags: 
+                            <span class="label center label-info">C</span>
+                            <span class="label center label-info">C++</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                          </h6>
+                          <br>
+                          <p class="text-left">Posted on May 1, 2013 at 14:00 WIB</p>
+                      </p>
+                      
+                  </div>
+                  <div class="col-md-2 ">
+                      <h6 class="text-left">Votes </h6>
+                      <h6 class="text-left">Answers </h6>
+                      <h6 class="text-left">Views </h6>
+                  </div>
+                  <div class="col-md-1">
+                      <h6><span class="label right label-default">100</span></h6>
+                      <h6><span class="label right label-success">10</span></h6>
+                      <h6><span class="label right label-danger">250</span></h6>
+                  </div>
+                <!-- </div> -->
+              </div>
+            </div>
+
+            <div class="card hoverable">
+              <div class="col-md-12 panel">
+                <!-- <div class="col-md-12"> -->
+                  <div class="col-md-9 container-fluid">
+                      <p class="lead">
+                          <a href="index.html">Judul Pertanyaan (Pertanyaan Inti)</a>
+                          <br>
+                          <h6 class="text-left">Tags: 
+                            <span class="label center label-info">C</span>
+                            <span class="label center label-info">C++</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                            <span class="label center label-info">PHP</span>
+                            <span class="label center label-info">HTML</span>
+                          </h6>
+                          <br>
+                          <p class="text-left">Posted on May 4, 2013 at 14:00 WIB</p>
+                      </p>
+                      
+                  </div>
+                  <div class="col-md-2 ">
+                      <h6 class="text-left">Votes </h6>
+                      <h6 class="text-left">Answers </h6>
+                      <h6 class="text-left">Views </h6>
+                  </div>
+                  <div class="col-md-1">
+                      <h6><span class="label right label-default">100</span></h6>
+                      <h6><span class="label right label-success">10</span></h6>
+                      <h6><span class="label right label-danger">250</span></h6>
+                  </div>
+                <!-- </div> -->
+              </div>
+            </div>      
             
 
             <hr>
@@ -349,13 +481,13 @@
  <!-- SCRIPTS -->
 
     <!-- JQuery -->
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
 
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
     <!-- Material Design Bootstrap -->
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}js/mdb.js"></script>
+    <script type="text/javascript" src="js/mdb.js"></script>
 
 
 </body>

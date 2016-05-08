@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f29c4efc-ab47-45f4-9bea-dd2acff2634b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flaskr/flaskr.py" afterPath="$PROJECT_DIR$/flaskr/flaskr.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flaskr/services.py" afterPath="$PROJECT_DIR$/flaskr/services.py" />
+    </list>
+    <ignored path="cloud.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="cloud" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="flaskr.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/flaskr/flaskr.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.75688076">
+              <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop" />
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/db.py" />
+        <option value="$PROJECT_DIR$/flaskr/views.py" />
+        <option value="$PROJECT_DIR$/flaskr/__init__.py" />
+        <option value="$PROJECT_DIR$/flaskr/models/User.py" />
+        <option value="$PROJECT_DIR$/flaskr/models/Question.py" />
+        <option value="$PROJECT_DIR$/flaskr/models/Answer.py" />
+        <option value="$PROJECT_DIR$/flaskr/templates/question.html" />
+        <option value="$PROJECT_DIR$/flaskr/flaskr.py" />
+        <option value="$PROJECT_DIR$/flaskr/services.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-1" />
+    <option name="y" value="24" />
+    <option name="width" value="1368" />
+    <option name="height" value="745" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cloud" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cloud" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cloud" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cloud" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cloud" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flaskr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cloud" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cloud" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flaskr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="cloud" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="cloud" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="cloud" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="cloud" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="cloud" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="cloud" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f29c4efc-ab47-45f4-9bea-dd2acff2634b" name="Default" comment="" />
+      <created>1462436616902</created>
+      <option name="number" value="Default" />
+      <updated>1462436616902</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-1" y="24" width="1368" height="745" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18374817" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297546" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3297546" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="Merge branch 'develop' into Jaeger&#10;&#10;Conflicts:&#10;&#9;flaskr/flaskr.py&#10;&#9;flaskr/templates/question.html&#10;fixed conflict - merge dari branch rona ke jaeger" />
+    <MESSAGE value="Merge branch 'develop' into Jaeger&#10;&#10;Conflicts:&#10;&#9;flaskr/flaskr.py&#10;&#9;flaskr/templates/question.html&#10;merge dari branch rona ke jaeger&#10;" />
+    <MESSAGE value="Merge branch 'develop' into Jaeger&#10;&#10;Conflicts:&#10;&#9;flaskr/flaskr.py&#10;&#9;flaskr/templates/question.html&#10;merge from develop to Jaeger" />
+    <MESSAGE value="Merge branch 'develop' into Jaeger&#10;&#10;Conflicts:&#10;&#9;flaskr/flaskr.py&#10;&#9;flaskr/templates/question.html&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'develop' into Jaeger&#10;&#10;Conflicts:&#10;&#9;flaskr/flaskr.py&#10;&#9;flaskr/templates/question.html&#10;" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/flaskr/templates/user.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flaskr/templates/sign_up.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46923077">
+          <caret line="217" column="20" selection-start-line="217" selection-start-column="20" selection-end-line="226" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flaskr/templates/question.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5848624">
+          <caret line="149" column="2" selection-start-line="149" selection-start-column="2" selection-end-line="149" selection-end-column="2" />
+          <folding>
+            <marker date="1462445359123" expanded="true" signature="32:8551" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="40:1863" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="784:1854" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="1871:8542" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="1935:4105" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="1964:4096" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="1998:2430" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="2128:2326" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="2510:4085" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="2559:3834" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="2574:2696" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="2711:2866" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="2882:3818" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="3839:4070" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="4152:5632" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="4175:5595" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="4208:4261" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="4293:5539" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="4462:5490" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="4503:4697" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="4737:5010" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="5067:5470" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="5105:5201" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="5732:8102" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="5760:7853" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="5786:7842" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="5837:6180" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="6261:7073" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="6358:7054" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="6383:6521" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="6546:6698" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="6723:6864" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="6889:7030" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="7166:7827" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="7888:8092" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="7920:8081" placeholder="..." />
+            <marker date="1462445359123" expanded="true" signature="7972:8066" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flaskr/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1462445081195" expanded="false" signature="1:47" placeholder="import ..." />
+            <marker date="1462445081195" expanded="true" signature="70:483" placeholder="..." />
+            <marker date="1462445081195" expanded="true" signature="361:483" placeholder="..." />
+            <marker date="1462445081195" expanded="true" signature="511:990" placeholder="..." />
+            <marker date="1462445081195" expanded="true" signature="854:990" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flaskr/services.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.93119264">
+          <caret line="40" column="23" selection-start-line="0" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
+          <folding>
+            <marker date="1462445689588" expanded="true" signature="0:184" placeholder="import ..." />
+            <marker date="1462445689588" expanded="true" signature="386:468" placeholder="..." />
+            <marker date="1462445689588" expanded="true" signature="563:674" placeholder="..." />
+            <marker date="1462445689588" expanded="true" signature="761:872" placeholder="..." />
+            <marker date="1462445689588" expanded="true" signature="943:1046" placeholder="..." />
+            <marker date="1462445689588" expanded="true" signature="1129:1233" placeholder="..." />
+            <marker date="1462445689588" expanded="true" signature="1326:1432" placeholder="..." />
+            <marker date="1462445689588" expanded="true" signature="1523:1632" placeholder="..." />
+            <marker date="1462445689588" expanded="true" signature="1719:1880" placeholder="..." />
+            <marker date="1462445689588" expanded="true" signature="1971:2080" placeholder="..." />
+            <marker date="1462445689588" expanded="true" signature="2173:2283" placeholder="..." />
+            <marker date="1462445689588" expanded="true" signature="2389:2522" placeholder="..." />
+            <marker date="1462445689588" expanded="true" signature="2621:2754" placeholder="..." />
+            <marker date="1462445689588" expanded="true" signature="2836:2921" placeholder="..." />
+            <marker date="1462445689588" expanded="true" signature="2998:3067" placeholder="..." />
+            <marker date="1462445689588" expanded="true" signature="3142:3209" placeholder="..." />
+            <marker date="1462445689588" expanded="true" signature="3284:3351" placeholder="..." />
+            <marker date="1462445689588" expanded="true" signature="3420:3481" placeholder="..." />
+            <marker date="1462445689588" expanded="true" signature="3570:3651" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flaskr/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1462445081215" expanded="true" signature="0:113" placeholder="import ..." />
+            <marker date="1462445081215" expanded="true" signature="146:248" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flaskr/flaskr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.75688076">
+          <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

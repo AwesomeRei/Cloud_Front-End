@@ -16,6 +16,7 @@
     <!-- Bootstrap core CSS -->
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
 
+
     <!-- Material Design Bootstrap -->
     <link href="{{ url_for('static', filename='css/mdb.css') }}" rel="stylesheet">
     <!-- Template style -->
@@ -28,18 +29,6 @@
         .profile-badge {
           max-width: 100%;
           max-height: 100%;
-        }
-
-        .icon-progress {
-          font-size: 4em;
-        }
-        
-        .tags-alignmment{
-          text-align: left;
-        }
-        
-        .modal-dialog{
-          width: 830px;
         }
 
     </style>
@@ -87,251 +76,108 @@
   </nav>
 
 <div class="container">
-    <h1 class="page-header">
-        <small>Dashboard </small> <a class="btn btn-primary disabled text-right">Free User</a>
+    <h1 class="page-header text-center">
+        <small>Settings </small>
     </h1>
-	{% if data[0] %}
-		<p class=error><strong>Status:</strong> {{ data[0] }}
-	{% endif %}
     <div class="row">
       <!-- Blog Sidebar Widgets Column -->
-      <div class="col-md-3">
+      <div class="col-md-4">
         <div class="sidebar">
           <!-- Subscription widget -->
           <div class="card-panel">
             <div class="row">
               <div class="col-md-12">
-                <h5 class="text-center">Your Profile Badge</h5>
+                <h5 class="text-center">My Profile</h5>
                 <hr>
-
                 <div class="col-md-6">
                   <img class="profile-badge center" src="{{ url_for('static', filename=data[1][4]) }}">
                 </div>
                 <div class="col-md-6">
                   <h6>Status</h6>
                   <h5><span class="label label-primary">Free</span></h5>
+                  <br>
                 </div>
+              <div class="col-md-12">
+              <hr>
+                  <h5>Username:</h5>
+                  <h6>{{ data[1][1] }}</h6>
+                  <h5>Email:</h5>
+                  <h6>{{ data[1][2] }}</h6>
               </div>
-              
-              <div class="col-md-12">            
-                <hr>
-              </div>
-              
-              <div class="col-md-12 text-center">
-                <h6>Username:</h6>
-                <p><small>{{ data[1][1] }}</small></p>
-                <h6>Email:</h6>
-                <p><small>{{ data[1][2] }}</small></p>
-              </div>
-              <div class="text-center">
-                <button type="button" class="btn btn-warning waves-effect waves-light">Get Premium User</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-          <!--/.Subscription widget -->
-      <br>
-
-      <div class="col-md-9">
-      <h4>Growth Progress</h4>
+      
+      <!-- Edit Profile -->
+      <div class="col-md-8">
+      <h4>Edit Profile</h4>
+	  {% if data[0] %}
+		<p class=error><strong>Status:</strong> {{ data[0] }}
+	  {% endif %}
       <hr>
-      <!-- Page Features -->
-      <div class="row text-center">
-
-        <!-- /.col-md-4 -->
-        <div class="col-md-4">
-          <div class="card success-color hoverable">
-            <div class="card-content col-md-12 center white-text">
-              <p><i class="material-icons icon-progress">question_answer</i></p>
-              <h4 class"card-title">{{ data[1][5] }} Answers</h4>
-            </div>  
+      <div class="card-panel col-md-6 hoverable">
+        <div class="row">
+          <form class="col-md-12" action="/update_profile" method="POST" enctype="multipart/form-data">
+            <h5>Edit Profile Details</h5>
+            <br>
+            <div class="input-field">
+              <i class="material-icons prefix">account_circle</i>
+              <input id="icon_prefix" type="text" class="validate" disabled>
+              <label for="icon_prefix">{{ data[1][1] }}</label>
+            </div>
+            <div class="input-field">
+              <i class="material-icons prefix">mail</i>
+              <input id="icon_telephone" name="email" type="tel" class="validate">
+			  <input type="hidden" name="email" value="{{ data[1][2] }}" />
+              <label for="icon_telephone">Email</label>
+            </div>
+            <div class="file-field input-field">
+              <button type="button" class="btn btn-default waves-effect waves-light">
+                <span>Profile Picture</span>
+                <input type="file" name="file" />
+              </button>  
+            </div>
+          
+          <div class="text-center">
+            <button type="Submit" value="Update_profile" class="btn btn-info waves-effect waves-light">Save Changes</button>
           </div>
+		 </form>
         </div>
-        <!-- /.col-md-4 -->
-        <div class="col-md-4">
-          <div class="card warning-color hoverable">
-            <div class="card-content col-md-12 center white-text">
-              <p><i class="material-icons icon-progress">list</i></p>
-              <h4 class"card-title">{{ data[1][6] }} Question</h4>
-            </div>  
+      </div>
+	  
+      <div class="col-md-1"></div>
+      <div class="card-panel col-md-5 hoverable">
+        <div class="row">
+          <form class="col-md-12" action="/update_password" method="POST">
+            <h5>Change Password</h5>
+            <br>
+			<div class="input-field">
+                <i class="material-icons prefix">lock</i>
+                <input id="password" name="current_password" type="password" class="validate">
+                <label for="password">Current Password</label>
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix">lock</i>
+                <input id="password" name="new_password1" type="password" class="validate">
+                <label for="password">New Password</label>
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix">lock</i>
+                <input id="password-rep" name="new_password2" type="password" class="validate">
+                <label for="password-rep">Repeat New Password</label>
+            </div>
+          
+          <div class="text-center">
+            <button type="Submit" value="Update_password" class="btn btn-info waves-effect waves-light">Save</button>
           </div>
-        </div>
-        <div class="col-md-12">
-          <button data-toggle="modal" data-target="#modalQuestion" class="btn waves-effect waves-light btn-lg btn-block elegant-color white-text">Make a Question</button>
-        </div>
-        <div class="col-md-12">
-          <a href="question_list.html"><button class="btn btn-link waves-effect waves-light btn-lg btn-block">Try to Answer Something</button></a>
+		 </form>
         </div>
       </div>
       </div>
-      </div>
+    </div>
   <!-- /.row -->
-
-  <div class="row">
-      <!-- Blog Sidebar Widgets Column -->
-      <div class="col-md-3">
-        <!-- Category widget -->
-        <h4>Categories</h4>
-        <div class="collection">
-            <a href="#!" class="collection-item active">C Programming</a>
-            <a href="#!" class="collection-item">C++ Programming</a>
-            <a href="#!" class="collection-item">C# Programming</a>
-            <a href="#!" class="collection-item">HTML Programming</a>
-            <a href="#!" class="collection-item">PHP Programming</a>
-            <a href="#!" class="collection-item">JavaScript Programming</a>
-            <a href="#!" class="collection-item">Python Programming</a>
-            <a href="#!" class="collection-item">VisualBasic Programming</a>
-            <a href="#!" class="collection-item">Bash Programming</a>
-            <a href="#!" class="collection-item">Java Programming</a>
-            <a href="#!" class="collection-item">Android Programming</a>
-            <a href="#!" class="collection-item">Unity Programming</a>                                                         
-        </div>
-      </div>
-          <!--/.Subscription widget -->
-      <br>
-
-      <div class="col-md-9">
-      <!-- First Blog Post -->
-          <!--<div class="col-md-12">-->
-          <h5>Questions You've asked before</h5>
-          <hr>
-          <div class="card hoverable">
-            <div class="col-md-12 panel">
-              <!-- <div class="col-md-12"> -->
-                <div class="col-md-9 container-fluid">
-                    <p class="lead">
-                        <a href="index.html">Judul Pertanyaan (Pertanyaan Inti)</a>
-                        <br>
-                        <h6 class="text-left">Tags: 
-                          <span class="label center label-info">C</span>
-                          <span class="label center label-info">C++</span>
-                          <span class="label center label-info">PHP</span>
-                          <span class="label center label-info">HTML</span>
-                        </h6>
-                        <br>
-                        <p class="text-left">Posted on May 4, 2013 at 14:00 WIB</p>
-                    </p>
-                    
-                </div>
-                <div class="col-md-2 ">
-                    <h6 class="text-left">Votes </h6>
-                    <h6 class="text-left">Answers </h6>
-                    <h6 class="text-left">Views </h6>
-                </div>
-                <div class="col-md-1">
-                    <h6><span class="label right label-default">100</span></h6>
-                    <h6><span class="label right label-success">10</span></h6>
-                    <h6><span class="label right label-danger">250</span></h6>
-                </div>
-              <!-- </div> -->
-            </div>
-          </div>
-          <div class="card hoverable">
-            <div class="col-md-12 panel">
-              <!-- <div class="col-md-12"> -->
-                <div class="col-md-9 container-fluid">
-                    <p class="lead">
-                        <a href="index.html">Judul Pertanyaan (Pertanyaan Inti)</a>
-                        <br>
-                        <h6 class="text-left">Tags: 
-                          <span class="label center label-info">C</span>
-                          <span class="label center label-info">C++</span>
-                          <span class="label center label-info">PHP</span>
-                          <span class="label center label-info">HTML</span>
-                        </h6>
-                        <br>
-                        <p class="text-left">Posted on May 4, 2013 at 14:00 WIB</p>
-                    </p>
-                    
-                </div>
-                <div class="col-md-2 ">
-                    <h6 class="text-left">Votes </h6>
-                    <h6 class="text-left">Answers </h6>
-                    <h6 class="text-left">Views </h6>
-                </div>
-                <div class="col-md-1">
-                    <h6><span class="label right label-default">100</span></h6>
-                    <h6><span class="label right label-success">10</span></h6>
-                    <h6><span class="label right label-danger">250</span></h6>
-                </div>
-              <!-- </div> -->
-            </div>
-          </div>
-          <div class="card hoverable">
-            <div class="col-md-12 panel">
-              <!-- <div class="col-md-12"> -->
-                <div class="col-md-9 container-fluid">
-                    <p class="lead">
-                        <a href="index.html">Judul Pertanyaan (Pertanyaan Inti)</a>
-                        <br>
-                        <h6 class="text-left">Tags: 
-                          <span class="label center label-info">C</span>
-                          <span class="label center label-info">C++</span>
-                          <span class="label center label-info">PHP</span>
-                          <span class="label center label-info">HTML</span>
-                        </h6>
-                        <br>
-                        <p class="text-left">Posted on May 4, 2013 at 14:00 WIB</p>
-                    </p>
-                    
-                </div>
-                <div class="col-md-2 ">
-                    <h6 class="text-left">Votes </h6>
-                    <h6 class="text-left">Answers </h6>
-                    <h6 class="text-left">Views </h6>
-                </div>
-                <div class="col-md-1">
-                    <h6><span class="label right label-default">100</span></h6>
-                    <h6><span class="label right label-success">10</span></h6>
-                    <h6><span class="label right label-danger">250</span></h6>
-                </div>
-              <!-- </div> -->
-            </div>
-          </div>
-          <div class="card hoverable">
-            <div class="col-md-12 panel">
-              <!-- <div class="col-md-12"> -->
-                <div class="col-md-9 container-fluid">
-                    <p class="lead">
-                        <a href="index.html">Judul Pertanyaan (Pertanyaan Inti)</a>
-                        <br>
-                        <h6 class="text-left">Tags: 
-                          <span class="label center label-info">C</span>
-                          <span class="label center label-info">C++</span>
-                          <span class="label center label-info">PHP</span>
-                          <span class="label center label-info">HTML</span>
-                        </h6>
-                        <br>
-                        <p class="text-left">Posted on May 4, 2013 at 14:00 WIB</p>
-                    </p>
-                    
-                </div>
-                <div class="col-md-2 ">
-                    <h6 class="text-left">Votes </h6>
-                    <h6 class="text-left">Answers </h6>
-                    <h6 class="text-left">Views </h6>
-                </div>
-                <div class="col-md-1">
-                    <h6><span class="label right label-default">100</span></h6>
-                    <h6><span class="label right label-success">10</span></h6>
-                    <h6><span class="label right label-danger">250</span></h6>
-                </div>
-              <!-- </div> -->
-            </div>
-          </div>
-          <ul class="pagination pag-circle text-center">
-            <li><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-          </ul> 
-      </div>
-  <!-- /.row -->
-  </div>
   <hr>
 </div>
 

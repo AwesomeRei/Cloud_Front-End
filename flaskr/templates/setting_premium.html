@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TC Overflow</title>
+
+    <!-- Material Design Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+
+    <!-- Material Design Bootstrap -->
+    <link href="{{ url_for('static', filename='css/mdb.css') }}" rel="stylesheet">
+    <!-- Template style -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
+
+    <style type="text/css">
+        .profile-badge {
+          max-width: 100%;
+          max-height: 100%;
+        }
+
+    </style>
+
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar z-depth-2 info-color">
+    <div class="container ">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand waves-effect waves-light" href="dashboard_free.html">TC Overflow</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" role="button" aria-expanded="false">My Profile <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="{{ url_for('user_premium') }}">Dashboard</a>
+              </li>
+              <li><a data-toggle="modal" data-target="#modalQuestion" href="">Make a Question</a>
+              </li>
+              <li><a href="{{ url_for('setting_premium') }}">Settings</a>
+              </li>
+              <li class="divider"></li>
+              <li><a href="{{ url_for('logout') }}">Log out</a>
+              </li>
+            </ul>
+          </li>
+        </ul><!-- 
+        <form class="navbar-form navbar-right waves-effect waves-light" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+        </form> -->
+      </div>
+    </div>
+  </nav>
+
+<div class="container">
+    <h1 class="page-header text-center">
+        <small>Settings </small>
+    </h1>
+    <div class="row">
+      <!-- Blog Sidebar Widgets Column -->
+      <div class="col-md-4">
+        <div class="sidebar">
+          <!-- Subscription widget -->
+          <div class="card-panel">
+            <div class="row">
+              <div class="col-md-12">
+                <h5 class="text-center">My Profile</h5>
+                <hr>
+                <div class="col-md-6">
+                  <img class="profile-badge center" src="{{ url_for('static', filename=data[1][4]) }}">
+                </div>
+                <div class="col-md-6">
+                  <h6>Status</h6>
+                  <h5><span class="label label-warning">Premium</span></h5>
+                  <br>
+                </div>
+              <div class="col-md-12">
+              <hr>
+                  <h5>Username:</h5>
+                  <h6>{{ data[1][1] }}</h6>
+                  <h5>Email:</h5>
+                  <h6>{{ data[1][2] }}</h6>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Edit Profile -->
+      <div class="col-md-8">
+      <h4>Edit Profile</h4>
+	  {% if data[0] %}
+		<p class=error><strong>Status:</strong> {{ data[0] }}
+	  {% endif %}
+      <hr>
+      <div class="card-panel col-md-6 hoverable">
+        <div class="row">
+          <form class="col-md-12" action="/update_profile" method="POST" enctype="multipart/form-data">
+            <h5>Edit Profile Details</h5>
+            <br>
+            <div class="input-field">
+              <i class="material-icons prefix">account_circle</i>
+              <input id="icon_prefix" type="text" class="validate" disabled>
+              <label for="icon_prefix">{{ data[1][1] }}</label>
+            </div>
+            <div class="input-field">
+              <i class="material-icons prefix">mail</i>
+              <input id="icon_telephone" name="email" type="tel" class="validate">
+			  <input type="hidden" name="email" value="{{ data[1][2] }}" />
+              <label for="icon_telephone">Email</label>
+            </div>
+            <div class="file-field input-field">
+              <button type="button" class="btn btn-default waves-effect waves-light">
+                <span>Profile Picture</span>
+                <input type="file" name="file" />
+              </button>  
+            </div>
+          
+          <div class="text-center">
+            <button type="Submit" value="Update_profile" class="btn btn-info waves-effect waves-light">Save Changes</button>
+          </div>
+		 </form>
+        </div>
+      </div>
+	  
+      <div class="col-md-1"></div>
+      <div class="card-panel col-md-5 hoverable">
+        <div class="row">
+          <form class="col-md-12" action="/update_password" method="POST">
+            <h5>Change Password</h5>
+            <br>
+			<div class="input-field">
+                <i class="material-icons prefix">lock</i>
+                <input id="password" name="current_password" type="password" class="validate">
+                <label for="password">Current Password</label>
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix">lock</i>
+                <input id="password" name="new_password1" type="password" class="validate">
+                <label for="password">New Password</label>
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix">lock</i>
+                <input id="password-rep" name="new_password2" type="password" class="validate">
+                <label for="password-rep">Repeat New Password</label>
+            </div>
+          
+          <div class="text-center">
+            <button type="Submit" value="Update_password" class="btn btn-info waves-effect waves-light">Save</button>
+          </div>
+		 </form>
+        </div>
+      </div>
+      </div>
+    </div>
+  <!-- /.row -->
+  <hr>
+</div>
+
+<!-- Footer -->
+<footer class="page-footer info-color darken-1" if="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-md-offset-1">
+                <p class="white-text center-on-small-only">GET STARTED</p>
+                <p class="white-text center-on-small-only">Register for free and start to create amazing things.</p>
+                <a href="http://mdbootstrap.com/getting-started/" class="btn btn-danger waves-effect waves-light">Get started!</a>
+
+            </div>
+            <hr class="hidden-lg hidden-md">
+
+            <div class="col-md-2">
+                <p class="white-text center-on-small-only">USEFUL LINKS</p>
+                <ul>
+                    <li><a href="#" data-toggle="modal" data-target="#myModal" class="grey-text text-lighten-3" href="#!">Contact us</a>
+                    </li>
+                    <li><a class="grey-text text-lighten-3" href="http://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">About MDB</a>
+                    </li>
+                    <li><a class="grey-text text-lighten-3" href="http://mdbootstrap.com/forums/forum/support/" target="_blank">Support</a>
+                    </li>
+                    <li><a class="grey-text text-lighten-3" href="http://mdbootstrap.com/forums/forum/bugs/" target="_blank">Bug report</a>
+                    </li>
+
+
+                </ul>
+            </div>
+            <hr class="hidden-lg hidden-md">
+
+            <div class="col-md-3 text-center">
+                <p class="white-text text-center"> SOCIAL MEDIA</p>
+                <a target="_blank" href="https://www.facebook.com/mdbootstrap" class="btn-floating btn-large fb-bg waves-effect waves-light"><i class="fa fa-facebook"> </i></a>
+                <a target="_blank" href="https://twitter.com/MDBootstrap" class="btn-floating btn-large tw-bg waves-effect waves-light"><i class="fa fa-twitter"> </i></a>
+                <a target="_blank" href="https://plus.google.com/u/0/b/107863090883699620484/107863090883699620484/posts" class="btn-floating btn-large gplus-bg waves-effect waves-light"><i class="fa fa-google-plus"> </i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            <div class="col-md-10 col-md-offset-1"> © 2015 Copyright <a href="http://www.MDBootstrap.com">MDBootstrap.com </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+ <!-- SCRIPTS -->
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    <!-- Material Design Bootstrap -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/mdb.js') }}"></script>
+
+
+</body>
+
+</html>

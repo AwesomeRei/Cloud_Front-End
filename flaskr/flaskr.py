@@ -31,7 +31,7 @@ def index():
             return redirect(url_for('user_free'))
         
     cur.execute("SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
-                FROM question q, tags t where q.id_question=t.id_question ORDER BY q.id_question DESC LIMIT 10")
+                FROM question q, tags t where q.id_question=t.id_question ORDER BY q.id_question DESC LIMIT 5")
     passingData = []
     passingData.append(cur.fetchall())
     passingData.append('data')
@@ -154,9 +154,8 @@ def ask_free():
         cur.execute("SELECT TIMESTAMPDIFF(DAY, \
                     (SELECT tgl_question FROM question WHERE id_user = %s ORDER BY tgl_question DESC LIMIT 1), \
                     CURRENT_TIMESTAMP())", [id_user])
-        if (cur.fetchone()[0] < 1):
-            error = "Free User hanya dapat bertanya sekali sehari!"
-        else:
+        temp = cur.fetchone()[0]
+        if ( temp >= 1 or temp is None):
             judul_form  = request.form['judul']
             pertanyaan_form = request.form['pertanyaan']
             cur.execute("INSERT INTO question(id_user, judul, pertanyaan) VALUES(%s ,%s, %s)", ([id_user], [judul_form], [pertanyaan_form]))
@@ -181,6 +180,8 @@ def ask_free():
                         ([c], [cpp], [csharp], [html], [php], [js], [py], [vb], [bash], [java], [android], [unity], [id_question]))
             db.commit()
             error = "Pertanyaan Anda berhasil dimasukkan!"
+        else:
+            error = "Free User hanya dapat bertanya sekali sehari!"
             
         cur.execute("SELECT id_user, username, email, status, foto_user, \
                     (SELECT COUNT(id_jawaban) FROM jawaban WHERE id_user = %s), \
@@ -287,7 +288,100 @@ def user_premium():
         data.append(profil)
         return render_template('dashboard_premium.html', data=data)
     return redirect(url_for('index'))
-    
+
+@app.route('/setting_free', methods=['GET', 'POST'])
+def setting_free():
+    error = None
+    if 'username' in session:
+        if request.method == 'GET':
+            cur.execute("SELECT id_user, username, email, status, foto_user \
+                        FROM user \
+                        WHERE username = %s", [session['username']])
+            profil = cur.fetchone()
+            data = []
+            data.append(error)
+            data.append(profil)
+            return render_template('setting_free.html', data=data)
+    return redirect(url_for('index'))
+
+@app.route('/setting_premium', methods=['GET', 'POST'])
+def setting_premium():
+    error = None
+    if 'username' in session:
+        if request.method == 'GET':
+            cur.execute("SELECT id_user, username, email, status, foto_user \
+                        FROM user \
+                        WHERE username = %s", [session['username']])
+            profil = cur.fetchone()
+            data = []
+            data.append(error)
+            data.append(profil)
+            return render_template('setting_premium.html', data=data)
+    return redirect(url_for('index'))
+
+@app.route('/update_profile', methods=['GET','POST'])
+def update_profile():
+    error = None
+    if 'username' in session:
+        cur.execute("SELECT id_user, username, email, status, foto_user \
+                    FROM user \
+                    WHERE username = %s", [session['username']])
+        profil = cur.fetchone()
+        status = profil[3]
+
+        email_form = request.form['email']
+        file = request.files['file']
+        files = str(os.path.join(app.config['PATH'], secure_filename(file.filename)))
+        if secure_filename(file.filename) :
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                #uploaded_file(filename)
+            cur.execute("UPDATE user SET email = %s, foto_user = %s WHERE username = %s", \
+                        ([email_form], [files], [session['username']]))
+        else:
+            cur.execute("UPDATE user SET email = %s WHERE username = %s", \
+                        ([email_form], [session['username']]))
+        error = "Profil berhasil di update!"
+        db.commit()
+        if status == 1:
+            return redirect(url_for('setting_premium'))
+        else:
+            return redirect(url_for('setting_free'))
+    return redirect(url_for('index'))
+
+@app.route('/update_password', methods=['GET','POST'])
+def update_password():
+    error = None
+    if 'username' in session:
+        cur.execute("SELECT id_user, username, email, status, foto_user, password \
+                    FROM user \
+                    WHERE username = %s", [session['username']])
+        profil = cur.fetchone()
+        status = profil[3]
+        current = profil[5]
+
+        current_password = request.form['current_password']
+        new_password1 = request.form['new_password1']
+        new_password2 = request.form['new_password2']
+
+        if new_password1 == new_password2:
+            if current == current_password:
+                cur.execute("UPDATE user SET password = %s WHERE username = %s", \
+                            ([new_password1], [session['username']]))
+                db.commit()
+                error = "Password berhasil diupdate!"
+            else:
+                error = "Password lama tidak sesuai!"
+        else:
+            error = "Password baru yang Anda masukkan tidak sama!"
+        
+        if status == 1:
+            return redirect(url_for('setting_premium'))
+        else:
+            return redirect(url_for('setting_free'))
+    return redirect(url_for('index'))
+
 """
 @app.route('/user', methods=['GET', 'POST'])
 def user():

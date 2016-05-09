@@ -57,7 +57,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand waves-effect waves-light" href="dashboard_free.html">TC Overflow</a>
+        <a class="navbar-brand waves-effect waves-light" href="{{ url_for('user_free') }}">TC Overflow</a>
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -196,21 +196,51 @@
           <!--<div class="col-md-12">-->
           <h5>Questions You've asked before</h5>
           <hr>
+		  {% for q in data[2] %}
           <div class="card hoverable">
             <div class="col-md-12 panel">
               <!-- <div class="col-md-12"> -->
                 <div class="col-md-9 container-fluid">
                     <p class="lead">
-                        <a href="index.html">Judul Pertanyaan (Pertanyaan Inti)</a>
+                        <a href="/free_question/{{ q[0] }}">{{ q[3] }}</a>
                         <br>
                         <h6 class="text-left">Tags: 
-                          <span class="label center label-info">C</span>
-                          <span class="label center label-info">C++</span>
-                          <span class="label center label-info">PHP</span>
-                          <span class="label center label-info">HTML</span>
+                          {% if q[5] == 1 %}
+								<span class="label center label-info">C</span>
+							{% endif %}
+							{% if q[6] == 1 %}
+								<span class="label center label-info">C++</span>
+							{% endif %}
+							{% if q[7] == 1 %}
+								<span class="label center label-info">HTML</span>
+							{% endif %}
+                            {% if q[8] == 1 %}
+								<span class="label center label-info">PHP</span>
+							{% endif %}
+                            {% if q[9] == 1 %}
+								<span class="label center label-info">Javascript</span>
+							{% endif %}
+                            {% if q[10] == 1 %}
+								<span class="label center label-info">Python</span>
+							{% endif %}
+                            {% if q[11] == 1 %}
+								<span class="label center label-info">Visual Basic</span>
+							{% endif %}
+                            {% if q[12] == 1 %}
+								<span class="label center label-info">Bash</span>
+							{% endif %}
+                            {% if q[13] == 1 %}
+								<span class="label center label-info">Java</span>
+							{% endif %}
+                            {% if q[14] == 1 %}
+								<span class="label center label-info">Android</span>
+							{% endif %}
+                            {% if q[15] == 1 %}
+								<span class="label center label-info">Unity</span>
+							{% endif %}
                         </h6>
                         <br>
-                        <p class="text-left">Posted on May 4, 2013 at 14:00 WIB</p>
+                        <p class="text-left">Posted on {{ q[4].strftime("%A, %d. %B %Y %I:%M%p") }}</p>
                     </p>
                     
                 </div>
@@ -227,100 +257,9 @@
               <!-- </div> -->
             </div>
           </div>
-          <div class="card hoverable">
-            <div class="col-md-12 panel">
-              <!-- <div class="col-md-12"> -->
-                <div class="col-md-9 container-fluid">
-                    <p class="lead">
-                        <a href="index.html">Judul Pertanyaan (Pertanyaan Inti)</a>
-                        <br>
-                        <h6 class="text-left">Tags: 
-                          <span class="label center label-info">C</span>
-                          <span class="label center label-info">C++</span>
-                          <span class="label center label-info">PHP</span>
-                          <span class="label center label-info">HTML</span>
-                        </h6>
-                        <br>
-                        <p class="text-left">Posted on May 4, 2013 at 14:00 WIB</p>
-                    </p>
-                    
-                </div>
-                <div class="col-md-2 ">
-                    <h6 class="text-left">Votes </h6>
-                    <h6 class="text-left">Answers </h6>
-                    <h6 class="text-left">Views </h6>
-                </div>
-                <div class="col-md-1">
-                    <h6><span class="label right label-default">100</span></h6>
-                    <h6><span class="label right label-success">10</span></h6>
-                    <h6><span class="label right label-danger">250</span></h6>
-                </div>
-              <!-- </div> -->
-            </div>
-          </div>
-          <div class="card hoverable">
-            <div class="col-md-12 panel">
-              <!-- <div class="col-md-12"> -->
-                <div class="col-md-9 container-fluid">
-                    <p class="lead">
-                        <a href="index.html">Judul Pertanyaan (Pertanyaan Inti)</a>
-                        <br>
-                        <h6 class="text-left">Tags: 
-                          <span class="label center label-info">C</span>
-                          <span class="label center label-info">C++</span>
-                          <span class="label center label-info">PHP</span>
-                          <span class="label center label-info">HTML</span>
-                        </h6>
-                        <br>
-                        <p class="text-left">Posted on May 4, 2013 at 14:00 WIB</p>
-                    </p>
-                    
-                </div>
-                <div class="col-md-2 ">
-                    <h6 class="text-left">Votes </h6>
-                    <h6 class="text-left">Answers </h6>
-                    <h6 class="text-left">Views </h6>
-                </div>
-                <div class="col-md-1">
-                    <h6><span class="label right label-default">100</span></h6>
-                    <h6><span class="label right label-success">10</span></h6>
-                    <h6><span class="label right label-danger">250</span></h6>
-                </div>
-              <!-- </div> -->
-            </div>
-          </div>
-          <div class="card hoverable">
-            <div class="col-md-12 panel">
-              <!-- <div class="col-md-12"> -->
-                <div class="col-md-9 container-fluid">
-                    <p class="lead">
-                        <a href="index.html">Judul Pertanyaan (Pertanyaan Inti)</a>
-                        <br>
-                        <h6 class="text-left">Tags: 
-                          <span class="label center label-info">C</span>
-                          <span class="label center label-info">C++</span>
-                          <span class="label center label-info">PHP</span>
-                          <span class="label center label-info">HTML</span>
-                        </h6>
-                        <br>
-                        <p class="text-left">Posted on May 4, 2013 at 14:00 WIB</p>
-                    </p>
-                    
-                </div>
-                <div class="col-md-2 ">
-                    <h6 class="text-left">Votes </h6>
-                    <h6 class="text-left">Answers </h6>
-                    <h6 class="text-left">Views </h6>
-                </div>
-                <div class="col-md-1">
-                    <h6><span class="label right label-default">100</span></h6>
-                    <h6><span class="label right label-success">10</span></h6>
-                    <h6><span class="label right label-danger">250</span></h6>
-                </div>
-              <!-- </div> -->
-            </div>
-          </div>
-          <ul class="pagination pag-circle text-center">
+		  {% endfor %}
+          
+          <!--<ul class="pagination pag-circle text-center">
             <li><a href="#!"><i class="material-icons">chevron_left</i></a></li>
             <li class="active"><a href="#">1</a></li>
             <li><a href="#">2</a></li>
@@ -328,7 +267,7 @@
             <li><a href="#">4</a></li>
             <li><a href="#">5</a></li>
             <li><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-          </ul> 
+          </ul>-->
       </div>
   <!-- /.row -->
   </div>

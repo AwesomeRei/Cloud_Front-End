@@ -31,7 +31,7 @@ def index():
             return redirect(url_for('user_free'))
         
     cur.execute("SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
-                FROM question q, tags t where q.id_question=t.id_question ORDER BY q.id_question DESC LIMIT 5")
+                FROM question q, tags t where q.id_question=t.id_question ORDER BY q.tgl_question DESC LIMIT 5")
     passingData = []
     passingData.append(cur.fetchall())
     passingData.append('data')
@@ -265,9 +265,15 @@ def user_free():
                     FROM user \
                     WHERE id_user = %s", ([id_user], [id_user], [id_user]))
         profil = cur.fetchone()
+        cur.execute("SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, \
+                    t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, \
+                    t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
+                    FROM question q, tags t where q.id_question=t.id_question AND q.id_user = %s ORDER BY q.tgl_question DESC", [id_user])
+        question = cur.fetchall()
         data = []
         data.append(error)
         data.append(profil)
+        data.append(question)
         return render_template('dashboard_free.html', data=data)
     return redirect(url_for('index'))
 
@@ -422,6 +428,28 @@ def question(id):
         data.append(jawaban)
         if(data):
             return render_template('question.html', data=data)
+
+@app.route('/free_question/<id>', methods=['GET','POST'])
+def free_question(id):
+    if 'username' not in session:
+        return redirect(url_for('index'))
+    if request.method == 'GET' :
+        cur.execute("SELECT q.*, t.* \
+                    FROM question q, tags t \
+                    WHERE q.id_question=t.id_question AND q.id_question = %s", [id])
+        pertanyaan = cur.fetchone()
+        cur.execute("SELECT j.*, u.* \
+                    FROM jawaban j, USER u \
+                    WHERE  j.id_user=u.id_user AND j.id_question = %s order by j.rating_jawaban desc",[id] )
+        jawaban = cur.fetchall()
+        cur.execute("SELECT id_user, username FROM user WHERE username = %s", [session['username']])
+        profil = cur.fetchone()
+        data = []
+        data.append(pertanyaan)
+        data.append(jawaban)
+        data.append(profil)
+        if(data):
+            return render_template('question_free.html', data=data)
 
 #app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 app.secret_key = 'awankinton123'

@@ -42,7 +42,7 @@
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="{{ url_for('signup') }}" class="waves-effect waves-light">Sign Up / Sign In<span class="sr-only">(current)</span></a>
+          <li><a href="{{ url_for('signup') }}" class="waves-effect waves-light">Sign In / Sign Up<span class="sr-only">(current)</span></a>
           </li>
           <!--<li><a href="#products" class="waves-effect waves-light" data-toggle="modal" data-target="#modalLogin">Log In <span class="sr-only">(current)</span></a>
           </li>-->
@@ -347,7 +347,7 @@
               </div>
               <div class="modal-body" style="padding:40px 50px;">
                   <div class="row">
-                      <form class="col-md-12" action="/signup/login" method="POST">
+                      <form class="col-md-12" action="{{ url_for('login') }}" method="POST">
                           <div class="row">
                               <div class="input-field">
                                   <i class="material-icons prefix">username</i>
@@ -389,10 +389,10 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}js/bootstrap.min.js"></script>
 
     <!-- Material Design Bootstrap -->
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}js/mdb.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/mdb.js') }}js/mdb.js"></script>
 
 
 </body>

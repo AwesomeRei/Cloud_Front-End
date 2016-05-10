@@ -13,7 +13,7 @@ app.config['PATH'] = 'foto/'
 # These are the extension that we are accepting to be uploaded
 app.config['ALLOWED_EXTENSIONS'] = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'PNG', 'JPG', 'JPEG', 'GIF'])
 
-db = MySQLdb.connect(host="localhost", user="root", passwd="", db="tcoverflow")
+db = MySQLdb.connect(host="188.166.217.127", user="remote", passwd="password", db="tcoverflow")
 cur = db.cursor()
 
 def allowed_file(filename):
@@ -551,7 +551,7 @@ def question(id):
                     WHERE q.id_question=t.id_question AND q.id_question = %s", [id])
         pertanyaan = cur.fetchone()
         cur.execute("SELECT j.*, u.* \
-                    FROM jawaban j, USER u \
+                    FROM jawaban j, user u \
                     WHERE  j.id_user=u.id_user AND j.id_question = %s order by j.rating_jawaban desc",[id] )
         jawaban = cur.fetchall()
         data = []
@@ -570,7 +570,7 @@ def free_question(id):
                     WHERE q.id_question=t.id_question AND q.id_question = %s", [id])
         pertanyaan = cur.fetchone()
         cur.execute("SELECT j.*, u.* \
-                    FROM jawaban j, USER u \
+                    FROM jawaban j, user u \
                     WHERE  j.id_user=u.id_user AND j.id_question = %s order by j.rating_jawaban desc",[id] )
         jawaban = cur.fetchall()
         cur.execute("SELECT id_user, username FROM user WHERE username = %s", [session['username']])
@@ -592,7 +592,7 @@ def premium_question(id):
                     WHERE q.id_question=t.id_question AND q.id_question = %s", [id])
         pertanyaan = cur.fetchone()
         cur.execute("SELECT j.*, u.* \
-                    FROM jawaban j, USER u \
+                    FROM jawaban j, user u \
                     WHERE  j.id_user=u.id_user AND j.id_question = %s order by j.rating_jawaban desc",[id] )
         jawaban = cur.fetchall()
         cur.execute("SELECT id_user, username FROM user WHERE username = %s", [session['username']])
@@ -608,4 +608,4 @@ def premium_question(id):
 app.secret_key = 'awankinton123'
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='10.151.43.213',debug=True)

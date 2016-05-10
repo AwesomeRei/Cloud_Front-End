@@ -67,7 +67,6 @@ def login():
 
 @app.route('/daftar', methods=['GET', 'POST'])
 def daftar():
-    print signup
     error = None
     if 'username' in session:
         return redirect(url_for('index'))
@@ -103,7 +102,6 @@ def daftar():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    print signup
     error = None
     if 'username' in session:
         return redirect(url_for('index'))
@@ -194,6 +192,8 @@ def anon_answer(id):
 
 @app.route('/free_answer/<id>', methods=['GET', 'POST'])
 def free_answer(id):
+    if 'username' not in session:
+        return redirect(url_for('index'))
     if request.method == 'POST':
         isi_jawaban = request.form['isi_jawaban']
         cur.execute("SELECT id_user FROM user WHERE username = %s", [session['username']])
@@ -204,6 +204,8 @@ def free_answer(id):
 
 @app.route('/premium_answer/<id>', methods=['GET', 'POST'])
 def premium_answer(id):
+    if 'username' not in session:
+        return redirect(url_for('index'))
     if request.method == 'POST':
         isi_jawaban = request.form['isi_jawaban']
         cur.execute("SELECT id_user FROM user WHERE username = %s", [session['username']])
@@ -215,6 +217,8 @@ def premium_answer(id):
 @app.route('/ask_free', methods=['GET', 'POST'])
 def ask_free():
     error = None
+    if 'username' not in session:
+        return redirect(url_for('index'))
     if request.method == 'POST':
         cur.execute("SELECT id_user FROM user WHERE username = %s", [session['username']])
         id_user = cur.fetchone()
@@ -279,6 +283,8 @@ def ask_free():
 @app.route('/ask_premium', methods=['GET', 'POST'])
 def ask_premium():
     error = None
+    if 'username' not in session:
+        return redirect(url_for('index'))
     if request.method == 'POST':
         cur.execute("SELECT id_user FROM user WHERE username = %s", [session['username']])
         id_user = cur.fetchone()
@@ -531,6 +537,8 @@ def logout():
 
 @app.route('/question/<id>', methods=['GET','POST'])
 def question(id):
+    if 'username' in session:
+        return redirect(url_for('index'))
     if request.method == 'GET' :
         cur.execute("SELECT q.*, t.*, (SELECT COUNT(j.id_question) FROM jawaban j WHERE j.id_question=q.id_question) \
                     FROM question q, tags t \

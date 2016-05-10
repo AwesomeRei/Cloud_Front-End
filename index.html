@@ -29,6 +29,9 @@
 
     <!-- Custom CSS -->
     <link href="css/custom.css" rel="stylesheet">
+
+     <script src="dist/sweetalert.js"></script>
+    <link rel="stylesheet" href="dist/sweetalert.css">
     <style type="text/css">
     .carousel-caption{
       margin-bottom: 0em;
@@ -113,10 +116,15 @@
           <div data-animation="animated fadeInRightBig">
             <div class = "row">
                 <form class="col-md-12">
+                    <h5>FEEL FREE TO ASK</h5>
                     <div class="rows">
-                        <div class="input-field col-md-12">
-                            <textarea id="ask" value="Type your Question Here" class="materialize-textarea"></textarea>
-                            <label for="ask" >ASK QUESTION</label>
+                        <div class="input-field col-md-3">
+                            <input id="title" type="text">
+                            <label for="title">TITLE</label>
+                        </div>
+                        <div class="input-field col-md-9">
+                            <input id="ask" type="text"></input>
+                            <label for="ask">QUESTION</label>
                         </div>
                     </div>
                     <div class="rows">
@@ -424,6 +432,8 @@
 
     <hr>
 
+<button class="btn btn-success sweet-12" onclick="_gaq.push(['_trackEvent', 'example, 'try', 'Success']);">Success</button>
+
 </div>
 
   <!-- Modal -->
@@ -484,6 +494,19 @@
     <!-- Material Design Bootstrap -->
     <script type="text/javascript" src="js/mdb.js"></script>
 
+
+    <!-- buat success daftar -->
+    <script type="text/javascript">
+     document.querySelector('.sweet-12').onclick = function(){
+        swal({
+          title: "Success",
+          text: "Sign up succesful",
+          type: "success",
+          confirmButtonClass: 'btn-success',
+          confirmButtonText: 'OK'
+        });
+      };
+    </script>
 
 </body>
 

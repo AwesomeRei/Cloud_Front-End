@@ -466,17 +466,20 @@ def update_profile():
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 #uploaded_file(filename)
-            cur.execute("UPDATE user SET email = %s, foto_user = %s WHERE username = %s", \
-                        ([email_form], [files], [session['username']]))
-        else:
+            cur.execute("UPDATE user SET foto_user = %s WHERE username = %s", \
+                        ([files], [session['username']]))
+        if email_form:
             cur.execute("UPDATE user SET email = %s WHERE username = %s", \
                         ([email_form], [session['username']]))
         error = "Profil berhasil di update!"
         db.commit()
+        data = []
+        data.append(error)
+        data.append(profil)
         if status == 1:
-            return redirect(url_for('setting_premium'))
+            return render_template('setting_premium.html', data=data)
         else:
-            return redirect(url_for('setting_free'))
+            return render_template('setting_free.html', data=data)
     return redirect(url_for('index'))
 
 @app.route('/update_password', methods=['GET','POST'])
@@ -505,10 +508,13 @@ def update_password():
         else:
             error = "Password baru yang Anda masukkan tidak sama!"
         
+        data = []
+        data.append(error)
+        data.append(profil)
         if status == 1:
-            return redirect(url_for('setting_premium'))
+            return render_template('setting_premium.html', data=data)
         else:
-            return redirect(url_for('setting_free'))
+            return render_template('setting_free.html', data=data)
     return redirect(url_for('index'))
 
 """

@@ -78,6 +78,9 @@
 <div class="container">
     <h1 class="page-header text-center">
         <small>Settings </small>
+		{% if data[0] %}
+			<p class=error><strong>Status:</strong> {{ data[0] }}
+		{% endif %}
     </h1>
     <div class="row">
       <!-- Blog Sidebar Widgets Column -->
@@ -113,9 +116,6 @@
       <!-- Edit Profile -->
       <div class="col-md-8">
       <h4>Edit Profile</h4>
-	  {% if data[0] %}
-		<p class=error><strong>Status:</strong> {{ data[0] }}
-	  {% endif %}
       <hr>
       <div class="card-panel col-md-6 hoverable">
         <div class="row">

@@ -101,30 +101,33 @@
 								<span class="label center label-info">C++</span>
 							{% endif %}
 							{% if data[0][9] == 1 %}
+								<span class="label center label-info">C#</span>
+							{% endif %}
+							{% if data[0][10] == 1 %}
 								<span class="label center label-info">HTML</span>
 							{% endif %}
-                            {% if data[0][10] == 1 %}
+                            {% if data[0][11] == 1 %}
 								<span class="label center label-info">PHP</span>
 							{% endif %}
-                            {% if data[0][11] == 1 %}
+                            {% if data[0][12] == 1 %}
 								<span class="label center label-info">Javascript</span>
 							{% endif %}
-                            {% if data[0][12] == 1 %}
+                            {% if data[0][13] == 1 %}
 								<span class="label center label-info">Python</span>
 							{% endif %}
-                            {% if data[0][13] == 1 %}
+                            {% if data[0][14] == 1 %}
 								<span class="label center label-info">Visual Basic</span>
 							{% endif %}
-                            {% if data[0][14] == 1 %}
+                            {% if data[0][15] == 1 %}
 								<span class="label center label-info">Bash</span>
 							{% endif %}
-                            {% if data[0][15] == 1 %}
+                            {% if data[0][16] == 1 %}
 								<span class="label center label-info">Java</span>
 							{% endif %}
-                            {% if data[0][16] == 1 %}
+                            {% if data[0][17] == 1 %}
 								<span class="label center label-info">Android</span>
 							{% endif %}
-                            {% if data[0][17] == 1 %}
+                            {% if data[0][18] == 1 %}
 								<span class="label center label-info">Unity</span>
 							{% endif %}
                         </h6>
@@ -133,15 +136,16 @@
                   </div>
                   <div class="col-md-2 ">
                     <br>
-                      <h6 class="text-left">Votes </h6>
+					  <!--<h6 class="text-left">Votes </h6>-->
                       <h6 class="text-left">Answers </h6>
-                      <h6 class="text-left">Views </h6>
+                      <!--<h6 class="text-left">Views </h6>-->
                   </div>
                   <div class="col-md-1">
                     <br>
-                      <h6><span class="label right label-default">100</span></h6>
-                      <h6><span class="label right label-success">10</span></h6>
-                      <h6><span class="label right label-danger">250</span></h6>
+                      <!--<h6><span class="label right label-default">100</span></h6>-->
+                      <h6><span class="label right label-success">{{ data[0][19] }}</span></h6>
+                      <!--<h6><span class="label right label-danger">250</span></h6>-->
+                  </div>
                   </div>
                 </div>
                 <div class="col-md-12">

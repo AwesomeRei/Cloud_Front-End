@@ -30,8 +30,15 @@ def index():
         else:
             return redirect(url_for('user_free'))
         
-    cur.execute("SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
-                FROM question q, tags t where q.id_question=t.id_question ORDER BY q.tgl_question DESC LIMIT 5")
+    #cur.execute("SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
+    #            FROM question q, tags t where q.id_question=t.id_question ORDER BY q.tgl_question DESC LIMIT 5")
+
+    cur.execute("SELECT temp.*, (SELECT COUNT(j.id_question) FROM jawaban j WHERE j.id_question = temp.id_question) \
+                FROM (SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, t.CPP_tags, \
+                t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, t.Bash_tags, t.Java_tags, \
+                t.Android_tags, t.Unity_tags \
+                FROM question q, tags t WHERE q.id_question=t.id_question \
+                ORDER BY q.tgl_question DESC LIMIT 5) AS temp")
     passingData = []
     passingData.append(cur.fetchall())
     passingData.append('data')
@@ -140,8 +147,16 @@ def free_list():
     if 'username' not in session:
         return redirect(url_for('index'))
     if request.method == 'GET' :
+        """
         cur.execute("SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
                     FROM question q, tags t where q.id_question=t.id_question ORDER BY q.tgl_question DESC")
+                    """
+        cur.execute("SELECT temp.*, (SELECT COUNT(j.id_question) FROM jawaban j WHERE j.id_question = temp.id_question) \
+                    FROM (SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, t.CPP_tags, \
+                    t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, t.Bash_tags, t.Java_tags, \
+                    t.Android_tags, t.Unity_tags \
+                    FROM question q, tags t WHERE q.id_question=t.id_question \
+                    ORDER BY q.tgl_question DESC) AS temp")
         passingData = []
         passingData.append(cur.fetchall())
         passingData.append('data')
@@ -152,8 +167,16 @@ def premium_list():
     if 'username' not in session:
         return redirect(url_for('index'))
     if request.method == 'GET' :
+        """
         cur.execute("SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
                     FROM question q, tags t where q.id_question=t.id_question ORDER BY q.tgl_question DESC")
+                    """
+        cur.execute("SELECT temp.*, (SELECT COUNT(j.id_question) FROM jawaban j WHERE j.id_question = temp.id_question) \
+                    FROM (SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, t.CPP_tags, \
+                    t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, t.Bash_tags, t.Java_tags, \
+                    t.Android_tags, t.Unity_tags \
+                    FROM question q, tags t WHERE q.id_question=t.id_question \
+                    ORDER BY q.tgl_question DESC) AS temp")
         passingData = []
         passingData.append(cur.fetchall())
         passingData.append('data')
@@ -233,10 +256,17 @@ def ask_free():
                     FROM user \
                     WHERE id_user = %s", ([id_user], [id_user], [id_user]))
         profil = cur.fetchone()
+        """
         cur.execute("SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, \
                     t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, \
                     t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
                     FROM question q, tags t where q.id_question=t.id_question AND q.id_user = %s ORDER BY q.tgl_question DESC", [id_user])
+                    """
+        cur.execute("SELECT temp.*, (SELECT COUNT(j.id_question) FROM jawaban j WHERE j.id_question = temp.id_question) \
+                    FROM (SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, \
+                    t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, \
+                    t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
+                    FROM question q, tags t where q.id_question=t.id_question AND q.id_user = %s ORDER BY q.tgl_question DESC) AS temp", [id_user])
         question = cur.fetchall()
         data = []
         data.append(error)
@@ -296,10 +326,17 @@ def ask_premium():
                     FROM user \
                     WHERE id_user = %s", ([id_user], [id_user], [id_user]))
         profil = cur.fetchone()
+        """
         cur.execute("SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, \
                     t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, \
                     t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
                     FROM question q, tags t where q.id_question=t.id_question AND q.id_user = %s ORDER BY q.tgl_question DESC", [id_user])
+                    """
+        cur.execute("SELECT temp.*, (SELECT COUNT(j.id_question) FROM jawaban j WHERE j.id_question = temp.id_question) \
+                    FROM (SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, \
+                    t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, \
+                    t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
+                    FROM question q, tags t where q.id_question=t.id_question AND q.id_user = %s ORDER BY q.tgl_question DESC) AS temp", [id_user])
         question = cur.fetchall()
         data = []
         data.append(error)
@@ -325,10 +362,17 @@ def user_free():
                     FROM user \
                     WHERE id_user = %s", ([id_user], [id_user], [id_user]))
         profil = cur.fetchone()
+        """
         cur.execute("SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, \
                     t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, \
                     t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
                     FROM question q, tags t where q.id_question=t.id_question AND q.id_user = %s ORDER BY q.tgl_question DESC", [id_user])
+                    """
+        cur.execute("SELECT temp.*, (SELECT COUNT(j.id_question) FROM jawaban j WHERE j.id_question = temp.id_question) \
+                    FROM (SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, \
+                    t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, \
+                    t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
+                    FROM question q, tags t where q.id_question=t.id_question AND q.id_user = %s ORDER BY q.tgl_question DESC) AS temp", [id_user])
         question = cur.fetchall()
         data = []
         data.append(error)
@@ -349,10 +393,17 @@ def user_premium():
                     FROM user \
                     WHERE id_user = %s", ([id_user], [id_user], [id_user]))
         profil = cur.fetchone()
+        """
         cur.execute("SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, \
                     t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, \
                     t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
                     FROM question q, tags t where q.id_question=t.id_question AND q.id_user = %s ORDER BY q.tgl_question DESC", [id_user])
+                    """
+        cur.execute("SELECT temp.*, (SELECT COUNT(j.id_question) FROM jawaban j WHERE j.id_question = temp.id_question) \
+                    FROM (SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, \
+                    t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, \
+                    t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
+                    FROM question q, tags t where q.id_question=t.id_question AND q.id_user = %s ORDER BY q.tgl_question DESC) AS temp", [id_user])
         question = cur.fetchall()
         data = []
         data.append(error)
@@ -481,7 +532,7 @@ def logout():
 @app.route('/question/<id>', methods=['GET','POST'])
 def question(id):
     if request.method == 'GET' :
-        cur.execute("SELECT q.*, t.* \
+        cur.execute("SELECT q.*, t.*, (SELECT COUNT(j.id_question) FROM jawaban j WHERE j.id_question=q.id_question) \
                     FROM question q, tags t \
                     WHERE q.id_question=t.id_question AND q.id_question = %s", [id])
         pertanyaan = cur.fetchone()
@@ -500,7 +551,7 @@ def free_question(id):
     if 'username' not in session:
         return redirect(url_for('index'))
     if request.method == 'GET' :
-        cur.execute("SELECT q.*, t.* \
+        cur.execute("SELECT q.*, t.*, (SELECT COUNT(j.id_question) FROM jawaban j WHERE j.id_question=q.id_question) \
                     FROM question q, tags t \
                     WHERE q.id_question=t.id_question AND q.id_question = %s", [id])
         pertanyaan = cur.fetchone()
@@ -522,7 +573,7 @@ def premium_question(id):
     if 'username' not in session:
         return redirect(url_for('index'))
     if request.method == 'GET' :
-        cur.execute("SELECT q.*, t.* \
+        cur.execute("SELECT q.*, t.*, (SELECT COUNT(j.id_question) FROM jawaban j WHERE j.id_question=q.id_question) \
                     FROM question q, tags t \
                     WHERE q.id_question=t.id_question AND q.id_question = %s", [id])
         pertanyaan = cur.fetchone()

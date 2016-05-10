@@ -174,7 +174,7 @@
         <!-- Category widget -->
         <h4>Categories</h4>
         <div class="collection">
-            <a href="#!" class="collection-item active">C Programming</a>
+            <a href="#!" class="collection-item">C Programming</a>
             <a href="#!" class="collection-item">C++ Programming</a>
             <a href="#!" class="collection-item">C# Programming</a>
             <a href="#!" class="collection-item">HTML Programming</a>
@@ -205,37 +205,40 @@
                         <a href="/free_question/{{ q[0] }}">{{ q[3] }}</a>
                         <br>
                         <h6 class="text-left">Tags: 
-                          {% if q[5] == 1 %}
+							{% if q[5] == 1 %}
 								<span class="label center label-info">C</span>
 							{% endif %}
 							{% if q[6] == 1 %}
 								<span class="label center label-info">C++</span>
 							{% endif %}
 							{% if q[7] == 1 %}
+								<span class="label center label-info">C#</span>
+							{% endif %}
+							{% if q[8] == 1 %}
 								<span class="label center label-info">HTML</span>
 							{% endif %}
-                            {% if q[8] == 1 %}
+                            {% if q[9] == 1 %}
 								<span class="label center label-info">PHP</span>
 							{% endif %}
-                            {% if q[9] == 1 %}
+                            {% if q[10] == 1 %}
 								<span class="label center label-info">Javascript</span>
 							{% endif %}
-                            {% if q[10] == 1 %}
+                            {% if q[11] == 1 %}
 								<span class="label center label-info">Python</span>
 							{% endif %}
-                            {% if q[11] == 1 %}
+                            {% if q[12] == 1 %}
 								<span class="label center label-info">Visual Basic</span>
 							{% endif %}
-                            {% if q[12] == 1 %}
+                            {% if q[13] == 1 %}
 								<span class="label center label-info">Bash</span>
 							{% endif %}
-                            {% if q[13] == 1 %}
+                            {% if q[14] == 1 %}
 								<span class="label center label-info">Java</span>
 							{% endif %}
-                            {% if q[14] == 1 %}
+                            {% if q[15] == 1 %}
 								<span class="label center label-info">Android</span>
 							{% endif %}
-                            {% if q[15] == 1 %}
+                            {% if q[16] == 1 %}
 								<span class="label center label-info">Unity</span>
 							{% endif %}
                         </h6>
@@ -245,14 +248,14 @@
                     
                 </div>
                 <div class="col-md-2 ">
-                    <h6 class="text-left">Votes </h6>
+                    <!--<h6 class="text-left">Votes </h6>-->
                     <h6 class="text-left">Answers </h6>
-                    <h6 class="text-left">Views </h6>
-                </div>
-                <div class="col-md-1">
-                    <h6><span class="label right label-default">100</span></h6>
-                    <h6><span class="label right label-success">10</span></h6>
-                    <h6><span class="label right label-danger">250</span></h6>
+                    <!--<h6 class="text-left">Views </h6>-->
+                  </div>
+                  <div class="col-md-1">
+                    <!--<h6><span class="label right label-default">100</span></h6>-->
+                    <h6><span class="label right label-success">{{ q[17] }}</span></h6>
+                    <!--<h6><span class="label right label-danger">250</span></h6>-->
                 </div>
               <!-- </div> -->
             </div>

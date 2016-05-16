@@ -124,7 +124,7 @@
                 <p><small>{{ data[1][2] }}</small></p>
               </div>
               <div class="text-center">
-                <button type="button" class="btn btn-warning waves-effect waves-light">Get Premium User</button>
+                <button type="button" class="btn btn-warning waves-effect waves-light" data-toggle="modal" data-target="#get-premium">Get Premium User</button>
               </div>
             </div>
           </div>
@@ -386,6 +386,48 @@
   </div>
 </div>
 <!-- Modals -->
+
+ <!--Modal: get premium user form-->
+    <!-- Modal -->
+    <div class="modal fade" id="get-premium" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title center h4,responsive">Token Validation</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <form class="col-md-12">
+                            <p>Input token which is given by an email from tcoverflow administrator</p>
+                            <br>
+                            <div class="input-field">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="icon_prefix" type="text" class="validate">
+                                <label for="icon_prefix">Username</label>
+                            </div>
+                            <div class="input-field">
+                                <i class="material-icons prefix">vpn_key</i>
+                                <input id="icon_telephone" type="text" class="validate">
+                                <label for="icon_telephone">Token Number</label>
+                            </div>
+                        </form>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-warning waves-effect waves-light">Validate</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">X</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--/.Modal: get premium user form-->
+
+
 
 <!-- Footer -->
 <footer class="page-footer info-color darken-1" if="footer">

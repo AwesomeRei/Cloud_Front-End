@@ -154,7 +154,8 @@
                         <h5> {{ data[0][2] }}</h5>
 						
 						{% if data[0][5] %}
-							<img class="question-image" src="{{ url_for('static', filename=data[0][5]) }}">
+							<!-- <img class="question-image" src="{{ url_for('static', filename=data[0][5]) }}"> -->
+                            <img class="question-image" src="http://10.151.34.33:81/static/{{ data[0][5]) }}">
                         {% endif %}
 						
                         <br>
@@ -233,7 +234,9 @@
                         <div class="card-panel">
                             <div class="row">
                                 <div class="panel margin-answer">
-                                    <img class="user-photo-answer" style="height:50px; width:50px;" src="{{ url_for('static', filename=jawaban[11]) }}" />
+                                    <!-- <img class="user-photo-answer" style="height:50px; width:50px;" src="{{ url_for('static', filename=jawaban[11]) }}" /> -->
+                                    <img class="user-photo-answer" style="height:50px; width:50px;" src="http://10.151.34.33:81/static/{{ jawaban[11]) }}" />
+                                    
                                     <h7>{{ jawaban[7] }}</h7>
                                     <h6>posted on {{ jawaban[5].strftime("%A, %d. %B %Y %I:%M%p") }} </h6>
                                     <hr>

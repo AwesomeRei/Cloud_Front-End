@@ -1,7 +1,6 @@
 from flask import Flask, send_from_directory, session, redirect, url_for, escape, request, render_template, jsonify
 from hashlib import md5
 from base64 import b64encode
-from requests_toolbelt import MultipartEncoder
 import requests
 import MySQLdb
 from werkzeug import secure_filename
@@ -12,16 +11,16 @@ app = Flask(__name__)
 
 DBHOST = '10.151.34.15'
 DBUSER = 'cloud'
-DBPASSWD = 'cloud'
+DBPASSWD = ''
 DBNAME = 'tcoverflow'
 IMAGEUPLOADPATH = 'http://10.151.34.30:5001/'
 GETIMAGEPATH = 'http://10.151.34.30:5001/static/foto/'
 
-WEBHOST = 'localhost'
+WEBHOST = '10.151.43.140'
 WEBPORT = 5000
 
 # This is the path to the upload directory
-app.config['UPLOAD_FOLDER'] = '/var/www/html/cloud/flaskr/static/foto/'
+app.config['UPLOAD_FOLDER'] = 'static/foto/'
 app.config['PATH'] = 'foto/'
 # These are the extension that we are accepting to be uploaded
 app.config['ALLOWED_EXTENSIONS'] = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'PNG', 'JPG', 'JPEG', 'GIF'])
@@ -111,7 +110,8 @@ def daftar():
             if cur.fetchone()[0]:
                 error = "Email sudah digunakan!"
             else:
-                cur.execute("INSERT INTO user(username, email, password, status, foto_user) VALUES('"+username_form+"' ,'"+email_form+"', '"+password_form+"', '"+status_form+"', '"+files+"')")
+                cur.execute("INSERT INTO user(username, email, password, status, foto_user) VALUES(%s ,%s, %s, %s, %s)",
+                            ([username_form], [email_form],[password_form], [status_form], [files]))
                 db.commit()
                 error = "Berhasil Daftar!"
 
@@ -151,10 +151,8 @@ def anon_post():
         android  = request.form['Android_tags']
         unity  = request.form['Unity_tags']
         cur.execute("INSERT INTO tags(C_tags, CPP_tags, CSharp_tags, HTML_tags, PHP_tags, JS_tags, Py_tags, VB_tags, Bash_tags, Java_tags, Android_tags, Unity_tags, id_question) \
-                        VALUES(  " + c + ",  " + cpp + " ,  " + csharp + ",\
-                          " + html + " ,  " + php + " ,  " + js + " ,  " + py + " ,\
-                           " + vb + ",  " + bash + ",  " + java + " ,  " + android + " , \
-                            " + unity + ",  " + id_question + ")")
+                    VALUES(%s ,%s, %s, %s ,%s, %s, %s ,%s, %s, %s ,%s, %s, %s)",
+                    ([c], [cpp], [csharp], [html], [php], [js], [py], [vb], [bash], [java], [android], [unity], [id_question]))
         db.commit()
 
     return redirect(url_for('index'))
@@ -205,7 +203,7 @@ def anon_answer(id):
         return redirect(url_for('index'))
     if request.method == 'POST':
         isi_jawaban = request.form['isi_jawaban']
-        cur.execute("INSERT INTO jawaban(id_question, isi_jawaban, id_user) VALUES( "+id+" , '"+isi_jawaban+"', 0)")
+        cur.execute("INSERT INTO jawaban(id_question, isi_jawaban, id_user) VALUES(%s, %s, 0)", ([id], [isi_jawaban]))
         db.commit()
         return redirect(url_for('question', id=id))
 
@@ -217,7 +215,7 @@ def free_answer(id):
         isi_jawaban = request.form['isi_jawaban']
         cur.execute("SELECT id_user FROM user WHERE username = %s", [session['username']])
         id_user = str(cur.fetchone()[0])
-        cur.execute("INSERT INTO jawaban(id_question, isi_jawaban, id_user) VALUES( "+ id +" , '"+ isi_jawaban +"'  ,"+ id_user +" )" )
+        cur.execute("INSERT INTO jawaban(id_question, isi_jawaban, id_user) VALUES(%s, %s, %s)", ([id], [isi_jawaban], [id_user]))
         db.commit()
         return redirect(url_for('free_question', id=id))
 
@@ -229,7 +227,7 @@ def premium_answer(id):
         isi_jawaban = request.form['isi_jawaban']
         cur.execute("SELECT id_user FROM user WHERE username = %s", [session['username']])
         id_user = str(cur.fetchone()[0])
-        cur.execute("INSERT INTO jawaban(id_question, isi_jawaban, id_user) VALUES( "+id+" , '"+isi_jawaban+"' , "+id_user+")")
+        cur.execute("INSERT INTO jawaban(id_question, isi_jawaban, id_user) VALUES(%s, %s, %s)", ([id], [isi_jawaban], [id_user]))
         db.commit()
         return redirect(url_for('premium_question', id=id))
 
@@ -246,7 +244,7 @@ def ask_free():
         if ( temp >= 1 or temp is None):
             judul_form  = request.form['judul']
             pertanyaan_form = request.form['pertanyaan']
-            cur.execute("INSERT INTO question(id_user, judul, pertanyaan) VALUES(  " + id_user + " , '  " + judul_form + " ', '  " + pertanyaan_form + " ')")
+            cur.execute("INSERT INTO question(id_user, judul, pertanyaan) VALUES(%s ,%s, %s)", ([id_user], [judul_form], [pertanyaan_form]))
             db.commit()
 
             cur.execute("SELECT id_question FROM question ORDER BY id_question DESC LIMIT 1")
@@ -264,10 +262,8 @@ def ask_free():
             android  = request.form['Android_tags']
             unity  = request.form['Unity_tags']
             cur.execute("INSERT INTO tags(C_tags, CPP_tags, CSharp_tags, HTML_tags, PHP_tags, JS_tags, Py_tags, VB_tags, Bash_tags, Java_tags, Android_tags, Unity_tags, id_question) \
-                        VALUES(  " + c + ",  " + cpp + " ,  " + csharp + ",\
-                          " + html + " ,  " + php + " ,  " + js + " ,  " + py + " ,\
-                           " + vb + ",  " + bash + ",  " + java + " ,  " + android + " , \
-                            " + unity + ",  " + id_question + ")")
+                        VALUES(%s ,%s, %s, %s ,%s, %s, %s ,%s, %s, %s ,%s, %s, %s)",
+                        ([c], [cpp], [csharp], [html], [php], [js], [py], [vb], [bash], [java], [android], [unity], [id_question]))
             db.commit()
             error = "Pertanyaan Anda berhasil dimasukkan!"
         else:
@@ -321,9 +317,11 @@ def ask_premium():
                 fileSave = {  'image' : open(os.path.join(app.config['UPLOAD_FOLDER'], filename),'rb'), 'filename' : filename }
                 r = requests.post(IMAGEUPLOADPATH,files=fileSave)
                 #uploaded_file(filename)
-            cur.execute("INSERT INTO question(id_user, judul, pertanyaan, gambar) VALUES("+id_user+" ,'"+judul_form+"', '"+pertanyaan_form+"', '"+files+"')")
+            cur.execute("INSERT INTO question(id_user, judul, pertanyaan, gambar) VALUES(%s ,%s, %s, %s)", \
+                        ([id_user], [judul_form], [pertanyaan_form],[files]))
         else:
-            cur.execute("INSERT INTO question(id_user, judul, pertanyaan) VALUES("+id_user+" ,'"+judul_form+"', '"+pertanyaan_form+")")
+            cur.execute("INSERT INTO question(id_user, judul, pertanyaan) VALUES(%s ,%s, %s)", \
+                        ([id_user], [judul_form], [pertanyaan_form]))
         db.commit()
 
         cur.execute("SELECT id_question FROM question ORDER BY id_question DESC LIMIT 1")
@@ -343,10 +341,8 @@ def ask_premium():
 
 
         cur.execute("INSERT INTO tags(C_tags, CPP_tags, CSharp_tags, HTML_tags, PHP_tags, JS_tags, Py_tags, VB_tags, Bash_tags, Java_tags, Android_tags, Unity_tags, id_question) \
-                        VALUES(  " + c + ",  " + cpp + " ,  " + csharp + ",\
-                          " + html + " ,  " + php + " ,  " + js + " ,  " + py + " ,\
-                           " + vb + ",  " + bash + ",  " + java + " ,  " + android + " , \
-                            " + unity + ",  " + id_question + ")")
+                    VALUES(%s ,%s, %s, %s ,%s, %s, %s ,%s, %s, %s ,%s, %s, %s)",
+                    ([c], [cpp], [csharp], [html], [php], [js], [py], [vb], [bash], [java], [android], [unity], [id_question]))
         db.commit()
         error = "Pertanyaan Anda berhasil dimasukkan!"
 

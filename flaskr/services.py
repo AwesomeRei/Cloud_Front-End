@@ -10,9 +10,9 @@ from pprint import pprint
 
 app = Flask(__name__)
 
-DBHOST = 'localhost'
-DBUSER = 'root'
-DBPASSWD = 'password'
+DBHOST = '10.151.34.15'
+DBUSER = 'cloud'
+DBPASSWD = 'cloud'
 DBNAME = 'tcoverflow'
 IMAGEUPLOADPATH = 'http://10.151.34.30:5001/'
 GETIMAGEPATH = 'http://10.151.34.30:5001/static/foto/'

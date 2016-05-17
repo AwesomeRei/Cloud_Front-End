@@ -14,8 +14,8 @@ DBHOST = 'localhost'
 DBUSER = 'root'
 DBPASSWD = 'password'
 DBNAME = 'tcoverflow'
-IMAGEUPLOADPATH = 'http://localhost:8000/'
-GETIMAGEPATH = 'http://localhost:8000/images/web/'
+IMAGEUPLOADPATH = 'http://10.151.34.30:5001/'
+GETIMAGEPATH = 'http://10.151.34.30:5001/static/foto/'
 
 WEBHOST = 'localhost'
 WEBPORT = 5000
@@ -34,9 +34,9 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in app.config['ALLOWED_EXTENSIONS']
 
-@app.route('/foto/<foto>', methods=['GET'])
+@app.route('/static/foto/<filename>', methods=['GET'])
 def getImg(foto):
-    return GETIMAGEPATH + foto
+    return GETIMAGEPATH + filename
 
 @app.route('/')
 def index():
@@ -111,7 +111,7 @@ def daftar():
             if cur.fetchone()[0]:
                 error = "Email sudah digunakan!"
             else:
-                cur.execute("INSERT INTO user(username, email, password, status, foto_user) VALUES(%s ,%s, %s, %s, %s)", ([username_form], [email_form],[password_form], [status_form], [files]))
+                cur.execute("INSERT INTO user(username, email, password, status, foto_user) VALUES('"+username_form+"' ,'"+email_form+"', '"+password_form+"', '"+status_form+"', '"+files+"')")
                 db.commit()
                 error = "Berhasil Daftar!"
 
@@ -151,8 +151,10 @@ def anon_post():
         android  = request.form['Android_tags']
         unity  = request.form['Unity_tags']
         cur.execute("INSERT INTO tags(C_tags, CPP_tags, CSharp_tags, HTML_tags, PHP_tags, JS_tags, Py_tags, VB_tags, Bash_tags, Java_tags, Android_tags, Unity_tags, id_question) \
-                    VALUES(%s ,%s, %s, %s ,%s, %s, %s ,%s, %s, %s ,%s, %s, %s)",
-                    ([c], [cpp], [csharp], [html], [php], [js], [py], [vb], [bash], [java], [android], [unity], [id_question]))
+                        VALUES(  " + c + ",  " + cpp + " ,  " + csharp + ",\
+                          " + html + " ,  " + php + " ,  " + js + " ,  " + py + " ,\
+                           " + vb + ",  " + bash + ",  " + java + " ,  " + android + " , \
+                            " + unity + ",  " + id_question + ")")
         db.commit()
 
     return redirect(url_for('index'))
@@ -203,7 +205,7 @@ def anon_answer(id):
         return redirect(url_for('index'))
     if request.method == 'POST':
         isi_jawaban = request.form['isi_jawaban']
-        cur.execute("INSERT INTO jawaban(id_question, isi_jawaban, id_user) VALUES(%s, %s, 0)", ([id], [isi_jawaban]))
+        cur.execute("INSERT INTO jawaban(id_question, isi_jawaban, id_user) VALUES( "+id+" , '"+isi_jawaban+"', 0)")
         db.commit()
         return redirect(url_for('question', id=id))
 
@@ -214,8 +216,8 @@ def free_answer(id):
     if request.method == 'POST':
         isi_jawaban = request.form['isi_jawaban']
         cur.execute("SELECT id_user FROM user WHERE username = %s", [session['username']])
-        id_user = cur.fetchone()
-        cur.execute("INSERT INTO jawaban(id_question, isi_jawaban, id_user) VALUES(%s, %s, %s)", ([id], [isi_jawaban], [id_user]))
+        id_user = str(cur.fetchone()[0])
+        cur.execute("INSERT INTO jawaban(id_question, isi_jawaban, id_user) VALUES( "+ id +" , '"+ isi_jawaban +"'  ,"+ id_user +" )" )
         db.commit()
         return redirect(url_for('free_question', id=id))
 
@@ -226,8 +228,8 @@ def premium_answer(id):
     if request.method == 'POST':
         isi_jawaban = request.form['isi_jawaban']
         cur.execute("SELECT id_user FROM user WHERE username = %s", [session['username']])
-        id_user = cur.fetchone()
-        cur.execute("INSERT INTO jawaban(id_question, isi_jawaban, id_user) VALUES(%s, %s, %s)", ([id], [isi_jawaban], [id_user]))
+        id_user = str(cur.fetchone()[0])
+        cur.execute("INSERT INTO jawaban(id_question, isi_jawaban, id_user) VALUES( "+id+" , '"+isi_jawaban+"' , "+id_user+")")
         db.commit()
         return redirect(url_for('premium_question', id=id))
 
@@ -238,19 +240,17 @@ def ask_free():
         return redirect(url_for('index'))
     if request.method == 'POST':
         cur.execute("SELECT id_user FROM user WHERE username = %s", [session['username']])
-        id_user = cur.fetchone()
-        cur.execute("SELECT TIMESTAMPDIFF(DAY, \
-                    (SELECT tgl_question FROM question WHERE id_user = %s ORDER BY tgl_question DESC LIMIT 1), \
-                    CURRENT_TIMESTAMP())", [id_user])
+        id_user = str(cur.fetchone()[0])
+        cur.execute("SELECT TIMESTAMPDIFF(DAY, (SELECT tgl_question FROM question WHERE id_user = " + id_user + " ORDER BY tgl_question DESC LIMIT 1), CURRENT_TIMESTAMP())")
         temp = cur.fetchone()[0]
         if ( temp >= 1 or temp is None):
             judul_form  = request.form['judul']
             pertanyaan_form = request.form['pertanyaan']
-            cur.execute("INSERT INTO question(id_user, judul, pertanyaan) VALUES(%s ,%s, %s)", ([id_user], [judul_form], [pertanyaan_form]))
+            cur.execute("INSERT INTO question(id_user, judul, pertanyaan) VALUES(  " + id_user + " , '  " + judul_form + " ', '  " + pertanyaan_form + " ')")
             db.commit()
 
             cur.execute("SELECT id_question FROM question ORDER BY id_question DESC LIMIT 1")
-            id_question = cur.fetchone()[0]
+            id_question = str(cur.fetchone()[0])
             c  = request.form['C_tags']
             cpp  = request.form['C++_tags']
             csharp  = request.form['C#_tags']
@@ -264,18 +264,20 @@ def ask_free():
             android  = request.form['Android_tags']
             unity  = request.form['Unity_tags']
             cur.execute("INSERT INTO tags(C_tags, CPP_tags, CSharp_tags, HTML_tags, PHP_tags, JS_tags, Py_tags, VB_tags, Bash_tags, Java_tags, Android_tags, Unity_tags, id_question) \
-                        VALUES(%s ,%s, %s, %s ,%s, %s, %s ,%s, %s, %s ,%s, %s, %s)",
-                        ([c], [cpp], [csharp], [html], [php], [js], [py], [vb], [bash], [java], [android], [unity], [id_question]))
+                        VALUES(  " + c + ",  " + cpp + " ,  " + csharp + ",\
+                          " + html + " ,  " + php + " ,  " + js + " ,  " + py + " ,\
+                           " + vb + ",  " + bash + ",  " + java + " ,  " + android + " , \
+                            " + unity + ",  " + id_question + ")")
             db.commit()
             error = "Pertanyaan Anda berhasil dimasukkan!"
         else:
             error = "Free User hanya dapat bertanya sekali sehari!"
 
         cur.execute("SELECT id_user, username, email, status, foto_user, \
-                    (SELECT COUNT(id_jawaban) FROM jawaban WHERE id_user = %s), \
-                    (SELECT COUNT(id_question) FROM question WHERE id_user = %s) \
+                    (SELECT COUNT(id_jawaban) FROM jawaban WHERE id_user =  " + id_user + "), \
+                    (SELECT COUNT(id_question) FROM question WHERE id_user =  " + id_user + ") \
                     FROM user \
-                    WHERE id_user = %s", ([id_user], [id_user], [id_user]))
+                    WHERE id_user = " + id_user)
         profil = cur.fetchone()
         """
         cur.execute("SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, \
@@ -287,7 +289,7 @@ def ask_free():
                     FROM (SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, \
                     t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, \
                     t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
-                    FROM question q, tags t where q.id_question=t.id_question AND q.id_user = %s ORDER BY q.tgl_question DESC) AS temp", [id_user])
+                    FROM question q, tags t where q.id_question=t.id_question AND q.id_user =  " + id_user + " ORDER BY q.tgl_question DESC) AS temp")
         question = cur.fetchall()
         data = []
         data.append(error)
@@ -304,26 +306,28 @@ def ask_premium():
         return redirect(url_for('index'))
     if request.method == 'POST':
         cur.execute("SELECT id_user FROM user WHERE username = %s", [session['username']])
-        id_user = cur.fetchone()
+        id_user = str(cur.fetchone()[0])
 
         file = request.files['file']
         judul_form  = request.form['judul']
         pertanyaan_form = request.form['pertanyaan']
         files = str(os.path.join(app.config['PATH'], secure_filename(file.filename)))
+
         if secure_filename(file.filename) :
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+                fileSave = {  'image' : open(os.path.join(app.config['UPLOAD_FOLDER'], filename),'rb'), 'filename' : filename }
+                r = requests.post(IMAGEUPLOADPATH,files=fileSave)
                 #uploaded_file(filename)
-            cur.execute("INSERT INTO question(id_user, judul, pertanyaan, gambar) VALUES(%s ,%s, %s, %s)", \
-                        ([id_user], [judul_form], [pertanyaan_form],[files]))
+            cur.execute("INSERT INTO question(id_user, judul, pertanyaan, gambar) VALUES("+id_user+" ,'"+judul_form+"', '"+pertanyaan_form+"', '"+files+"')")
         else:
-            cur.execute("INSERT INTO question(id_user, judul, pertanyaan) VALUES(%s ,%s, %s)", \
-                        ([id_user], [judul_form], [pertanyaan_form]))
+            cur.execute("INSERT INTO question(id_user, judul, pertanyaan) VALUES("+id_user+" ,'"+judul_form+"', '"+pertanyaan_form+")")
         db.commit()
 
         cur.execute("SELECT id_question FROM question ORDER BY id_question DESC LIMIT 1")
-        id_question = cur.fetchone()[0]
+        id_question = str(cur.fetchone()[0])
         c  = request.form['C_tags']
         cpp  = request.form['C++_tags']
         csharp  = request.form['C#_tags']
@@ -337,34 +341,31 @@ def ask_premium():
         android  = request.form['Android_tags']
         unity  = request.form['Unity_tags']
 
+
         cur.execute("INSERT INTO tags(C_tags, CPP_tags, CSharp_tags, HTML_tags, PHP_tags, JS_tags, Py_tags, VB_tags, Bash_tags, Java_tags, Android_tags, Unity_tags, id_question) \
-                    VALUES(%s ,%s, %s, %s ,%s, %s, %s ,%s, %s, %s ,%s, %s, %s)",
-                    ([c], [cpp], [csharp], [html], [php], [js], [py], [vb], [bash], [java], [android], [unity], [id_question]))
+                        VALUES(  " + c + ",  " + cpp + " ,  " + csharp + ",\
+                          " + html + " ,  " + php + " ,  " + js + " ,  " + py + " ,\
+                           " + vb + ",  " + bash + ",  " + java + " ,  " + android + " , \
+                            " + unity + ",  " + id_question + ")")
         db.commit()
         error = "Pertanyaan Anda berhasil dimasukkan!"
 
         cur.execute("SELECT id_user, username, email, status, foto_user, \
-                    (SELECT COUNT(id_jawaban) FROM jawaban WHERE id_user = %s), \
-                    (SELECT COUNT(id_question) FROM question WHERE id_user = %s) \
-                    FROM user \
-                    WHERE id_user = %s", ([id_user], [id_user], [id_user]))
+                    (SELECT COUNT(id_jawaban) FROM jawaban WHERE id_user = "+ id_user+"), \
+                    (SELECT COUNT(id_question) FROM question WHERE id_user = "+ id_user+") \
+                    FROM user WHERE id_user = " +  id_user)
         profil = cur.fetchone()
-        """
-        cur.execute("SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, \
-                    t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, \
-                    t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
-                    FROM question q, tags t where q.id_question=t.id_question AND q.id_user = %s ORDER BY q.tgl_question DESC", [id_user])
-                    """
         cur.execute("SELECT temp.*, (SELECT COUNT(j.id_question) FROM jawaban j WHERE j.id_question = temp.id_question) \
                     FROM (SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, \
                     t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, \
                     t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
-                    FROM question q, tags t where q.id_question=t.id_question AND q.id_user = %s ORDER BY q.tgl_question DESC) AS temp", [id_user])
+                    FROM question q, tags t where q.id_question=t.id_question AND q.id_user = "+id_user+" ORDER BY q.tgl_question DESC) AS temp")
         question = cur.fetchall()
         data = []
         data.append(error)
         data.append(profil)
         data.append(question)
+        data.append(GETIMAGEPATH)
         return render_template('dashboard_premium.html', data=data)
 
     return redirect(url_for('index'))
@@ -379,12 +380,8 @@ def user_free():
     error = None
     if 'username' in session:
         cur.execute("SELECT id_user FROM user WHERE username = %s", [session['username']])
-        id_user = cur.fetchone()
-        cur.execute("SELECT id_user, username, email, status, foto_user, \
-                    (SELECT COUNT(id_jawaban) FROM jawaban WHERE id_user = %s), \
-                    (SELECT COUNT(id_question) FROM question WHERE id_user = %s) \
-                     FROM user \
-                    WHERE id_user = %s", ([id_user], [id_user], [id_user]))
+        id_user = str(cur.fetchone()[0])
+        cur.execute("SELECT id_user, username, email, status, foto_user, (SELECT COUNT(id_jawaban) FROM jawaban WHERE id_user =" + id_user +") , (SELECT COUNT(id_question) FROM question WHERE id_user = " + id_user +") FROM user WHERE id_user = " + id_user)
         profil = cur.fetchone()
         """
         cur.execute("SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, \
@@ -392,11 +389,7 @@ def user_free():
                     t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
                     FROM question q, tags t where q.id_question=t.id_question AND q.id_user = %s ORDER BY q.tgl_question DESC", [id_user])
                     """
-        cur.execute("SELECT temp.*, (SELECT COUNT(j.id_question) FROM jawaban j WHERE j.id_question = temp.id_question) \
-                    FROM (SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, \
-                    t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, \
-                    t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
-                    FROM question q, tags t where q.id_question=t.id_question AND q.id_user = %s ORDER BY q.tgl_question DESC) AS temp", [id_user])
+        cur.execute("SELECT temp.*, (SELECT COUNT(j.id_question) FROM jawaban j WHERE j.id_question = temp.id_question) FROM (SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags FROM question q, tags t where q.id_question=t.id_question AND q.id_user = %s ORDER BY q.tgl_question DESC) AS temp", [id_user])
         question = cur.fetchall()
         data = []
         data.append(error)
@@ -410,12 +403,12 @@ def user_premium():
     error = None
     if 'username' in session:
         cur.execute("SELECT id_user FROM user WHERE username = %s", [session['username']])
-        id_user = cur.fetchone()
+        id_user = str(cur.fetchone()[0])
         cur.execute("SELECT id_user, username, email, status, foto_user, \
-                    (SELECT COUNT(id_jawaban) FROM jawaban WHERE id_user = %s), \
-                    (SELECT COUNT(id_question) FROM question WHERE id_user = %s) \
+                    (SELECT COUNT(id_jawaban) FROM jawaban WHERE id_user = "+id_user+"), \
+                    (SELECT COUNT(id_question) FROM question WHERE id_user = "+id_user+") \
                     FROM user \
-                    WHERE id_user = %s", ([id_user], [id_user], [id_user]))
+                    WHERE id_user = "+id_user)
         profil = cur.fetchone()
         """
         cur.execute("SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, \
@@ -427,7 +420,7 @@ def user_premium():
                     FROM (SELECT q.id_question, q.id_user, q.pertanyaan, q.judul, q.tgl_question, t.C_tags, \
                     t.CPP_tags, t.CSharp_tags, t.HTML_tags, t.PHP_tags, t.JS_tags, t.Py_tags, t.VB_tags, \
                     t.Bash_tags, t.Java_tags, t.Android_tags, t.Unity_tags \
-                    FROM question q, tags t where q.id_question=t.id_question AND q.id_user = %s ORDER BY q.tgl_question DESC) AS temp", [id_user])
+                    FROM question q, tags t where q.id_question=t.id_question AND q.id_user = "+id_user+" ORDER BY q.tgl_question DESC) AS temp")
         question = cur.fetchall()
         data = []
         data.append(error)

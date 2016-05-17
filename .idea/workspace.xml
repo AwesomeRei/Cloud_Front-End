@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ff973785-cba2-4c2d-b3c1-9f3757713ed2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flaskr/services.py" afterPath="$PROJECT_DIR$/flaskr/services.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flaskr/templates/dashboard_premium.html" afterPath="$PROJECT_DIR$/flaskr/templates/dashboard_premium.html" />
     </list>
     <ignored path="cloud.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,20 +25,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="book_background.jpg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flaskr/static/img/book_background.jpg">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="book_background_2.jpg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flaskr/static/img/book_background_2.jpg">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="divi.jpg" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flaskr/static/img/divi.jpg">
           <provider selected="true" editor-type-id="images">
@@ -44,56 +32,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mdb.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flaskr/static/img/mdb.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="10172622_10201669931228810_3872173792670695269_n.jpg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flaskr/static/foto/10172622_10201669931228810_3872173792670695269_n.jpg">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="divi.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flaskr/static/foto/divi.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="images.jpg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flaskr/static/foto/images.jpg">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="logo.PNG" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flaskr/static/foto/logo.PNG">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="question-image-1.jpg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flaskr/static/foto/question-image-1.jpg">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="services.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="services.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flaskr/services.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.8019803">
-              <caret line="526" column="17" selection-start-line="526" selection-start-column="17" selection-end-line="526" selection-end-column="17" />
+            <state vertical-scroll-proportion="-2.4">
+              <caret line="17" column="52" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
               <folding>
                 <element signature="e#0#115#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dashboard_premium.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/flaskr/templates/dashboard_premium.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.35643566">
+              <caret line="108" column="57" selection-start-line="108" selection-start-column="57" selection-end-line="108" selection-end-column="104" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dashboard_free.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flaskr/templates/dashboard_free.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.9333334">
+              <caret line="107" column="22" selection-start-line="107" selection-start-column="19" selection-end-line="107" selection-end-column="22" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -110,6 +76,7 @@
         <option value="$PROJECT_DIR$/flaskr/staticServer.py" />
         <option value="$PROJECT_DIR$/flaskr/flaskr.py" />
         <option value="$PROJECT_DIR$/flaskr/services.py" />
+        <option value="$PROJECT_DIR$/flaskr/templates/dashboard_premium.html" />
       </list>
     </option>
   </component>
@@ -404,7 +371,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="24" width="1368" height="745" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -412,7 +379,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -496,13 +463,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flaskr/templates/dashboard_free.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/flaskr/flaskr.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -565,6 +525,11 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/flaskr/static/foto/question-image-1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/flaskr/static/foto/images.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -575,18 +540,29 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flaskr/static/foto/question-image-1.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
+    <entry file="file://$PROJECT_DIR$/flaskr/templates/dashboard_free.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.9333334">
+          <caret line="107" column="22" selection-start-line="107" selection-start-column="19" selection-end-line="107" selection-end-column="22" />
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/flaskr/services.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.8019803">
-          <caret line="526" column="17" selection-start-line="526" selection-start-column="17" selection-end-line="526" selection-end-column="17" />
+        <state vertical-scroll-proportion="-2.4">
+          <caret line="17" column="52" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
           <folding>
             <element signature="e#0#115#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flaskr/templates/dashboard_premium.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35643566">
+          <caret line="108" column="57" selection-start-line="108" selection-start-column="57" selection-end-line="108" selection-end-column="104" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -400,23 +400,23 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <form class="col-md-12">
+                        <form class="col-md-12" action="/premium_token" method="POST">
                             <p>Input token which is given by an email from tcoverflow administrator</p>
                             <br>
                             
                             <div class="input-field">
                                 <i class="material-icons prefix">vpn_key</i>
-                                <input id="icon_telephone" type="text" class="validate">
+                                <input id="icon_telephone" name="token" type="text" class="validate">
                                 <label for="icon_telephone">Token Number</label>
                             </div>
-                        </form>
                         <div class="text-center">
-                            <button type="button" class="btn btn-warning waves-effect waves-light">Validate</button>
+                            <button type="submit" value="premium_token" class="btn btn-warning waves-effect waves-light">Validate</button>
                         </div>
+						</form>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">X</button>
+                    <button type="button" value="premium_token" class="btn btn-danger" data-dismiss="modal">X</button>
                 </div>
             </div>
 

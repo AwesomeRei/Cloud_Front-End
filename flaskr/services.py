@@ -13,8 +13,8 @@ DBHOST = '10.151.34.15'
 DBUSER = 'cloud'
 DBPASSWD = ''
 DBNAME = 'tcoverflow'
-IMAGEUPLOADPATH = 'http://10.151.34.30:5001/'
-GETIMAGEPATH = 'http://10.151.34.30:5001/static/foto/'
+IMAGEUPLOADPATH = 'http://10.151.34.31:5001/'
+GETIMAGEPATH = 'http://10.151.34.31:5001/static/foto/'
 
 WEBHOST = '10.151.43.140'
 WEBPORT = 5000
@@ -57,6 +57,24 @@ def index():
     passingData.append(cur.fetchall())
     passingData.append('data')
     return render_template('index.html', data=passingData)
+
+@app.route('/premium_token', methods=['GET','POST'])
+def premium_token():
+    if 'username' not in session:
+        return redirect(url_for('index'))
+    if request.method == 'POST' :
+        token_form  = request.form['token']
+        cur.execute("SELECT id_token, token_stat FROM token WHERE token = %s", [token_form])
+        token = cur.fetchone()
+        if token[1] == 0:
+            cur.execute("UPDATE user SET status = 1 WHERE username = %s", [session['username']])
+            db.commit()
+            cur.execute("UPDATE token SET token_stat = 1 WHERE id_token = %s", [token[0]])
+            db.commit()
+            cur.execute("INSERT INTO token() VALUES()")
+            db.commit()
+        return redirect(url_for('index'))
+            
 
 @app.route('/signup/login', methods=['GET', 'POST'])
 def login():

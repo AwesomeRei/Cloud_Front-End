@@ -110,7 +110,7 @@ def daftar():
                 error = "Email sudah digunakan!"
             else:
                 cur.execute("INSERT INTO user(username, email, password, foto_user) VALUES(%s ,%s, %s, %s)",
-                            ([username_form], [email_form],[password_form], [status_form], [files]))
+                            ([username_form], [email_form],[password_form], [files]))
                 db.commit()
                 error = "Berhasil Daftar!"
 

@@ -89,7 +89,6 @@ def daftar():
         email_form = request.form['email']
         password_form  = request.form['password']
         password2_form = request.form['password2']
-        status_form = request.form['status']
         file = request.files['file']
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
@@ -110,7 +109,7 @@ def daftar():
             if cur.fetchone()[0]:
                 error = "Email sudah digunakan!"
             else:
-                cur.execute("INSERT INTO user(username, email, password, status, foto_user) VALUES(%s ,%s, %s, %s, %s)",
+                cur.execute("INSERT INTO user(username, email, password, foto_user) VALUES(%s ,%s, %s, %s)",
                             ([username_form], [email_form],[password_form], [status_form], [files]))
                 db.commit()
                 error = "Berhasil Daftar!"

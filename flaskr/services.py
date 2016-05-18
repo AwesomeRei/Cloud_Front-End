@@ -13,10 +13,10 @@ DBHOST = '10.151.34.15'
 DBUSER = 'cloud'
 DBPASSWD = ''
 DBNAME = 'tcoverflow'
-IMAGEUPLOADPATH = 'http://10.151.34.31:5001/'
-GETIMAGEPATH = 'http://10.151.34.31:5001/static/foto/'
+IMAGEUPLOADPATH = 'http://10.151.34.30:5001/'
+GETIMAGEPATH = 'http://10.151.34.30:5001/static/foto/'
 
-WEBHOST = '10.151.43.140'
+WEBHOST = '10.151.34.153'
 WEBPORT = 5000
 
 # This is the path to the upload directory
